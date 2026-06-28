@@ -1,0 +1,78 @@
+{
+  "source": "assets/ai_generated/bosses/new_bosses_attack_3x4_source.png",
+  "frames": [
+    {
+      "id": "b_tsuchigumo_attack_0",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_attack_0.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_attack_1",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_attack_1.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_attack_2",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_attack_2.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_attack_3",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_attack_3.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_daitengu_attack_0",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_attack_0.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_attack_1",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_attack_1.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_attack_2",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_attack_2.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_attack_3",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_attack_3.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_ogama_attack_0",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_attack_0.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_attack_1",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_attack_1.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_attack_2",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_attack_2.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_attack_3",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_attack_3.png",
+      "w": 288,
+      "h": 186
+    }
+  ],
+  "contactSheet": "assets/ai_generated/bosses/new_bosses_attack_contact_sheet.png"
+}

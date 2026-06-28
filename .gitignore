@@ -1,0 +1,36 @@
+# ===== 巨大・Web公開に無関係（絶対に入れない） =====
+HyakkiUnity/
+tools/
+tool/
+.playwright-mcp/
+test-output/
+tmp/
+_fx_exp_backup/
+
+# ===== Python キャッシュ =====
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# ===== 開発中の検証スクショ・参照・生成プレビュー画像 =====
+*_verify.png
+web_ref_*.png
+expfx_grid*.jpg
+new_icons.png
+levelup_tags.png
+harai_glyphs.png
+
+# ===== OS / エディタ =====
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.log
+
+# ===== 秘密情報（将来の保険・このゲームには現状なし） =====
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12

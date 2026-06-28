@@ -1,0 +1,397 @@
+{
+  "source": {
+    "icons": "assets/ai_generated/ai_icon_atlas_source.png",
+    "fx": "assets/ai_generated/ai_fx_atlas_source.png"
+  },
+  "icons": [
+    {
+      "id": "ic_ofuda",
+      "path": "assets/ai_generated/icons/ic_ofuda.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_katana",
+      "path": "assets/ai_generated/icons/ic_katana.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_fox",
+      "path": "assets/ai_generated/icons/ic_fox.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_raitei",
+      "path": "assets/ai_generated/icons/ic_raitei.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_kitsunebi",
+      "path": "assets/ai_generated/icons/ic_kitsunebi.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_kamaitachi",
+      "path": "assets/ai_generated/icons/ic_kamaitachi.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_kekkai",
+      "path": "assets/ai_generated/icons/ic_kekkai.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_juzu",
+      "path": "assets/ai_generated/icons/ic_juzu.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_bonsho",
+      "path": "assets/ai_generated/icons/ic_bonsho.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_hamaya",
+      "path": "assets/ai_generated/icons/ic_hamaya.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_komainu",
+      "path": "assets/ai_generated/icons/ic_komainu.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_shuriken",
+      "path": "assets/ai_generated/icons/ic_shuriken.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_kusarigama",
+      "path": "assets/ai_generated/icons/ic_kusarigama.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_tanegashima",
+      "path": "assets/ai_generated/icons/ic_tanegashima.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_fuin",
+      "path": "assets/ai_generated/icons/ic_fuin.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_zangetsu",
+      "path": "assets/ai_generated/icons/ic_zangetsu.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_tamegiri",
+      "path": "assets/ai_generated/icons/ic_tamegiri.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_laser",
+      "path": "assets/ai_generated/icons/ic_laser.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_juso",
+      "path": "assets/ai_generated/icons/ic_juso.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_honoo",
+      "path": "assets/ai_generated/icons/ic_honoo.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_ibara",
+      "path": "assets/ai_generated/icons/ic_ibara.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_sumiuchi",
+      "path": "assets/ai_generated/icons/ic_sumiuchi.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_suzunari",
+      "path": "assets/ai_generated/icons/ic_suzunari.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_kiyome",
+      "path": "assets/ai_generated/icons/ic_kiyome.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_norito",
+      "path": "assets/ai_generated/icons/ic_norito.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_kagami",
+      "path": "assets/ai_generated/icons/ic_kagami.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_henbai",
+      "path": "assets/ai_generated/icons/ic_henbai.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_mandala",
+      "path": "assets/ai_generated/icons/ic_mandala.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_sanshu",
+      "path": "assets/ai_generated/icons/ic_sanshu.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "ic_mihashira",
+      "path": "assets/ai_generated/icons/ic_mihashira.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "buff_aratama",
+      "path": "assets/ai_generated/icons/buff_aratama.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "buff_shinsoku",
+      "path": "assets/ai_generated/icons/buff_shinsoku.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "buff_kongo",
+      "path": "assets/ai_generated/icons/buff_kongo.png",
+      "w": 256,
+      "h": 256
+    },
+    {
+      "id": "buff_bunshin",
+      "path": "assets/ai_generated/icons/buff_bunshin.png",
+      "w": 256,
+      "h": 256
+    }
+  ],
+  "fx": [
+    {
+      "id": "lightning",
+      "frames": 8,
+      "frameW": 64,
+      "frameH": 64,
+      "sheet": "assets/ai_generated/fx/lightning_sheet.png",
+      "sequence": [
+        "assets/ai_generated/fx/lightning_0.png",
+        "assets/ai_generated/fx/lightning_1.png",
+        "assets/ai_generated/fx/lightning_2.png",
+        "assets/ai_generated/fx/lightning_3.png",
+        "assets/ai_generated/fx/lightning_4.png",
+        "assets/ai_generated/fx/lightning_5.png",
+        "assets/ai_generated/fx/lightning_6.png",
+        "assets/ai_generated/fx/lightning_7.png"
+      ],
+      "additive": true
+    },
+    {
+      "id": "slash",
+      "frames": 8,
+      "frameW": 64,
+      "frameH": 64,
+      "sheet": "assets/ai_generated/fx/slash_sheet.png",
+      "sequence": [
+        "assets/ai_generated/fx/slash_0.png",
+        "assets/ai_generated/fx/slash_1.png",
+        "assets/ai_generated/fx/slash_2.png",
+        "assets/ai_generated/fx/slash_3.png",
+        "assets/ai_generated/fx/slash_4.png",
+        "assets/ai_generated/fx/slash_5.png",
+        "assets/ai_generated/fx/slash_6.png",
+        "assets/ai_generated/fx/slash_7.png"
+      ],
+      "additive": true
+    },
+    {
+      "id": "holy",
+      "frames": 10,
+      "frameW": 64,
+      "frameH": 64,
+      "sheet": "assets/ai_generated/fx/holy_sheet.png",
+      "sequence": [
+        "assets/ai_generated/fx/holy_0.png",
+        "assets/ai_generated/fx/holy_1.png",
+        "assets/ai_generated/fx/holy_2.png",
+        "assets/ai_generated/fx/holy_3.png",
+        "assets/ai_generated/fx/holy_4.png",
+        "assets/ai_generated/fx/holy_5.png",
+        "assets/ai_generated/fx/holy_6.png",
+        "assets/ai_generated/fx/holy_7.png",
+        "assets/ai_generated/fx/holy_8.png",
+        "assets/ai_generated/fx/holy_9.png"
+      ],
+      "additive": true
+    },
+    {
+      "id": "curse",
+      "frames": 9,
+      "frameW": 64,
+      "frameH": 64,
+      "sheet": "assets/ai_generated/fx/curse_sheet.png",
+      "sequence": [
+        "assets/ai_generated/fx/curse_0.png",
+        "assets/ai_generated/fx/curse_1.png",
+        "assets/ai_generated/fx/curse_2.png",
+        "assets/ai_generated/fx/curse_3.png",
+        "assets/ai_generated/fx/curse_4.png",
+        "assets/ai_generated/fx/curse_5.png",
+        "assets/ai_generated/fx/curse_6.png",
+        "assets/ai_generated/fx/curse_7.png",
+        "assets/ai_generated/fx/curse_8.png"
+      ],
+      "additive": true
+    },
+    {
+      "id": "heal",
+      "frames": 8,
+      "frameW": 64,
+      "frameH": 64,
+      "sheet": "assets/ai_generated/fx/heal_sheet.png",
+      "sequence": [
+        "assets/ai_generated/fx/heal_0.png",
+        "assets/ai_generated/fx/heal_1.png",
+        "assets/ai_generated/fx/heal_2.png",
+        "assets/ai_generated/fx/heal_3.png",
+        "assets/ai_generated/fx/heal_4.png",
+        "assets/ai_generated/fx/heal_5.png",
+        "assets/ai_generated/fx/heal_6.png",
+        "assets/ai_generated/fx/heal_7.png"
+      ],
+      "additive": true
+    },
+    {
+      "id": "lampburst",
+      "frames": 8,
+      "frameW": 64,
+      "frameH": 64,
+      "sheet": "assets/ai_generated/fx/lampburst_sheet.png",
+      "sequence": [
+        "assets/ai_generated/fx/lampburst_0.png",
+        "assets/ai_generated/fx/lampburst_1.png",
+        "assets/ai_generated/fx/lampburst_2.png",
+        "assets/ai_generated/fx/lampburst_3.png",
+        "assets/ai_generated/fx/lampburst_4.png",
+        "assets/ai_generated/fx/lampburst_5.png",
+        "assets/ai_generated/fx/lampburst_6.png",
+        "assets/ai_generated/fx/lampburst_7.png"
+      ],
+      "additive": true
+    },
+    {
+      "id": "ward",
+      "frames": 8,
+      "frameW": 64,
+      "frameH": 64,
+      "sheet": "assets/ai_generated/fx/ward_sheet.png",
+      "sequence": [
+        "assets/ai_generated/fx/ward_0.png",
+        "assets/ai_generated/fx/ward_1.png",
+        "assets/ai_generated/fx/ward_2.png",
+        "assets/ai_generated/fx/ward_3.png",
+        "assets/ai_generated/fx/ward_4.png",
+        "assets/ai_generated/fx/ward_5.png",
+        "assets/ai_generated/fx/ward_6.png",
+        "assets/ai_generated/fx/ward_7.png"
+      ],
+      "additive": true
+    },
+    {
+      "id": "foxfire",
+      "frames": 8,
+      "frameW": 64,
+      "frameH": 64,
+      "sheet": "assets/ai_generated/fx/foxfire_sheet.png",
+      "sequence": [
+        "assets/ai_generated/fx/foxfire_0.png",
+        "assets/ai_generated/fx/foxfire_1.png",
+        "assets/ai_generated/fx/foxfire_2.png",
+        "assets/ai_generated/fx/foxfire_3.png",
+        "assets/ai_generated/fx/foxfire_4.png",
+        "assets/ai_generated/fx/foxfire_5.png",
+        "assets/ai_generated/fx/foxfire_6.png",
+        "assets/ai_generated/fx/foxfire_7.png"
+      ],
+      "additive": true
+    },
+    {
+      "id": "levelup",
+      "frames": 8,
+      "frameW": 64,
+      "frameH": 64,
+      "sheet": "assets/ai_generated/fx/levelup_sheet.png",
+      "sequence": [
+        "assets/ai_generated/fx/levelup_0.png",
+        "assets/ai_generated/fx/levelup_1.png",
+        "assets/ai_generated/fx/levelup_2.png",
+        "assets/ai_generated/fx/levelup_3.png",
+        "assets/ai_generated/fx/levelup_4.png",
+        "assets/ai_generated/fx/levelup_5.png",
+        "assets/ai_generated/fx/levelup_6.png",
+        "assets/ai_generated/fx/levelup_7.png"
+      ],
+      "additive": true
+    },
+    {
+      "id": "awaken",
+      "frames": 8,
+      "frameW": 64,
+      "frameH": 64,
+      "sheet": "assets/ai_generated/fx/awaken_sheet.png",
+      "sequence": [
+        "assets/ai_generated/fx/awaken_0.png",
+        "assets/ai_generated/fx/awaken_1.png",
+        "assets/ai_generated/fx/awaken_2.png",
+        "assets/ai_generated/fx/awaken_3.png",
+        "assets/ai_generated/fx/awaken_4.png",
+        "assets/ai_generated/fx/awaken_5.png",
+        "assets/ai_generated/fx/awaken_6.png",
+        "assets/ai_generated/fx/awaken_7.png"
+      ],
+      "additive": true
+    }
+  ]
+}

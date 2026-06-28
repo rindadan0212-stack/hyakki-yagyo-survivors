@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>百鬼夜行サバイバーズ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="description" content="夜明けまで15分、ドット絵で蘇った百鬼夜行を生き延びろ。和風サバイバーアクション。">
+<meta name="theme-color" content="#05060b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="百鬼夜行">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>👹</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="1280" height="720"></canvas>
+  <div id="ui">
+
+    <div id="title" class="screen">
+      <div class="t-cast" aria-hidden="true">
+        <img class="t-cast-haru" alt="">
+        <img class="t-cast-suzu" alt="">
+        <img class="t-cast-mutsuki" alt="">
+      </div>
+      <div class="t-logo">百鬼夜行</div>
+      <div class="t-sub">HYAKKI YAGYO SURVIVORS</div>
+      <div class="t-best" id="t-best"></div>
+      <button id="bt-start" class="btn primary">夜に挑む</button>
+      <div class="t-metarow">
+        <button id="bt-hono" class="btn t-hono">奉納</button>
+        <button id="bt-forge" class="btn t-hono">鍛錬</button>
+        <button id="bt-codex" class="btn t-hono">絵巻</button>
+        <button id="bt-settings" class="btn t-hono">設定</button>
+        <button id="bt-test" class="btn t-hono">🧪試</button>
+      </div>
+      <div class="t-hint"><kbd>WASD</kbd> 移動 ・ <kbd>マウス</kbd> 照準 ・ <kbd>Space</kbd> 奥義 ・ <kbd>Shift</kbd> 技 ・ <kbd>Q</kbd> 結界</div>
+    </div>
+
+    <div id="settings" class="screen dim hidden">
+      <div class="su-head">設定</div>
+      <div class="p-opts">
+        <span>楽の音</span><input type="range" id="s-vol-bgm" min="0" max="100" value="18"><span class="val" id="s-vol-bgm-val"></span>
+        <span>霊撃の音</span><input type="range" id="s-vol-sfx" min="0" max="100" value="40"><span class="val" id="s-vol-sfx-val"></span>
+        <label class="chk"><input type="checkbox" id="s-chk-mute"> 全ての音を消す</label>
+        <div class="opt-sec">見やすさ</div>
+        <label class="chk"><input type="checkbox" id="s-chk-shake" checked> 画面の揺れ</label>
+        <label class="chk"><input type="checkbox" id="s-chk-flash" checked> 閃光・点滅</label>
+        <label class="chk"><input type="checkbox" id="s-chk-dmgnum" checked> ダメージ数字</label>
+        <label class="chk"><input type="checkbox" id="s-chk-contrast"> 高コントラスト</label>
+        <div class="opt-sec">テストプレイ</div>
+        <label class="chk"><input type="checkbox" id="s-chk-god"> 無敵</label>
+        <label class="chk"><input type="checkbox" id="s-chk-fast"> 2倍速</label>
+      </div>
+      <div class="btnrow">
+        <button id="bt-settings-back" class="btn">戻る</button>
+      </div>
+    </div>
+
+    <div id="levelup" class="screen dim hidden">
+      <div class="lv-head">力ヲ選ベ</div>
+      <div class="lv-sub" id="lv-num"></div>
+      <div id="lv-cards" class="cards"></div>
+      <div class="lv-tools">
+        <button id="bt-reroll" class="btn lv-tool"></button>
+        <button id="bt-banish" class="btn lv-tool"></button>
+        <button id="bt-skip" class="btn lv-tool">見送る</button>
+      </div>
+      <div id="lv-build" class="buildrow"></div>
+    </div>
+
+    <div id="pact" class="screen dim hidden">
+      <div class="pact-kicker">百鬼との取引</div>
+      <div class="pact-head">夜契リ</div>
+      <div class="pact-sub">危難を受け入れ、夜明けまで残る契印を得よ</div>
+      <div id="pact-cards" class="pact-cards"></div>
+      <div class="pact-hint"><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> で選択</div>
+    </div>
+
+    <div id="hono" class="screen dim hidden">
+      <div class="su-head">奉納 ― 絵馬掛け ―</div>
+      <div class="su-koban">小判 <b id="hn-koban-n">0</b> 両</div>
+      <div id="hn-grid" class="hn-grid"></div>
+      <div class="btnrow">
+        <button id="bt-hono-back" class="btn">戻る</button>
+      </div>
+    </div>
+
+    <div id="forge" class="screen dim hidden">
+      <div class="su-head">鍛錬</div>
+      <div class="su-koban">小判 <b id="fg-koban-n">0</b> 両</div>
+      <div class="su-sec">使い手</div>
+      <div id="fg-chars" class="fg-grid"></div>
+      <div class="su-sec">得物</div>
+      <div id="fg-weapons" class="fg-wgrid"></div>
+      <div class="su-sec">技</div>
+      <div id="fg-skills" class="fg-wgrid"></div>
+      <div class="btnrow">
+        <button id="bt-forge-back" class="btn">戻る</button>
+      </div>
+    </div>
+
+    <div id="codex" class="screen dim hidden">
+      <div class="su-head">絵巻</div>
+      <div class="cx-scroll">
+        <div class="su-sec">実績</div>
+        <div id="cx-ach" class="cx-ach"></div>
+        <div class="su-sec">妖</div>
+        <div id="cx-foes" class="cx-foes"></div>
+        <div class="su-sec">得物と覚醒</div>
+        <div id="cx-weapons" class="cx-list"></div>
+        <div class="su-sec">宝具</div>
+        <div id="cx-passives" class="cx-list"></div>
+        <div class="su-sec">相乗</div>
+        <div id="cx-synergies" class="cx-list"></div>
+      </div>
+      <div class="btnrow">
+        <button id="bt-codex-back" class="btn">戻る</button>
+      </div>
+    </div>
+
+    <div id="setup" class="screen dim hidden">
+      <div class="su-head">出陣支度</div>
+      <div class="su-koban">小判 <b id="su-koban-n">0</b> 両</div>
+      <div class="su-sec"><span>壱</span> 夜</div>
+      <div id="su-stages" class="su-row"></div>
+      <div class="su-sec"><span>弐</span> 使い手</div>
+      <div id="su-chars" class="su-row"></div>
+      <div class="su-sec"><span>参</span> 奥義 ・ 技</div>
+      <div id="su-loadout" class="su-row su-chiprow"></div>
+      <div id="su-summary" class="su-summary"></div>
+      <div class="btnrow">
+        <button id="bt-go" class="btn primary">出陣</button>
+        <button id="bt-back" class="btn">戻る</button>
+      </div>
+    </div>
+
+    <div id="chest" class="screen dim hidden">
+      <div class="ch-head">宝匣 開封</div>
+      <div class="ch-jack hidden" id="ch-jack">― 大当タリ ―</div>
+      <div class="ch-slot" id="ch-slot"><img id="ch-spin" alt=""></div>
+      <div id="ch-rewards" class="ch-rewards"></div>
+      <div class="ch-hint hidden" id="ch-hint">一つ選べ</div>
+      <div class="ch-souls" id="ch-souls"></div>
+    </div>
+
+    <div id="pause" class="screen dim hidden">
+      <div class="p-head">小休止</div>
+      <div class="p-stats" id="p-stats"></div>
+      <div class="p-build" id="p-build"></div>
+      <div class="p-opts">
+        <span>楽の音</span><input type="range" id="vol-bgm" min="0" max="100" value="18"><span class="val" id="vol-bgm-val"></span>
+        <span>霊撃の音</span><input type="range" id="vol-sfx" min="0" max="100" value="40"><span class="val" id="vol-sfx-val"></span>
+        <label class="chk"><input type="checkbox" id="chk-dmg" checked> 打撃の数字を表示</label>
+        <div class="opt-sec">テストプレイ</div>
+        <label class="chk"><input type="checkbox" id="p-chk-god"> 無敵</label>
+        <label class="chk"><input type="checkbox" id="p-chk-fast"> 2倍速</label>
+      </div>
+      <div class="btnrow">
+        <button id="bt-resume" class="btn primary">夜へ戻る</button>
+        <button id="bt-retire" class="btn">退散する</button>
+      </div>
+    </div>
+
+    <div id="over" class="screen dim hidden">
+      <div class="r-word">夜没</div>
+      <div class="r-flavor" id="over-flavor">――百鬼に呑まれた</div>
+      <div class="r-stats" id="over-stats"></div>
+      <div class="r-dmg" id="over-dmg"></div>
+      <div class="r-koban" id="over-koban"></div>
+      <div class="r-new" id="over-new"></div>
+      <div class="btnrow">
+        <button id="bt-retry" class="btn primary">再び (R)</button>
+        <button id="bt-title" class="btn">表題 (T)</button>
+      </div>
+    </div>
+
+    <div id="win" class="screen dim hidden">
+      <div class="r-word">夜明</div>
+      <div class="r-flavor" id="win-flavor">――生き延びた。朝陽が妖を祓う</div>
+      <div class="r-stats" id="win-stats"></div>
+      <div class="r-dmg" id="win-dmg"></div>
+      <div class="r-koban" id="win-koban"></div>
+      <div class="r-new" id="win-new"></div>
+      <div class="btnrow">
+        <button id="bt-retry2" class="btn primary">再び (R)</button>
+        <button id="bt-title2" class="btn">表題 (T)</button>
+      </div>
+    </div>
+
+    <div id="tip" class="tip hidden"></div>
+
+    <div id="ult-cutin" aria-hidden="true">
+      <div class="uc-seal"></div>
+      <div class="uc-copy">
+        <div class="uc-kicker">奥義解放</div>
+        <div class="uc-char"></div>
+        <div class="uc-name"></div>
+      </div>
+      <img class="uc-portrait" alt="">
+    </div>
+
+    <!-- 相乗 成立の演出 (素材2枚が中央で衝突→新たな相乗札が生まれる)。run 中に一瞬差し込む -->
+    <div id="syn-forge" aria-hidden="true">
+      <div class="sf-stage">
+        <div class="sf-card sf-a"></div>
+        <div class="sf-card sf-b"></div>
+        <div class="sf-clash"></div>
+        <div class="sf-sparks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="sf-result"></div>
+      </div>
+    </div>
+
+    <!-- スマホ用オンスクリーン操作 (タッチ端末でのみ run 中に表示) -->
+    <div id="touch">
+      <button id="tb-pause" class="tb-pause" aria-label="一時停止"><span></span><span></span></button>
+      <button id="tb-skill" class="tb-act" aria-label="技"><span class="tb-k"></span><span class="tb-cd"></span></button>
+      <button id="tb-ult" class="tb-act" aria-label="奥義"><span class="tb-k"></span></button>
+    </div>
+  </div>
+</div>
+
+<!-- 縦持ち時の案内 (横向き推奨) -->
+<div id="rotate">
+  <div class="rt-icon">📱</div>
+  <div class="rt-main">横向きにしてください</div>
+  <div class="rt-sub">百鬼夜行は横画面で遊ぶ作りです</div>
+</div>
+<script src="js/util.js"></script>
+<script src="js/platform.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/sprites.js"></script>
+<script src="js/data.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/systems.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+<script src="js/test_stage.js"></script>
+</body>
+</html>

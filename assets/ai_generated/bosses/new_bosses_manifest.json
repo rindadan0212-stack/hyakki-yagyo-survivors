@@ -1,0 +1,42 @@
+{
+  "source": "assets/ai_generated/bosses/new_bosses_3x2_source.png",
+  "frames": [
+    {
+      "id": "b_tsuchigumo_0",
+      "path": "assets/sprites/raw/b_tsuchigumo_0.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_1",
+      "path": "assets/sprites/raw/b_tsuchigumo_1.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_daitengu_0",
+      "path": "assets/sprites/raw/b_daitengu_0.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_1",
+      "path": "assets/sprites/raw/b_daitengu_1.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_ogama_0",
+      "path": "assets/sprites/raw/b_ogama_0.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_1",
+      "path": "assets/sprites/raw/b_ogama_1.png",
+      "w": 288,
+      "h": 186
+    }
+  ],
+  "contactSheet": "assets/ai_generated/bosses/new_bosses_contact_sheet.png"
+}

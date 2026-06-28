@@ -1,0 +1,393 @@
+{
+  "sheets": [
+    "assets/sprites/animation_sheets/b_tsuchigumo_sheet_v2.png",
+    "assets/sprites/animation_sheets/b_daitengu_sheet_v2.png",
+    "assets/sprites/animation_sheets/b_ogama_sheet_v2.png"
+  ],
+  "alphaSheets": [
+    "assets/sprites/animation_sheets/b_tsuchigumo_sheet_v2_alpha.png",
+    "assets/sprites/animation_sheets/b_daitengu_sheet_v2_alpha.png",
+    "assets/sprites/animation_sheets/b_ogama_sheet_v2_alpha.png"
+  ],
+  "frames": [
+    {
+      "id": "b_tsuchigumo_idle_0",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_idle_0.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_idle_1",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_idle_1.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_idle_2",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_idle_2.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_idle_3",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_idle_3.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_move_0",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_move_0.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_move_1",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_move_1.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_move_2",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_move_2.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_move_3",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_move_3.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_telegraph_0",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_telegraph_0.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_telegraph_1",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_telegraph_1.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_telegraph_2",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_telegraph_2.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_attack_0",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_attack_0.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_attack_1",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_attack_1.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_attack_2",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_attack_2.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_attack_3",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_attack_3.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_hurt_0",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_hurt_0.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_hurt_1",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_hurt_1.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_rage_0",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_rage_0.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_rage_1",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_rage_1.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_rage_2",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_rage_2.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_tsuchigumo_rage_3",
+      "path": "assets/sprites/animation/b_tsuchigumo/b_tsuchigumo_rage_3.png",
+      "w": 270,
+      "h": 192
+    },
+    {
+      "id": "b_daitengu_idle_0",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_idle_0.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_idle_1",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_idle_1.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_idle_2",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_idle_2.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_idle_3",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_idle_3.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_move_0",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_move_0.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_move_1",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_move_1.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_move_2",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_move_2.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_move_3",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_move_3.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_telegraph_0",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_telegraph_0.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_telegraph_1",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_telegraph_1.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_telegraph_2",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_telegraph_2.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_attack_0",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_attack_0.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_attack_1",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_attack_1.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_attack_2",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_attack_2.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_attack_3",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_attack_3.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_hurt_0",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_hurt_0.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_hurt_1",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_hurt_1.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_rage_0",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_rage_0.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_rage_1",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_rage_1.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_rage_2",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_rage_2.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_daitengu_rage_3",
+      "path": "assets/sprites/animation/b_daitengu/b_daitengu_rage_3.png",
+      "w": 252,
+      "h": 234
+    },
+    {
+      "id": "b_ogama_idle_0",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_idle_0.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_idle_1",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_idle_1.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_idle_2",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_idle_2.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_idle_3",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_idle_3.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_move_0",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_move_0.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_move_1",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_move_1.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_move_2",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_move_2.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_move_3",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_move_3.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_telegraph_0",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_telegraph_0.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_telegraph_1",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_telegraph_1.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_telegraph_2",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_telegraph_2.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_attack_0",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_attack_0.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_attack_1",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_attack_1.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_attack_2",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_attack_2.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_attack_3",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_attack_3.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_hurt_0",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_hurt_0.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_hurt_1",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_hurt_1.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_rage_0",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_rage_0.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_rage_1",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_rage_1.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_rage_2",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_rage_2.png",
+      "w": 288,
+      "h": 186
+    },
+    {
+      "id": "b_ogama_rage_3",
+      "path": "assets/sprites/animation/b_ogama/b_ogama_rage_3.png",
+      "w": 288,
+      "h": 186
+    }
+  ],
+  "contactSheet": "assets/ai_generated/bosses/new_bosses_full_animation_contact_sheet.png"
+}

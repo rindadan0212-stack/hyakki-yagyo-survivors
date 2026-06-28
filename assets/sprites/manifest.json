@@ -1,0 +1,2651 @@
+{
+  "basePath": "assets/sprites/",
+  "sprites": {
+    "pc_mutsuki_0": {
+      "file": "mutsuki.png",
+      "w": 29,
+      "h": 40,
+      "ax": 14,
+      "ay": 38
+    },
+    "pc_mutsuki_1": {
+      "file": "mutsuki.png",
+      "w": 29,
+      "h": 40,
+      "ax": 14,
+      "ay": 38
+    },
+    "p_0": {
+      "file": "p_haru.png",
+      "w": 27,
+      "h": 40,
+      "ax": 14,
+      "ay": 38
+    },
+    "p_1": {
+      "file": "p_haru.png",
+      "w": 27,
+      "h": 40,
+      "ax": 14,
+      "ay": 38
+    },
+    "pc_suzu_0": {
+      "file": "suzu.png",
+      "w": 39,
+      "h": 40,
+      "ax": 20,
+      "ay": 38
+    },
+    "pc_suzu_1": {
+      "file": "suzu.png",
+      "w": 39,
+      "h": 40,
+      "ax": 20,
+      "ay": 38
+    },
+    "b_gasha_0": {
+      "file": "b_gasha_0.png",
+      "w": 72,
+      "h": 86,
+      "ax": 36,
+      "ay": 80
+    },
+    "b_gasha_1": {
+      "file": "b_gasha_1.png",
+      "w": 72,
+      "h": 86,
+      "ax": 36,
+      "ay": 80
+    },
+    "b_nue_0": {
+      "file": "b_nue_0.png",
+      "w": 82,
+      "h": 60,
+      "ax": 41,
+      "ay": 30
+    },
+    "b_nue_1": {
+      "file": "b_nue_1.png",
+      "w": 82,
+      "h": 60,
+      "ax": 41,
+      "ay": 30
+    },
+    "b_nure_0": {
+      "file": "b_nure_0.png",
+      "w": 56,
+      "h": 48,
+      "ax": 28,
+      "ay": 24
+    },
+    "b_nure_1": {
+      "file": "b_nure_1.png",
+      "w": 56,
+      "h": 48,
+      "ax": 28,
+      "ay": 24
+    },
+    "b_shuten_0": {
+      "file": "b_shuten_0.png",
+      "w": 104,
+      "h": 104,
+      "ax": 52,
+      "ay": 100
+    },
+    "b_shuten_1": {
+      "file": "b_shuten_1.png",
+      "w": 104,
+      "h": 104,
+      "ax": 52,
+      "ay": 100
+    },
+    "b_tanuki_0": {
+      "file": "b_tanuki_0.png",
+      "w": 74,
+      "h": 68,
+      "ax": 37,
+      "ay": 64
+    },
+    "b_tanuki_1": {
+      "file": "b_tanuki_1.png",
+      "w": 74,
+      "h": 68,
+      "ax": 37,
+      "ay": 64
+    },
+    "b_ushi_0": {
+      "file": "b_ushi_0.png",
+      "w": 100,
+      "h": 80,
+      "ax": 50,
+      "ay": 74
+    },
+    "b_ushi_1": {
+      "file": "b_ushi_1.png",
+      "w": 100,
+      "h": 80,
+      "ax": 50,
+      "ay": 74
+    },
+    "e_aburaakago_0": {
+      "file": "e_aburaakago_0.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 24
+    },
+    "e_aburaakago_1": {
+      "file": "e_aburaakago_1.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 24
+    },
+    "e_bat_0": {
+      "file": "e_bat_0.png",
+      "w": 32,
+      "h": 22,
+      "ax": 16,
+      "ay": 11
+    },
+    "e_bat_1": {
+      "file": "e_bat_1.png",
+      "w": 32,
+      "h": 22,
+      "ax": 16,
+      "ay": 11
+    },
+    "e_biwa_0": {
+      "file": "e_biwa_0.png",
+      "w": 30,
+      "h": 34,
+      "ax": 15,
+      "ay": 17
+    },
+    "e_biwa_1": {
+      "file": "e_biwa_1.png",
+      "w": 30,
+      "h": 34,
+      "ax": 15,
+      "ay": 17
+    },
+    "e_crow_0": {
+      "file": "e_crow_0.png",
+      "w": 34,
+      "h": 24,
+      "ax": 17,
+      "ay": 12
+    },
+    "e_crow_1": {
+      "file": "e_crow_1.png",
+      "w": 34,
+      "h": 24,
+      "ax": 17,
+      "ay": 12
+    },
+    "e_dodomeki_0": {
+      "file": "e_dodomeki_0.png",
+      "w": 32,
+      "h": 34,
+      "ax": 16,
+      "ay": 31
+    },
+    "e_dodomeki_1": {
+      "file": "e_dodomeki_1.png",
+      "w": 32,
+      "h": 34,
+      "ax": 16,
+      "ay": 31
+    },
+    "e_gaki_0": {
+      "file": "e_gaki_0.png",
+      "w": 24,
+      "h": 26,
+      "ax": 12,
+      "ay": 23
+    },
+    "e_gaki_1": {
+      "file": "e_gaki_1.png",
+      "w": 24,
+      "h": 26,
+      "ax": 12,
+      "ay": 23
+    },
+    "e_hitotsume_0": {
+      "file": "e_hitotsume_0.png",
+      "w": 30,
+      "h": 32,
+      "ax": 15,
+      "ay": 29
+    },
+    "e_hitotsume_1": {
+      "file": "e_hitotsume_1.png",
+      "w": 30,
+      "h": 32,
+      "ax": 15,
+      "ay": 29
+    },
+    "e_imp_0": {
+      "file": "e_imp_0.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 23
+    },
+    "e_imp_1": {
+      "file": "e_imp_1.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 23
+    },
+    "e_jikininki_0": {
+      "file": "e_jikininki_0.png",
+      "w": 38,
+      "h": 40,
+      "ax": 19,
+      "ay": 37
+    },
+    "e_jikininki_1": {
+      "file": "e_jikininki_1.png",
+      "w": 38,
+      "h": 40,
+      "ax": 19,
+      "ay": 37
+    },
+    "e_kasa_0": {
+      "file": "e_kasa_0.png",
+      "w": 28,
+      "h": 38,
+      "ax": 14,
+      "ay": 34
+    },
+    "e_kasa_1": {
+      "file": "e_kasa_1.png",
+      "w": 28,
+      "h": 38,
+      "ax": 14,
+      "ay": 34
+    },
+    "e_kasha_0": {
+      "file": "e_kasha_0.png",
+      "w": 36,
+      "h": 28,
+      "ax": 18,
+      "ay": 25
+    },
+    "e_kasha_1": {
+      "file": "e_kasha_1.png",
+      "w": 36,
+      "h": 28,
+      "ax": 18,
+      "ay": 25
+    },
+    "e_kyokotsu_0": {
+      "file": "e_kyokotsu_0.png",
+      "w": 30,
+      "h": 28,
+      "ax": 15,
+      "ay": 14
+    },
+    "e_kyokotsu_1": {
+      "file": "e_kyokotsu_1.png",
+      "w": 30,
+      "h": 28,
+      "ax": 15,
+      "ay": 14
+    },
+    "e_lantern_0": {
+      "file": "e_lantern_0.png",
+      "w": 28,
+      "h": 36,
+      "ax": 14,
+      "ay": 18
+    },
+    "e_lantern_1": {
+      "file": "e_lantern_1.png",
+      "w": 28,
+      "h": 36,
+      "ax": 14,
+      "ay": 18
+    },
+    "e_nyudo_0": {
+      "file": "e_nyudo_0.png",
+      "w": 42,
+      "h": 52,
+      "ax": 21,
+      "ay": 49
+    },
+    "e_nyudo_1": {
+      "file": "e_nyudo_1.png",
+      "w": 42,
+      "h": 52,
+      "ax": 21,
+      "ay": 49
+    },
+    "e_oni_0": {
+      "file": "e_oni_0.png",
+      "w": 36,
+      "h": 35,
+      "ax": 18,
+      "ay": 32
+    },
+    "e_oni_1": {
+      "file": "e_oni_1.png",
+      "w": 36,
+      "h": 35,
+      "ax": 18,
+      "ay": 32
+    },
+    "e_onibi_0": {
+      "file": "e_onibi_0.png",
+      "w": 22,
+      "h": 26,
+      "ax": 11,
+      "ay": 13
+    },
+    "e_onibi_1": {
+      "file": "e_onibi_1.png",
+      "w": 22,
+      "h": 26,
+      "ax": 11,
+      "ay": 13
+    },
+    "e_rokuro_0": {
+      "file": "e_rokuro_0.png",
+      "w": 28,
+      "h": 38,
+      "ax": 14,
+      "ay": 35
+    },
+    "e_rokuro_1": {
+      "file": "e_rokuro_1.png",
+      "w": 28,
+      "h": 38,
+      "ax": 14,
+      "ay": 35
+    },
+    "e_shiryo_0": {
+      "file": "e_shiryo_0.png",
+      "w": 26,
+      "h": 30,
+      "ax": 13,
+      "ay": 15
+    },
+    "e_shiryo_1": {
+      "file": "e_shiryo_1.png",
+      "w": 26,
+      "h": 30,
+      "ax": 13,
+      "ay": 15
+    },
+    "e_skel_0": {
+      "file": "e_skel_0.png",
+      "w": 30,
+      "h": 37,
+      "ax": 15,
+      "ay": 34
+    },
+    "e_skel_1": {
+      "file": "e_skel_1.png",
+      "w": 30,
+      "h": 37,
+      "ax": 15,
+      "ay": 34
+    },
+    "e_ungaikyo_0": {
+      "file": "e_ungaikyo_0.png",
+      "w": 32,
+      "h": 34,
+      "ax": 16,
+      "ay": 31
+    },
+    "e_ungaikyo_1": {
+      "file": "e_ungaikyo_1.png",
+      "w": 32,
+      "h": 34,
+      "ax": 16,
+      "ay": 31
+    },
+    "p_idle_0": {
+      "file": "animation/p/p_idle_0.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_idle_1": {
+      "file": "animation/p/p_idle_1.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_idle_2": {
+      "file": "animation/p/p_idle_2.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_idle_3": {
+      "file": "animation/p/p_idle_3.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_hurt_0": {
+      "file": "animation/p/p_hurt_0.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_hurt_1": {
+      "file": "animation/p/p_hurt_1.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_walk_0": {
+      "file": "animation/p/p_walk_0.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_walk_1": {
+      "file": "animation/p/p_walk_1.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_walk_2": {
+      "file": "animation/p/p_walk_2.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_walk_3": {
+      "file": "animation/p/p_walk_3.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_walk_4": {
+      "file": "animation/p/p_walk_4.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_walk_5": {
+      "file": "animation/p/p_walk_5.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_dash_0": {
+      "file": "animation/p/p_dash_0.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_dash_1": {
+      "file": "animation/p/p_dash_1.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_dash_2": {
+      "file": "animation/p/p_dash_2.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_cast_0": {
+      "file": "animation/p/p_cast_0.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_cast_1": {
+      "file": "animation/p/p_cast_1.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_cast_2": {
+      "file": "animation/p/p_cast_2.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "p_cast_3": {
+      "file": "animation/p/p_cast_3.png",
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
+    },
+    "pc_suzu_idle_0": {
+      "file": "animation/pc_suzu/pc_suzu_idle_0.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_idle_1": {
+      "file": "animation/pc_suzu/pc_suzu_idle_1.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_idle_2": {
+      "file": "animation/pc_suzu/pc_suzu_idle_2.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_idle_3": {
+      "file": "animation/pc_suzu/pc_suzu_idle_3.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_hurt_0": {
+      "file": "animation/pc_suzu/pc_suzu_hurt_0.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_hurt_1": {
+      "file": "animation/pc_suzu/pc_suzu_hurt_1.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_walk_0": {
+      "file": "animation/pc_suzu/pc_suzu_walk_0.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_walk_1": {
+      "file": "animation/pc_suzu/pc_suzu_walk_1.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_walk_2": {
+      "file": "animation/pc_suzu/pc_suzu_walk_2.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_walk_3": {
+      "file": "animation/pc_suzu/pc_suzu_walk_3.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_walk_4": {
+      "file": "animation/pc_suzu/pc_suzu_walk_4.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_walk_5": {
+      "file": "animation/pc_suzu/pc_suzu_walk_5.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_dash_0": {
+      "file": "animation/pc_suzu/pc_suzu_dash_0.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_dash_1": {
+      "file": "animation/pc_suzu/pc_suzu_dash_1.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_dash_2": {
+      "file": "animation/pc_suzu/pc_suzu_dash_2.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_cast_0": {
+      "file": "animation/pc_suzu/pc_suzu_cast_0.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_cast_1": {
+      "file": "animation/pc_suzu/pc_suzu_cast_1.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_cast_2": {
+      "file": "animation/pc_suzu/pc_suzu_cast_2.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_suzu_cast_3": {
+      "file": "animation/pc_suzu/pc_suzu_cast_3.png",
+      "w": 99.719,
+      "h": 99.719,
+      "ax": 57.365,
+      "ay": 83.635
+    },
+    "pc_mutsuki_idle_0": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_idle_0.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_idle_1": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_idle_1.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_idle_2": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_idle_2.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_idle_3": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_idle_3.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_hurt_0": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_hurt_0.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_hurt_1": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_hurt_1.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_walk_0": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_walk_0.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_walk_1": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_walk_1.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_walk_2": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_walk_2.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_walk_3": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_walk_3.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_walk_4": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_walk_4.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_walk_5": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_walk_5.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_dash_0": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_dash_0.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_dash_1": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_dash_1.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_dash_2": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_dash_2.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_cast_0": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_cast_0.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_cast_1": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_cast_1.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_cast_2": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_cast_2.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "pc_mutsuki_cast_3": {
+      "file": "animation/pc_mutsuki/pc_mutsuki_cast_3.png",
+      "w": 90.386,
+      "h": 90.386,
+      "ax": 49.614,
+      "ay": 80.561
+    },
+    "b_tanuki_idle_0": {
+      "file": "animation/b_tanuki/b_tanuki_idle_0.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_idle_1": {
+      "file": "animation/b_tanuki/b_tanuki_idle_1.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_idle_2": {
+      "file": "animation/b_tanuki/b_tanuki_idle_2.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_idle_3": {
+      "file": "animation/b_tanuki/b_tanuki_idle_3.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_hurt_0": {
+      "file": "animation/b_tanuki/b_tanuki_hurt_0.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_hurt_1": {
+      "file": "animation/b_tanuki/b_tanuki_hurt_1.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_move_0": {
+      "file": "animation/b_tanuki/b_tanuki_move_0.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_move_1": {
+      "file": "animation/b_tanuki/b_tanuki_move_1.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_move_2": {
+      "file": "animation/b_tanuki/b_tanuki_move_2.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_move_3": {
+      "file": "animation/b_tanuki/b_tanuki_move_3.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_telegraph_0": {
+      "file": "animation/b_tanuki/b_tanuki_telegraph_0.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_telegraph_1": {
+      "file": "animation/b_tanuki/b_tanuki_telegraph_1.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_telegraph_2": {
+      "file": "animation/b_tanuki/b_tanuki_telegraph_2.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_attack_0": {
+      "file": "animation/b_tanuki/b_tanuki_attack_0.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_attack_1": {
+      "file": "animation/b_tanuki/b_tanuki_attack_1.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_attack_2": {
+      "file": "animation/b_tanuki/b_tanuki_attack_2.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_attack_3": {
+      "file": "animation/b_tanuki/b_tanuki_attack_3.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_rage_0": {
+      "file": "animation/b_tanuki/b_tanuki_rage_0.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_rage_1": {
+      "file": "animation/b_tanuki/b_tanuki_rage_1.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_rage_2": {
+      "file": "animation/b_tanuki/b_tanuki_rage_2.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_tanuki_rage_3": {
+      "file": "animation/b_tanuki/b_tanuki_rage_3.png",
+      "w": 110.913,
+      "h": 110.913,
+      "ax": 57.245,
+      "ay": 101.372
+    },
+    "b_nure_idle_0": {
+      "file": "animation/b_nure/b_nure_idle_0.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_idle_1": {
+      "file": "animation/b_nure/b_nure_idle_1.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_idle_2": {
+      "file": "animation/b_nure/b_nure_idle_2.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_idle_3": {
+      "file": "animation/b_nure/b_nure_idle_3.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_hurt_0": {
+      "file": "animation/b_nure/b_nure_hurt_0.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_hurt_1": {
+      "file": "animation/b_nure/b_nure_hurt_1.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_move_0": {
+      "file": "animation/b_nure/b_nure_move_0.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_move_1": {
+      "file": "animation/b_nure/b_nure_move_1.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_move_2": {
+      "file": "animation/b_nure/b_nure_move_2.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_move_3": {
+      "file": "animation/b_nure/b_nure_move_3.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_telegraph_0": {
+      "file": "animation/b_nure/b_nure_telegraph_0.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_telegraph_1": {
+      "file": "animation/b_nure/b_nure_telegraph_1.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_telegraph_2": {
+      "file": "animation/b_nure/b_nure_telegraph_2.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_attack_0": {
+      "file": "animation/b_nure/b_nure_attack_0.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_attack_1": {
+      "file": "animation/b_nure/b_nure_attack_1.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_attack_2": {
+      "file": "animation/b_nure/b_nure_attack_2.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_attack_3": {
+      "file": "animation/b_nure/b_nure_attack_3.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_rage_0": {
+      "file": "animation/b_nure/b_nure_rage_0.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_rage_1": {
+      "file": "animation/b_nure/b_nure_rage_1.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_rage_2": {
+      "file": "animation/b_nure/b_nure_rage_2.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_nure_rage_3": {
+      "file": "animation/b_nure/b_nure_rage_3.png",
+      "w": 86.254,
+      "h": 86.254,
+      "ax": 49.619,
+      "ay": 75.124
+    },
+    "b_ushi_idle_0": {
+      "file": "animation/b_ushi/b_ushi_idle_0.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_idle_1": {
+      "file": "animation/b_ushi/b_ushi_idle_1.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_idle_2": {
+      "file": "animation/b_ushi/b_ushi_idle_2.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_idle_3": {
+      "file": "animation/b_ushi/b_ushi_idle_3.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_hurt_0": {
+      "file": "animation/b_ushi/b_ushi_hurt_0.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_hurt_1": {
+      "file": "animation/b_ushi/b_ushi_hurt_1.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_move_0": {
+      "file": "animation/b_ushi/b_ushi_move_0.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_move_1": {
+      "file": "animation/b_ushi/b_ushi_move_1.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_move_2": {
+      "file": "animation/b_ushi/b_ushi_move_2.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_move_3": {
+      "file": "animation/b_ushi/b_ushi_move_3.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_telegraph_0": {
+      "file": "animation/b_ushi/b_ushi_telegraph_0.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_telegraph_1": {
+      "file": "animation/b_ushi/b_ushi_telegraph_1.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_telegraph_2": {
+      "file": "animation/b_ushi/b_ushi_telegraph_2.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_attack_0": {
+      "file": "animation/b_ushi/b_ushi_attack_0.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_attack_1": {
+      "file": "animation/b_ushi/b_ushi_attack_1.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_attack_2": {
+      "file": "animation/b_ushi/b_ushi_attack_2.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_attack_3": {
+      "file": "animation/b_ushi/b_ushi_attack_3.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_rage_0": {
+      "file": "animation/b_ushi/b_ushi_rage_0.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_rage_1": {
+      "file": "animation/b_ushi/b_ushi_rage_1.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_rage_2": {
+      "file": "animation/b_ushi/b_ushi_rage_2.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_ushi_rage_3": {
+      "file": "animation/b_ushi/b_ushi_rage_3.png",
+      "w": 146.234,
+      "h": 146.234,
+      "ax": 82.551,
+      "ay": 124.22
+    },
+    "b_nue_idle_0": {
+      "file": "animation/b_nue/b_nue_idle_0.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_idle_1": {
+      "file": "animation/b_nue/b_nue_idle_1.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_idle_2": {
+      "file": "animation/b_nue/b_nue_idle_2.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_idle_3": {
+      "file": "animation/b_nue/b_nue_idle_3.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_hurt_0": {
+      "file": "animation/b_nue/b_nue_hurt_0.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_hurt_1": {
+      "file": "animation/b_nue/b_nue_hurt_1.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_move_0": {
+      "file": "animation/b_nue/b_nue_move_0.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_move_1": {
+      "file": "animation/b_nue/b_nue_move_1.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_move_2": {
+      "file": "animation/b_nue/b_nue_move_2.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_move_3": {
+      "file": "animation/b_nue/b_nue_move_3.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_telegraph_0": {
+      "file": "animation/b_nue/b_nue_telegraph_0.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_telegraph_1": {
+      "file": "animation/b_nue/b_nue_telegraph_1.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_telegraph_2": {
+      "file": "animation/b_nue/b_nue_telegraph_2.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_attack_0": {
+      "file": "animation/b_nue/b_nue_attack_0.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_attack_1": {
+      "file": "animation/b_nue/b_nue_attack_1.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_attack_2": {
+      "file": "animation/b_nue/b_nue_attack_2.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_attack_3": {
+      "file": "animation/b_nue/b_nue_attack_3.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_rage_0": {
+      "file": "animation/b_nue/b_nue_rage_0.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_rage_1": {
+      "file": "animation/b_nue/b_nue_rage_1.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_rage_2": {
+      "file": "animation/b_nue/b_nue_rage_2.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_nue_rage_3": {
+      "file": "animation/b_nue/b_nue_rage_3.png",
+      "w": 99.394,
+      "h": 99.394,
+      "ax": 55.041,
+      "ay": 88.706
+    },
+    "b_gasha_idle_0": {
+      "file": "animation/b_gasha/b_gasha_idle_0.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_idle_1": {
+      "file": "animation/b_gasha/b_gasha_idle_1.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_idle_2": {
+      "file": "animation/b_gasha/b_gasha_idle_2.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_idle_3": {
+      "file": "animation/b_gasha/b_gasha_idle_3.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_hurt_0": {
+      "file": "animation/b_gasha/b_gasha_hurt_0.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_hurt_1": {
+      "file": "animation/b_gasha/b_gasha_hurt_1.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_move_0": {
+      "file": "animation/b_gasha/b_gasha_move_0.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_move_1": {
+      "file": "animation/b_gasha/b_gasha_move_1.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_move_2": {
+      "file": "animation/b_gasha/b_gasha_move_2.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_move_3": {
+      "file": "animation/b_gasha/b_gasha_move_3.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_telegraph_0": {
+      "file": "animation/b_gasha/b_gasha_telegraph_0.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_telegraph_1": {
+      "file": "animation/b_gasha/b_gasha_telegraph_1.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_telegraph_2": {
+      "file": "animation/b_gasha/b_gasha_telegraph_2.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_attack_0": {
+      "file": "animation/b_gasha/b_gasha_attack_0.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_attack_1": {
+      "file": "animation/b_gasha/b_gasha_attack_1.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_attack_2": {
+      "file": "animation/b_gasha/b_gasha_attack_2.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_attack_3": {
+      "file": "animation/b_gasha/b_gasha_attack_3.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_rage_0": {
+      "file": "animation/b_gasha/b_gasha_rage_0.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_rage_1": {
+      "file": "animation/b_gasha/b_gasha_rage_1.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_rage_2": {
+      "file": "animation/b_gasha/b_gasha_rage_2.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_gasha_rage_3": {
+      "file": "animation/b_gasha/b_gasha_rage_3.png",
+      "w": 130.253,
+      "h": 130.253,
+      "ax": 68.628,
+      "ay": 120.449
+    },
+    "b_shuten_idle_0": {
+      "file": "animation/b_shuten/b_shuten_idle_0.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_idle_1": {
+      "file": "animation/b_shuten/b_shuten_idle_1.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_idle_2": {
+      "file": "animation/b_shuten/b_shuten_idle_2.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_idle_3": {
+      "file": "animation/b_shuten/b_shuten_idle_3.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_hurt_0": {
+      "file": "animation/b_shuten/b_shuten_hurt_0.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_hurt_1": {
+      "file": "animation/b_shuten/b_shuten_hurt_1.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_move_0": {
+      "file": "animation/b_shuten/b_shuten_move_0.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_move_1": {
+      "file": "animation/b_shuten/b_shuten_move_1.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_move_2": {
+      "file": "animation/b_shuten/b_shuten_move_2.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_move_3": {
+      "file": "animation/b_shuten/b_shuten_move_3.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_telegraph_0": {
+      "file": "animation/b_shuten/b_shuten_telegraph_0.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_telegraph_1": {
+      "file": "animation/b_shuten/b_shuten_telegraph_1.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_telegraph_2": {
+      "file": "animation/b_shuten/b_shuten_telegraph_2.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_attack_0": {
+      "file": "animation/b_shuten/b_shuten_attack_0.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_attack_1": {
+      "file": "animation/b_shuten/b_shuten_attack_1.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_attack_2": {
+      "file": "animation/b_shuten/b_shuten_attack_2.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_attack_3": {
+      "file": "animation/b_shuten/b_shuten_attack_3.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_rage_0": {
+      "file": "animation/b_shuten/b_shuten_rage_0.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_rage_1": {
+      "file": "animation/b_shuten/b_shuten_rage_1.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_rage_2": {
+      "file": "animation/b_shuten/b_shuten_rage_2.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_shuten_rage_3": {
+      "file": "animation/b_shuten/b_shuten_rage_3.png",
+      "w": 162.148,
+      "h": 162.148,
+      "ax": 99.381,
+      "ay": 148.2
+    },
+    "b_tsuchigumo_0": {
+      "file": "raw/b_tsuchigumo_0.png",
+      "w": 90,
+      "h": 64,
+      "ax": 45,
+      "ay": 32
+    },
+    "b_tsuchigumo_1": {
+      "file": "raw/b_tsuchigumo_1.png",
+      "w": 90,
+      "h": 64,
+      "ax": 45,
+      "ay": 32
+    },
+    "b_tsuchigumo_attack_0": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_attack_0.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_attack_1": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_attack_1.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_attack_2": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_attack_2.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_attack_3": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_attack_3.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_daitengu_0": {
+      "file": "raw/b_daitengu_0.png",
+      "w": 84,
+      "h": 78,
+      "ax": 42,
+      "ay": 39
+    },
+    "b_daitengu_1": {
+      "file": "raw/b_daitengu_1.png",
+      "w": 84,
+      "h": 78,
+      "ax": 42,
+      "ay": 39
+    },
+    "b_daitengu_attack_0": {
+      "file": "animation/b_daitengu/b_daitengu_attack_0.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_attack_1": {
+      "file": "animation/b_daitengu/b_daitengu_attack_1.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_attack_2": {
+      "file": "animation/b_daitengu/b_daitengu_attack_2.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_attack_3": {
+      "file": "animation/b_daitengu/b_daitengu_attack_3.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_ogama_0": {
+      "file": "raw/b_ogama_0.png",
+      "w": 96,
+      "h": 62,
+      "ax": 48,
+      "ay": 52
+    },
+    "b_ogama_1": {
+      "file": "raw/b_ogama_1.png",
+      "w": 96,
+      "h": 62,
+      "ax": 48,
+      "ay": 52
+    },
+    "b_ogama_attack_0": {
+      "file": "animation/b_ogama/b_ogama_attack_0.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_attack_1": {
+      "file": "animation/b_ogama/b_ogama_attack_1.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_attack_2": {
+      "file": "animation/b_ogama/b_ogama_attack_2.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_attack_3": {
+      "file": "animation/b_ogama/b_ogama_attack_3.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_tsuchigumo_idle_0": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_idle_0.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_idle_1": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_idle_1.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_idle_2": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_idle_2.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_idle_3": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_idle_3.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_move_0": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_move_0.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_move_1": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_move_1.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_move_2": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_move_2.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_move_3": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_move_3.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_telegraph_0": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_telegraph_0.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_telegraph_1": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_telegraph_1.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_telegraph_2": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_telegraph_2.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_hurt_0": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_hurt_0.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_hurt_1": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_hurt_1.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_rage_0": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_rage_0.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_rage_1": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_rage_1.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_rage_2": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_rage_2.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_tsuchigumo_rage_3": {
+      "file": "animation/b_tsuchigumo/b_tsuchigumo_rage_3.png",
+      "w": 106.545,
+      "h": 106.545,
+      "ax": 56.747,
+      "ay": 90.332
+    },
+    "b_daitengu_idle_0": {
+      "file": "animation/b_daitengu/b_daitengu_idle_0.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_idle_1": {
+      "file": "animation/b_daitengu/b_daitengu_idle_1.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_idle_2": {
+      "file": "animation/b_daitengu/b_daitengu_idle_2.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_idle_3": {
+      "file": "animation/b_daitengu/b_daitengu_idle_3.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_move_0": {
+      "file": "animation/b_daitengu/b_daitengu_move_0.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_move_1": {
+      "file": "animation/b_daitengu/b_daitengu_move_1.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_move_2": {
+      "file": "animation/b_daitengu/b_daitengu_move_2.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_move_3": {
+      "file": "animation/b_daitengu/b_daitengu_move_3.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_telegraph_0": {
+      "file": "animation/b_daitengu/b_daitengu_telegraph_0.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_telegraph_1": {
+      "file": "animation/b_daitengu/b_daitengu_telegraph_1.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_telegraph_2": {
+      "file": "animation/b_daitengu/b_daitengu_telegraph_2.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_hurt_0": {
+      "file": "animation/b_daitengu/b_daitengu_hurt_0.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_hurt_1": {
+      "file": "animation/b_daitengu/b_daitengu_hurt_1.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_rage_0": {
+      "file": "animation/b_daitengu/b_daitengu_rage_0.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_rage_1": {
+      "file": "animation/b_daitengu/b_daitengu_rage_1.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_rage_2": {
+      "file": "animation/b_daitengu/b_daitengu_rage_2.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_daitengu_rage_3": {
+      "file": "animation/b_daitengu/b_daitengu_rage_3.png",
+      "w": 141.046,
+      "h": 141.046,
+      "ax": 73.589,
+      "ay": 121.116
+    },
+    "b_ogama_idle_0": {
+      "file": "animation/b_ogama/b_ogama_idle_0.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_idle_1": {
+      "file": "animation/b_ogama/b_ogama_idle_1.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_idle_2": {
+      "file": "animation/b_ogama/b_ogama_idle_2.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_idle_3": {
+      "file": "animation/b_ogama/b_ogama_idle_3.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_move_0": {
+      "file": "animation/b_ogama/b_ogama_move_0.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_move_1": {
+      "file": "animation/b_ogama/b_ogama_move_1.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_move_2": {
+      "file": "animation/b_ogama/b_ogama_move_2.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_move_3": {
+      "file": "animation/b_ogama/b_ogama_move_3.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_telegraph_0": {
+      "file": "animation/b_ogama/b_ogama_telegraph_0.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_telegraph_1": {
+      "file": "animation/b_ogama/b_ogama_telegraph_1.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_telegraph_2": {
+      "file": "animation/b_ogama/b_ogama_telegraph_2.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_hurt_0": {
+      "file": "animation/b_ogama/b_ogama_hurt_0.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_hurt_1": {
+      "file": "animation/b_ogama/b_ogama_hurt_1.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_rage_0": {
+      "file": "animation/b_ogama/b_ogama_rage_0.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_rage_1": {
+      "file": "animation/b_ogama/b_ogama_rage_1.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_rage_2": {
+      "file": "animation/b_ogama/b_ogama_rage_2.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "b_ogama_rage_3": {
+      "file": "animation/b_ogama/b_ogama_rage_3.png",
+      "w": 114.08,
+      "h": 105.4,
+      "ax": 59.52,
+      "ay": 96.72
+    },
+    "buff_aratama": {
+      "file": "icons/buff_aratama.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "buff_bunshin": {
+      "file": "icons/buff_bunshin.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "buff_kongo": {
+      "file": "icons/buff_kongo.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "buff_shinsoku": {
+      "file": "icons/buff_shinsoku.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_bonsho": {
+      "file": "icons/ic_bonsho.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_fox": {
+      "file": "icons/ic_fox.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_fuin": {
+      "file": "icons/ic_fuin.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_hamaya": {
+      "file": "icons/ic_hamaya.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_henbai": {
+      "file": "icons/ic_henbai.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_honoo": {
+      "file": "icons/ic_honoo.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_ibara": {
+      "file": "icons/ic_ibara.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_juso": {
+      "file": "icons/ic_juso.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_juzu": {
+      "file": "icons/ic_juzu.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_kagami": {
+      "file": "icons/ic_kagami.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_kamaitachi": {
+      "file": "icons/ic_kamaitachi.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_katana": {
+      "file": "icons/ic_katana.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_kekkai": {
+      "file": "icons/ic_kekkai.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_kitsunebi": {
+      "file": "icons/ic_kitsunebi.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_kiyome": {
+      "file": "icons/ic_kiyome.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_komainu": {
+      "file": "icons/ic_komainu.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_kusarigama": {
+      "file": "icons/ic_kusarigama.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_laser": {
+      "file": "icons/ic_laser.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_mandala": {
+      "file": "icons/ic_mandala.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_mihashira": {
+      "file": "icons/ic_mihashira.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_norito": {
+      "file": "icons/ic_norito.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_ofuda": {
+      "file": "icons/ic_ofuda.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_raitei": {
+      "file": "icons/ic_raitei.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_sanshu": {
+      "file": "icons/ic_sanshu.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_shuriken": {
+      "file": "icons/ic_shuriken.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_sumiuchi": {
+      "file": "icons/ic_sumiuchi.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_suzunari": {
+      "file": "icons/ic_suzunari.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_tamegiri": {
+      "file": "icons/ic_tamegiri.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_tanegashima": {
+      "file": "icons/ic_tanegashima.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "ic_zangetsu": {
+      "file": "icons/ic_zangetsu.png",
+      "w": 28,
+      "h": 28,
+      "ax": 14,
+      "ay": 14
+    },
+    "buff_aratama_sym": {
+      "file": "icons/buff_aratama_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "buff_bunshin_sym": {
+      "file": "icons/buff_bunshin_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "buff_kongo_sym": {
+      "file": "icons/buff_kongo_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "buff_shinsoku_sym": {
+      "file": "icons/buff_shinsoku_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_bonsho_sym": {
+      "file": "icons/ic_bonsho_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_fox_sym": {
+      "file": "icons/ic_fox_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_fuin_sym": {
+      "file": "icons/ic_fuin_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_hamaya_sym": {
+      "file": "icons/ic_hamaya_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_henbai_sym": {
+      "file": "icons/ic_henbai_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_honoo_sym": {
+      "file": "icons/ic_honoo_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_ibara_sym": {
+      "file": "icons/ic_ibara_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_juso_sym": {
+      "file": "icons/ic_juso_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_juzu_sym": {
+      "file": "icons/ic_juzu_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_kagami_sym": {
+      "file": "icons/ic_kagami_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_kamaitachi_sym": {
+      "file": "icons/ic_kamaitachi_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_katana_sym": {
+      "file": "icons/ic_katana_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_kekkai_sym": {
+      "file": "icons/ic_kekkai_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_kitsunebi_sym": {
+      "file": "icons/ic_kitsunebi_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_kiyome_sym": {
+      "file": "icons/ic_kiyome_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_komainu_sym": {
+      "file": "icons/ic_komainu_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_kusarigama_sym": {
+      "file": "icons/ic_kusarigama_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_laser_sym": {
+      "file": "icons/ic_laser_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_mandala_sym": {
+      "file": "icons/ic_mandala_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_mihashira_sym": {
+      "file": "icons/ic_mihashira_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_norito_sym": {
+      "file": "icons/ic_norito_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_ofuda_sym": {
+      "file": "icons/ic_ofuda_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_raitei_sym": {
+      "file": "icons/ic_raitei_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_sanshu_sym": {
+      "file": "icons/ic_sanshu_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_shuriken_sym": {
+      "file": "icons/ic_shuriken_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_sumiuchi_sym": {
+      "file": "icons/ic_sumiuchi_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_suzunari_sym": {
+      "file": "icons/ic_suzunari_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_tamegiri_sym": {
+      "file": "icons/ic_tamegiri_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_tanegashima_sym": {
+      "file": "icons/ic_tanegashima_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    },
+    "ic_zangetsu_sym": {
+      "file": "icons/ic_zangetsu_sym.png",
+      "w": 26,
+      "h": 26,
+      "ax": 13,
+      "ay": 13
+    }
+  }
+}
