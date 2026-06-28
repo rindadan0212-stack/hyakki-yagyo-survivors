@@ -137,7 +137,10 @@ G.ent = (() => {
     const elite = !!opts.elite;
     const tc = run.clock * D.TIME_COMP;   // 夜 3/4 圧縮後も同じ強さ曲線を辿る(ボス中は時計停止=難度も停止)
     const midHp = D.midWaveHpMul ? D.midWaveHpMul(run.clock, run.stage.length) : 1;
-    const hpSc = D.hpScale(tc) * run.stage.hpMul * midHp;
+    // 終盤の敵HPを×0.75まで緩める(後半で滑らかにテーパー: 進行60%まで等倍 → 75%以降は×0.75)
+    const prog = run.stage.length ? Math.min(1, run.clock / run.stage.length) : 0;
+    const lateMul = 1 - 0.25 * Math.min(1, Math.max(0, (prog - 0.6) / 0.15));
+    const hpSc = D.hpScale(tc) * run.stage.hpMul * midHp * lateMul;
     e.id = nextId++;
     e.type = typeId; e.cfg = cfg;
     [e.x, e.y] = G.clampMap(x, y, cfg.r);   // 有限マップ: 湧きは必ず壁の内側

@@ -64,18 +64,22 @@ G.sys = (() => {
       const pc = D.P[pid];
       if (pc.clashWeapon && (cfg.base[pc.clashWeapon] || 0) > 0) return false; // 例: 貫きの鏃所持中の手裏剣
     }
-    // 伝説スキル: 同ビルドジャンルの非伝説スキルを全てLv3(最大)にして初めて抽選に参加(ビルドが完成してから)
+    // 伝説スキル: 同ジャンルの非伝説スキルを「3種」Lv3(最大)にしたら解禁(到達可能な特化の証)。
+    // 旧仕様=同ジャンル全種Lv3は事実上不可能だったため緩和(2026-06-29)。
     if (D.rarityOf('weapon', id) === 'legend') {
       const genre = (D.WTAGS[id] || [])[0];
       if (genre) {
         const init = { ofuda: 1, laser: 1, zangetsu: 1 };
         const lv = {}; for (const w of run.weapons) lv[w.id] = w.lvl || 1;
+        let maxed = 0, avail = 0;
         for (const wid in D.W) {
           if (init[wid] || wid === id) continue;
           if (D.rarityOf('weapon', wid) === 'legend') continue;   // 他の伝説は前提に含めない
           if ((D.WTAGS[wid] || [])[0] !== genre) continue;
-          if ((lv[wid] || 0) < 3) return false;                   // 同ジャンルの非伝説を全てLv3にするまで出さない
+          avail++;
+          if ((lv[wid] || 0) >= 3) maxed++;
         }
+        if (maxed < Math.min(3, avail)) return false;   // 同ジャンルの非伝説を3種(在庫が少なければ全部)Lv3にするまで出さない
       }
     }
     return true;
@@ -1003,44 +1007,40 @@ G.sys = (() => {
     }
 
     else if (w.id === 'amenomihashira') {
-      // 天ノ御柱(伝): 最寄りの「灯火(点いた提灯)」へ御柱を呼び降ろす大範囲。祓印を刻み、印3は祓う。
-      // 灯が無ければ最寄りの敵、それも無ければ前方へ。※自分の足元には絶対落とさない。
-      let tx, ty, onLamp = false;
-      {
-        const lamps = run.toros || [];
-        let best = null, bd2 = Infinity;
-        for (let i = 0; i < lamps.length; i++) {
-          const t = lamps[i];
-          if (t.dead) continue;   // 点いている灯のみ対象
-          const d2 = (t.x - p.x) * (t.x - p.x) + (t.y - p.y) * (t.y - p.y);
-          if (d2 < bd2) { bd2 = d2; best = t; }
-        }
-        if (best) { tx = best.x; ty = best.y; onLamp = true; }
-        else {
-          const tgt = G.ent.nearestEnemy(p.x, p.y, 700);
-          if (tgt) { tx = tgt.x; ty = tgt.y; }
-          else { const a = Math.atan2(p.aimY || 0, p.aimX || 1); tx = p.x + Math.cos(a) * 200; ty = p.y + Math.sin(a) * 200; }
-        }
+      // 天ノ御柱(伝): 最寄りの「灯火(点いた提灯)」へ御柱を呼び降ろす灯火連動の切り札。
+      // ★灯火が無ければ発動しない(不発)。少し待って、灯ったら撃つ。
+      const lamps = run.toros || [];
+      let best = null, bd2 = Infinity;
+      for (let i = 0; i < lamps.length; i++) {
+        const t = lamps[i];
+        if (t.dead) continue;   // 点いている灯のみ対象
+        const d2 = (t.x - p.x) * (t.x - p.x) + (t.y - p.y) * (t.y - p.y);
+        if (d2 < bd2) { bd2 = d2; best = t; }
       }
-      const litB = (onLamp || (run.lampAura && run.lampAura.id)) ? (1 + 0.3 * Math.max(1, run.lampPow || 1)) : 1;   // 灯火連動(灯に落とせば発動)
-      const R = (st.radius || 170) * area * (1 + (litB - 1) * 0.5);
-      const sdmg = st.dmg * might;
-      telegraphCast(tx, ty, 0.24, R, '255,224,150', () => {   // 予告(金光が一点に集う) → 御柱が降りるドン
-        G.grid.queryCircle(tx, ty, R, G.QBUF2);
-        const buf = G.QBUF2.slice();
-        for (let q = 0; q < buf.length; q++) {
-          const e = buf[q];
-          if (e.dead) continue;
-          const d = Math.max(1, Math.hypot(e.x - tx, e.y - ty));
-          G.ent.damageEnemy(e, sdmg * litB, { crit: true, kb: 220, kx: (e.x - tx) / d, ky: (e.y - ty) / d });
-          if (e.dead) continue;
-          if ((e.hmark || 0) >= 3) G.ent.haraiPurge(e, sdmg * 0.6, {});
-          else G.ent.addHarai(e, 1);
-        }
-        G.fx.column(tx, ty, { height: 260, width: 44, life: 0.6, color: '#fff3c8' });   // 降り注ぐ光柱
-        if (litB > 1) { G.fx.ring(tx, ty, { r0: 6, r1: R * 1.1, life: 0.6, color: 'rgba(255,214,140,0.85)', width: 4 }); }
-        bigImpact(tx, ty, R, '255,224,150', 'bang');
-      });
+      if (!best) {
+        w.cd = 0.35;   // 灯火が無いと不発。短時間で再挑戦(灯ったら即撃てる)
+      } else {
+        const tx = best.x, ty = best.y;
+        const litB = 1 + 0.3 * Math.max(1, run.lampPow || 1);   // 灯に落とす=常に灯火連動
+        const R = (st.radius || 170) * area * (1 + (litB - 1) * 0.5);
+        const sdmg = st.dmg * might;
+        telegraphCast(tx, ty, 0.24, R, '255,224,150', () => {   // 予告(金光が一点に集う) → 御柱が降りるドン
+          G.grid.queryCircle(tx, ty, R, G.QBUF2);
+          const buf = G.QBUF2.slice();
+          for (let q = 0; q < buf.length; q++) {
+            const e = buf[q];
+            if (e.dead) continue;
+            const d = Math.max(1, Math.hypot(e.x - tx, e.y - ty));
+            G.ent.damageEnemy(e, sdmg * litB, { crit: true, kb: 220, kx: (e.x - tx) / d, ky: (e.y - ty) / d });
+            if (e.dead) continue;
+            if ((e.hmark || 0) >= 3) G.ent.haraiPurge(e, sdmg * 0.6, {});
+            else G.ent.addHarai(e, 1);
+          }
+          G.fx.column(tx, ty, { height: 260, width: 44, life: 0.6, color: '#fff3c8' });   // 降り注ぐ光柱
+          G.fx.ring(tx, ty, { r0: 6, r1: R * 1.1, life: 0.6, color: 'rgba(255,214,140,0.85)', width: 4 });
+          bigImpact(tx, ty, R, '255,224,150', 'bang');
+        });
+      }
     }
 
     else if (w.id === 'kagami_gaeshi') {
@@ -1376,6 +1376,22 @@ G.sys = (() => {
     const fallbacks = [{ kind: 'heal' }, { kind: 'bomb2' }];
     let fi = 0;
     while (choices.length < nCards && fi < fallbacks.length) choices.push(fallbacks[fi++]);
+
+    // 伝説の出現保証(ピティ): 解禁済み(weaponOffered)かつ未所持の伝説があれば、毎レベルアップ必ず1枚提示する。
+    // = 同ジャンル3種Lv3を達成したら確実に手が届く(低レア枠を伝説で置換。filler→低レアの順に潰す)。
+    const readyLegend = [];
+    for (const lid in D.W) {
+      if (run.weapons.find(w => w.id === lid)) continue;
+      if (D.rarityOf('weapon', lid) !== 'legend' || run.banished[lid]) continue;
+      if (SYS.weaponOffered(run, lid)) readyLegend.push(lid);
+    }
+    if (readyLegend.length && !choices.some(c => c.kind === 'weapon' && D.rarityOf('weapon', c.id) === 'legend')) {
+      const tierOf = c => (c.kind === 'weapon' || c.kind === 'passive') ? ((D.RARITY[D.rarityOf(c.kind, c.id)] || {}).tier || 0) : -1;
+      let lowIdx = 0, lowTier = 99;
+      for (let i = 0; i < choices.length; i++) { const t = tierOf(choices[i]); if (t < lowTier) { lowTier = t; lowIdx = i; } }
+      const slot = { kind: 'weapon', id: readyLegend[0], isNew: true };
+      if (choices.length) choices[lowIdx] = slot; else choices.push(slot);
+    }
 
     // decorate for UI
     return choices.map(c => {

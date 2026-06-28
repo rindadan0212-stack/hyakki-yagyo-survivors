@@ -697,13 +697,9 @@ G.data = (() => {
   };
 
   // ---------------- 共鳴 (宝具セットのシナジー) ----------------
-  // need の宝具を両方所持 (Lv不問) で自動発動。効果は run.reso.<id> を各使用箇所で参照。
-  D.RESO = [
-    { id: 'senshin', name: '穿心', need: ['pierce', 'crit'],   desc: '弾が妖を穿つたび、威力が 12% ずつ研ぎ澄まされる' },
-    { id: 'mariuta', name: '鞠唄', need: ['bounce', 'crit'],   desc: '跳弾 +1。跳ね移れる間合いが大きく伸びる' },
-    { id: 'kagura',  name: '神楽', need: ['speed', 'haste'],   desc: '駆けている間、霊撃の発動がさらに速まる' },
-    { id: 'fudo',    name: '不動', need: ['hp', 'regen'],      desc: '痛手を受けた刹那、周囲の妖を弾き飛ばし傷を返す' },
-  ];
+  // ★削除(2026-06-29): 宝具の相乗効果は廃止。空配列にすると checkReso が何も立てず、
+  //   各使用箇所の run.reso.<id> は全て falsy = 効果オフ、UIの相乗ヒントも出なくなる。
+  D.RESO = [];
 
   // ---------------- enemies ----------------
   // move: chase=直進 / sine=ふらつき / hop=跳ねる / swoop=高速突進 / ranged=距離を取って射撃 / drift=ゆるい追尾
