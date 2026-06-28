@@ -4,6 +4,17 @@ Vampire Survivors ライクな和風サバイバーアクション。
 **統一パレットのドット絵** — 主人公は専用ラスタースプライト、妖・ボス・武器・小物は Canvas 手続き描画を低解像度へ再レンダリング。音は WebAudio シンセ BGM+SFX。
 依存ライブラリなし・ビルド不要・ブラウザだけで動く。
 
+## 🌐 オンラインで遊ぶ（出先・スマホ可）
+
+**▶ https://rindadan0212-stack.github.io/hyakki-yagyo-survivors/**
+
+GitHub Pages 配信。`docs/index.html`（オフライン単一HTML・約6.6MB）を配信しているのでスマホでも軽快。最新のローカル変更は `デプロイ.bat` を実行すると約1分で反映される。
+
+## 🚀 公開を更新する（開発者用）
+
+`デプロイ.bat` をダブルクリック（または `pwsh -File publish.ps1`）。
+→ 最新ソースから単一HTMLを再ビルド → `docs/` に配置 → commit & push → GitHub Pages に自動反映（約1分）。
+
 ## 遊び方
 
 **起動**: `起動.bat` をダブルクリック (または `index.html` を直接ブラウザで開く)
