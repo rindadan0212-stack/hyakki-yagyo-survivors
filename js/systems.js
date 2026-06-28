@@ -85,6 +85,26 @@ G.sys = (() => {
     return true;
   };
 
+  // 伝説の出現確率: 解禁(同ジャンル3種Lv3)で50%、Lv3が増えるごとに上昇、全種Lv3で100%(=次のレベルアップで確定)。
+  // 未解禁は0。weaponOffered(unlock)が真の伝説に対して使う。
+  SYS.legendChance = (run, id) => {
+    const genre = (D.WTAGS[id] || [])[0];
+    if (!genre) return 0;
+    const init = { ofuda: 1, laser: 1, zangetsu: 1 };
+    const lv = {}; for (const w of run.weapons) lv[w.id] = w.lvl || 1;
+    let maxed = 0, avail = 0;
+    for (const wid in D.W) {
+      if (init[wid] || wid === id) continue;
+      if (D.rarityOf('weapon', wid) === 'legend') continue;
+      if ((D.WTAGS[wid] || [])[0] !== genre) continue;
+      avail++;
+      if ((lv[wid] || 0) >= 3) maxed++;
+    }
+    const need = Math.min(3, avail);
+    if (maxed < need) return 0;
+    return 0.5 + 0.5 * (maxed - need) / Math.max(1, avail - need);   // 50% → 100%
+  };
+
   // 系統チップ: 得物=タグ / 宝具・秘術=役割(cat)。ビルドのジャンルを視覚化する用。
   SYS.skillTags = (kind, id) => {
     if (kind === 'weapon') return ((D.WTAGS && D.WTAGS[id]) || []).map(k => D.TAGINFO[k]).filter(Boolean);
@@ -1339,6 +1359,7 @@ G.sys = (() => {
     // 新スキル: 未所持の得物を「スキル」として抽選 (同時所持上限なし)。レア度で出現率
     for (const id in D.W) {
       if (run.banished[id] || run.weapons.find(w => w.id === id)) continue;
+      if (D.rarityOf('weapon', id) === 'legend') continue;   // 伝説は確率枠で別管理(下記の legendChance)
       if (SYS.weaponOffered(run, id)) pool.push({ kind: 'weapon', id, isNew: true, weight: 2 * rw('weapon', id) });
     }
     if (Object.keys(run.passives).length < D.MAX_PASSIVES) {
@@ -1377,19 +1398,20 @@ G.sys = (() => {
     let fi = 0;
     while (choices.length < nCards && fi < fallbacks.length) choices.push(fallbacks[fi++]);
 
-    // 伝説の出現保証(ピティ): 解禁済み(weaponOffered)かつ未所持の伝説があれば、毎レベルアップ必ず1枚提示する。
-    // = 同ジャンル3種Lv3を達成したら確実に手が届く(低レア枠を伝説で置換。filler→低レアの順に潰す)。
-    const readyLegend = [];
+    // 伝説の出現は確率枠: 解禁(同ジャンル3種Lv3)で50%、Lv3が増えるごとに上昇、全種Lv3で100%(確定)。
+    // 毎レベルアップに legendChance を1回ロールし、当たれば低レア/filler枠を伝説で置換する。
+    let pickLegend = null;
     for (const lid in D.W) {
       if (run.weapons.find(w => w.id === lid)) continue;
       if (D.rarityOf('weapon', lid) !== 'legend' || run.banished[lid]) continue;
-      if (SYS.weaponOffered(run, lid)) readyLegend.push(lid);
+      if (!SYS.weaponOffered(run, lid)) continue;                 // 未解禁は対象外
+      if (G.chance(SYS.legendChance(run, lid))) { pickLegend = lid; break; }
     }
-    if (readyLegend.length && !choices.some(c => c.kind === 'weapon' && D.rarityOf('weapon', c.id) === 'legend')) {
+    if (pickLegend && !choices.some(c => c.kind === 'weapon' && D.rarityOf('weapon', c.id) === 'legend')) {
       const tierOf = c => (c.kind === 'weapon' || c.kind === 'passive') ? ((D.RARITY[D.rarityOf(c.kind, c.id)] || {}).tier || 0) : -1;
       let lowIdx = 0, lowTier = 99;
       for (let i = 0; i < choices.length; i++) { const t = tierOf(choices[i]); if (t < lowTier) { lowTier = t; lowIdx = i; } }
-      const slot = { kind: 'weapon', id: readyLegend[0], isNew: true };
+      const slot = { kind: 'weapon', id: pickLegend, isNew: true };
       if (choices.length) choices[lowIdx] = slot; else choices.push(slot);
     }
 
@@ -1555,6 +1577,7 @@ G.sys = (() => {
     }
     for (const id in D.W) {
       if (run.weapons.find(w => w.id === id)) continue;
+      if (D.rarityOf('weapon', id) === 'legend') continue;   // 伝説は宝箱では出さない(レベルアップの確率枠のみ)
       if (SYS.weaponOffered(run, id)) pool.push({ kind: 'weapon', id, isNew: true, weight: 1.5 * rw('weapon', id) });
     }
 
