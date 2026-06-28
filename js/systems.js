@@ -421,6 +421,8 @@ G.sys = (() => {
   // 初期武器は固定で交換不可、攻撃スキルは取得すると増える(Lvアップ無し=種類で勝負)。
   SYS.addWeapon = id => {
     const run = G.run;
+    const ex = run.weapons.find(w => w.id === id);
+    if (ex) return ex;   // 二重取得ガード: 既所持なら重複エントリを作らない(多重発火/FX二重を防ぐ)
     const w = { id, lvl: 1, cd: 0.4, awake: false };
     run.weapons.push(w);
     if (id === 'fox') SYS.rebuildFoxes();
@@ -441,7 +443,14 @@ G.sys = (() => {
     const run = G.run;
     const p = run.player;
     if (run.delayed && run.delayed.length) {   // 遅延発火(霞斬りの二段目など): t到達でfn実行
-      for (let i = run.delayed.length - 1; i >= 0; i--) { const d = run.delayed[i]; d.t -= h; if (d.t <= 0) { try { d.fn(); } catch (e) {} run.delayed.splice(i, 1); } }
+      for (let i = run.delayed.length - 1; i >= 0; i--) {
+        const d = run.delayed[i]; d.t -= h;
+        if (d.t <= 0) {
+          if (d.src !== undefined) { run._fireSrc = d.src; run._fireSlash = d.fslash; run._fireThunder = d.fthunder; }   // 発火元を復元してから着弾
+          try { d.fn(); } catch (e) {}
+          run.delayed.splice(i, 1);
+        }
+      }
     }
     if (!p.alive) return;
     const charge = p.stats.tgDmg ? { chargeDmg: p.stats.tgDmg, chargeSize: p.stats.tgSize, chargeCd: p.stats.tgCd } : null;   // 気溜め(宝具): 初期武器に「溜め」(遅い代わり威力/サイズ↑)
@@ -489,7 +498,8 @@ G.sys = (() => {
     const run = G.run;
     run.warns.push({ x, y, t: 0, life: windup, r: R, col });
     if (!run.delayed) run.delayed = [];
-    run.delayed.push({ t: windup, fn: impactFn });
+    // 着弾は遅延発火。ダメ集計の発火元(run._fireSrc等)を捕捉し、着弾時に復元する(=リザルトに正しく計上)
+    run.delayed.push({ t: windup, fn: impactFn, src: run._fireSrc, fslash: run._fireSlash, fthunder: run._fireThunder });
     G.audio.sfx('mystic', { p: 0.65 });   // 気が集まる溜めの予兆音
   }
   // 「ドン」= 大きめの着弾衝撃 (揺れ+閃光+破片+二重輪+低音)
@@ -993,10 +1003,27 @@ G.sys = (() => {
     }
 
     else if (w.id === 'amenomihashira') {
-      // 天ノ御柱(伝): 最寄りへ御柱を呼び降ろす大範囲。祓印を刻み、印3は祓う。
-      const tgt = G.ent.nearestEnemy(p.x, p.y, 700);
-      const litB = (run.lampAura && run.lampAura.id) ? (1 + 0.3 * (run.lampPow || 1)) : 1;   // 灯火連動(ナーフ: 増幅 0.6→0.3 = 最大3.4倍→2.2倍)
-      const tx = tgt ? tgt.x : p.x, ty = tgt ? tgt.y : p.y, R = (st.radius || 170) * area * (1 + (litB - 1) * 0.5);
+      // 天ノ御柱(伝): 最寄りの「灯火(点いた提灯)」へ御柱を呼び降ろす大範囲。祓印を刻み、印3は祓う。
+      // 灯が無ければ最寄りの敵、それも無ければ前方へ。※自分の足元には絶対落とさない。
+      let tx, ty, onLamp = false;
+      {
+        const lamps = run.toros || [];
+        let best = null, bd2 = Infinity;
+        for (let i = 0; i < lamps.length; i++) {
+          const t = lamps[i];
+          if (t.dead) continue;   // 点いている灯のみ対象
+          const d2 = (t.x - p.x) * (t.x - p.x) + (t.y - p.y) * (t.y - p.y);
+          if (d2 < bd2) { bd2 = d2; best = t; }
+        }
+        if (best) { tx = best.x; ty = best.y; onLamp = true; }
+        else {
+          const tgt = G.ent.nearestEnemy(p.x, p.y, 700);
+          if (tgt) { tx = tgt.x; ty = tgt.y; }
+          else { const a = Math.atan2(p.aimY || 0, p.aimX || 1); tx = p.x + Math.cos(a) * 200; ty = p.y + Math.sin(a) * 200; }
+        }
+      }
+      const litB = (onLamp || (run.lampAura && run.lampAura.id)) ? (1 + 0.3 * Math.max(1, run.lampPow || 1)) : 1;   // 灯火連動(灯に落とせば発動)
+      const R = (st.radius || 170) * area * (1 + (litB - 1) * 0.5);
       const sdmg = st.dmg * might;
       telegraphCast(tx, ty, 0.24, R, '255,224,150', () => {   // 予告(金光が一点に集う) → 御柱が降りるドン
         G.grid.queryCircle(tx, ty, R, G.QBUF2);

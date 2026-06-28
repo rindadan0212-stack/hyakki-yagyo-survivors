@@ -2944,10 +2944,7 @@ G.ent = (() => {
       }
     }
     ENT.hitToros(cx + Math.cos(dirA) * range * 0.82, cy + Math.sin(dirA) * range * 0.82, range * 0.4);
-    run.slashes.push({ x: cx, y: cy, a: dirA, range, arc, life: 0.16, maxLife: 0.16 });
-    if (G.fx.anim) G.fx.anim(cx + Math.cos(dirA) * range * 0.82, cy + Math.sin(dirA) * range * 0.82, 'slash', {
-      scale: Math.max(0.85, range / 150), dur: 0.2, rot: dirA, add: true, alpha: 0.7,   // 薙ぎ→鋭い切り裂き: 小さく先端に
-    });
+    run.slashes.push({ x: cx, y: cy, a: dirA, range, arc, life: 0.16, maxLife: 0.16 });   // 切り裂く三日月のみ(旧ラスター'slash'はFX二重の原因→廃止)
     G.audio.sfx('slash');
   };
 

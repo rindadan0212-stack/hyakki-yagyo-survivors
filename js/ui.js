@@ -12,6 +12,7 @@ G.ui = (() => {
   let synForgeTimer = 0;
   let lvChoices = [];
   let lvSel = 0;
+  let lvArmT = 0;   // この時刻まではカード確定入力を無視(直前の操作/奥義キーの取りこぼしで誤確定するのを防ぐ)
 
   UI.bind = () => {
     els = {
@@ -912,6 +913,7 @@ G.ui = (() => {
   function renderLvCards() {
     const run = G.run;
     lvSel = -1;
+    lvArmT = (G.now ? G.now() : performance.now()) + 220;   // 表示直後の取りこぼし誤確定をブロック(多段Lvの連続確定対策)
     // 現在のビルドの系統(得物タグ)を集計して上部に表示 = 何を伸ばせば揃うかの指針
     const tcnt = {};
     for (const w of run.weapons) for (const k of (G.data.WTAGS[w.id] || [])) tcnt[k] = (tcnt[k] || 0) + 1;
@@ -978,6 +980,7 @@ G.ui = (() => {
   };
 
   UI.chooseLv = i => {
+    if ((G.now ? G.now() : performance.now()) < lvArmT) { G.audio.sfx('deny'); return; }   // 表示直後の取りこぼし誤確定を無視
     const c = lvChoices[i];
     if (!c) return;
     if (banishMode) {
@@ -1017,7 +1020,8 @@ G.ui = (() => {
     if (code === 'Escape') { UI.lvSkip(); return true; }
     if (code === 'ArrowLeft' || code === 'KeyA') { UI.setLvSel(lvSel <= 0 ? lvChoices.length - 1 : lvSel - 1); return true; }
     if (code === 'ArrowRight' || code === 'KeyD') { UI.setLvSel((lvSel + 1) % lvChoices.length); return true; }
-    if (code === 'Enter' || code === 'Space') { UI.chooseLv(lvSel < 0 ? 0 : lvSel); return true; }
+    if (code === 'Enter') { UI.chooseLv(lvSel < 0 ? 0 : lvSel); return true; }
+    if (code === 'Space') return true;   // Space=奥義キーの取りこぼしでカードを誤確定しないよう無効化(確定はEnter/数字/クリック)
     return false;
   };
 
