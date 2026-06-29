@@ -4153,30 +4153,40 @@ G.ent = (() => {
     // slashes: 薙ぎ払う塗りつぶし扇 → 先端の細い三日月一閃(切り裂く)。画面を覆わず視認性を確保
     for (const s of run.slashes) {
       const a = s.life / s.maxLife;
-      const r1 = s.range, r0 = s.range * 0.66;   // 先端の薄い帯のみ発光
+      const r1 = s.range, r0 = s.range * 0.86;   // ごく細い先端帯=鋭い刃身(切り裂き感)
       const tint = s.tint || '205,235,255';        // 刃の色味(既定=蒼白。破陣斬りなどは紅)
       ctx.save();
       ctx.translate(s.x, s.y);
       ctx.rotate(s.a);
+      ctx.lineCap = 'round';
+      // 細い刃身の発光(薄い三日月)
       ctx.globalCompositeOperation = 'lighter';
-      ctx.globalAlpha = Math.min(1, a * 1.3);
+      ctx.globalAlpha = Math.min(1, a * 1.2);
       const grad = ctx.createRadialGradient(0, 0, r0, 0, 0, r1);
       grad.addColorStop(0, `rgba(${tint},0)`);
-      grad.addColorStop(0.55, `rgba(${tint},0.34)`);
-      grad.addColorStop(1, 'rgba(255,255,255,0.95)');
+      grad.addColorStop(0.65, `rgba(${tint},0.5)`);
+      grad.addColorStop(1, 'rgba(255,255,255,0.98)');
       ctx.fillStyle = grad;
       ctx.beginPath();
       ctx.arc(0, 0, r1, -s.arc / 2, s.arc / 2);
       ctx.arc(0, 0, r0, s.arc / 2, -s.arc / 2, true);
       ctx.closePath();
       ctx.fill();
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.globalAlpha = 0.85 * a;
-      ctx.strokeStyle = `rgba(${tint},0.95)`;
-      ctx.lineWidth = 2;
+      // 切り裂く軌跡: 鋭い白の刃先線(先端へ細くしなる)
+      ctx.globalAlpha = Math.min(1, a * 1.45);
+      ctx.strokeStyle = 'rgba(255,255,255,0.98)';
+      ctx.lineWidth = 3.2 * a + 0.6;
       ctx.beginPath();
-      ctx.arc(0, 0, r1, -s.arc / 2, s.arc / 2);   // 鋭い刃の縁だけ走らせる
+      ctx.arc(0, 0, r1, -s.arc / 2, s.arc / 2);
       ctx.stroke();
+      // 二重刃の細い内縁(切れ味を強調)
+      ctx.globalAlpha = 0.45 * a;
+      ctx.strokeStyle = `rgba(${tint},0.9)`;
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.arc(0, 0, r1 * 0.9, -s.arc / 2 * 0.9, s.arc / 2 * 0.9);
+      ctx.stroke();
+      ctx.globalCompositeOperation = 'source-over';
       ctx.restore();
     }
     ctx.globalAlpha = 1;

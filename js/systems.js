@@ -554,7 +554,7 @@ G.sys = (() => {
     };
 
     if (w.id === 'ofuda') {
-      const tgt = G.ent.nearestEnemy(p.x, p.y, 560);
+      const tgt = G.ent.nearestEnemy(p.x, p.y, 840);   // 初期武器の射程 ×1.5 (560→840)
       const base = tgt ? G.angleTo(p.x, p.y, tgt.x, tgt.y) : aimAngle(p);
       for (let i = 0; i < st.amount; i++) {
         const a = base + (i - (st.amount - 1) / 2) * 0.13;
@@ -562,7 +562,7 @@ G.sys = (() => {
           kind: 'ofuda', x: p.x, y: p.y - 6,
           vx: Math.cos(a) * st.speed, vy: Math.sin(a) * st.speed,
           // pierce は命中可能数。素の1体分だけを渡し、追加分は宝具ステータスからのみ加算する。
-          dmg: st.dmg * might, pierce: 1, r: 7, life: 1.1,
+          dmg: st.dmg * might, pierce: 1, r: 7, life: 1.65,   // 射程 ×1.5 (弾の到達距離も延長)
           gold: w.awake, crit: critC(0.05),
         });
       }
@@ -829,7 +829,7 @@ G.sys = (() => {
         const pr = G.ent.spawnProj({
           kind: 'zangetsu', x: p.x, y: p.y - 4,
           vx: Math.cos(a) * st.speed, vy: Math.sin(a) * st.speed,
-          dmg: zdmg, pierce: zbnc > 0 ? 2 : 999, r: 23 * zscale, life: 2.0,
+          dmg: zdmg, pierce: zbnc > 0 ? 2 : 999, r: 23 * zscale, life: 3.0,   // 射程 ×1.5 (波の到達距離 540→810)
           crit: critC(st.crit),
         });
         pr.zscale = zscale;
@@ -856,7 +856,7 @@ G.sys = (() => {
 
     else if (w.id === 'laser') {
       // 斎光: 最寄りの妖へ自動照準して貫通ビーム。跳ね鞠(反射)があれば塀と妖に反射して折れ曲がる
-      const tgt = G.ent.nearestEnemy(p.x, p.y, st.range || 2400);
+      const tgt = G.ent.nearestEnemy(p.x, p.y, st.range || 3600);   // 射程 ×1.5 (既に長射程だが整合)
       const ang = tgt ? G.angleTo(p.x, p.y, tgt.x, tgt.y) : aimAngle(p);
       const reflects = Math.min(8, p.stats.bounce || 0);
       const beams = Math.max(1, st.amount || 1);   // 数打ち(初期武器)/Lv/覚醒で条数+

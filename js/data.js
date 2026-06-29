@@ -1360,7 +1360,7 @@ G.data = (() => {
     kagenui: { name: '影縫い',     kanji: '縫', color: '#b18cff',
                desc: '周囲の妖の影を縫って動きを止め、被ダメ増の印を刻む(武器でまとめて狩る布石)。',
                per: '拘束 +0.01s / 発動 -0.04s (毎Lv)',
-               rank: lv => ({ cd: Math.max(8, 12 - 0.04 * lv), radius: 190, root: 1.4 + 0.01 * lv, mark: 4, markAmp: 0.3 }),
+               rank: lv => ({ cd: Math.max(8, 12 - 0.04 * lv), radius: 190, root: 1.3 + 0.01 * lv, mark: 4, markAmp: 0.24 }),   // 強すぎた影縫いを調整(被ダメ増+30%→+24%/拘束1.4→1.3)
                forgeMilestones: [
                  { lv: 10, name: '長縛', desc: '拘束 +0.3s', apply: e => { e.root += 0.3; } },
                  { lv: 25, name: '深印', desc: '被ダメ印を強化 (+0.1)', apply: e => { e.markAmp += 0.1; } },
@@ -1369,7 +1369,7 @@ G.data = (() => {
     seihara: { name: '清祓の印',   kanji: '清', color: '#ffe0a0',
                desc: '指定方向へ短い清め波を放ち、触れた妖に祓印を刻む。祓印が満ちた妖には小祓い。手で印を回す布石。',
                per: '印付与+ / 発動 -0.04s (毎Lv)',
-               rank: lv => ({ cd: Math.max(4, 8 - 0.04 * lv), dmg: 30 * (1 + 0.015 * lv), radius: 150 }),
+               rank: lv => ({ cd: Math.max(4, 8 - 0.04 * lv), dmg: 46 * (1 + 0.015 * lv), radius: 175 }),   // 弱すぎた清祓を強化(威力30→46/範囲150→175)
                forgeMilestones: [
                  { lv: 10, name: '清波', desc: '範囲 +30', apply: e => { e.radius += 30; } },
                  { lv: 25, name: '深祓', desc: '祓印3への小祓い +30%', apply: e => { e.dmg *= 1.3; } },

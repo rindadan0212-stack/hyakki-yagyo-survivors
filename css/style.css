@@ -1430,19 +1430,19 @@ button {
 /* 一時停止: 右上 (Lv/討伐クラスタの左、被らない位置に内寄せ) */
 .tb-pause {
   position: absolute;
-  top: 22px; right: 168px;
-  width: 72px; height: 72px;
+  top: 8px; left: calc(50% + 64px); right: auto;   /* タイム表示の右隣へ(ミニマップとの重なりを回避) */
+  width: 52px; height: 52px;
   pointer-events: auto;
   touch-action: none;
   border: 1.5px solid rgba(90, 98, 128, 0.55);
   border-radius: 9px;
   background: rgba(12, 14, 24, 0.30);
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
   justify-content: center;
 }
-.tb-pause span { width: 9px; height: 32px; background: #cfc8b4; border-radius: 2px; }
+.tb-pause span { width: 7px; height: 24px; background: #cfc8b4; border-radius: 2px; }
 
 /* ---------- 縦持ち案内 ---------- */
 #rotate { display: none; }

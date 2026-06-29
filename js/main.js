@@ -329,7 +329,7 @@ G.main = (() => {
         if (Math.abs(ad) > 1.15) continue;   // 前方の扇のみ
         G.ent.damageEnemy(e, s.eff.dmg * G.sys.effMight(), { src: '清祓' });
         if (e.dead) continue;
-        if ((e.hmark || 0) >= 3) G.ent.haraiPurge(e, s.eff.dmg * 0.6, {}); else G.ent.addHarai(e, 1);
+        if ((e.hmark || 0) >= 3) G.ent.haraiPurge(e, s.eff.dmg * 0.85, {}); else G.ent.addHarai(e, 1);
       }
       // FX: 清めの波(金の二重環+祓いの光)+ 祓印の符
       if (G.fx.anim) G.fx.anim(cx, cy, 'holy', { scale: Math.max(1.4, R / 60), dur: 0.4, add: true });
