@@ -367,6 +367,21 @@ G.fx = (() => {
       radius: radius * 0.82, life: Math.min(1, o.life || 0.75),
       color, intensity: Math.min(1, 0.56 + (o.screen || 0.34) * 0.45), core: 0.3,
     });
+    if (G.data && G.data.EXPFX) {
+      const c = String(color).toLowerCase();
+      const warm = c.includes('ffd') || c.includes('ffe') || c.includes('255,209') || c.includes('255,214') || c.includes('255,224');
+      const violet = c.includes('b07') || c.includes('177,140') || c.includes('purple') || c.includes('violet');
+      const cool = c.includes('8fc') || c.includes('154,216') || c.includes('110,216') || c.includes('blue') || c.includes('cyan');
+      const fxName = o.premium || (violet ? 'premium_curse' : cool ? 'premium_shockwave' : warm ? 'premium_lampburst' : 'premium_holy_nova');
+      F.burst(x, y, fxName, {
+        sz: Math.max(120, radius * 1.55),
+        dur: Math.min(0.85, Math.max(0.42, o.life || 0.62)),
+        from: 0.46, to: 1.12,
+        spin: violet ? 1.2 : 0,
+        alpha: 0.84,
+        add: true,
+      });
+    }
     F.screenPulse = Math.max(F.screenPulse, o.screen || 0.34);
     F.screenColor = color;
   };
@@ -384,6 +399,9 @@ G.fx = (() => {
     F.spark(x, y, gold, 7 + (mag * 9 | 0), 230 * s, 0.42);
     F.spark(x, y, hot, 3 + (mag * 5 | 0), 150 * s, 0.3);
     F.light(x, y, { radius: 46 * s, life: 0.15, color: gold, intensity: 0.55 + mag * 0.35, core: 0.32 });
+    if (G.data && G.data.EXPFX && mag > 0.35) {
+      F.burst(x, y, 'premium_shockwave', { sz: 78 * s, dur: 0.22, from: 0.42, to: 1.08, alpha: 0.62, add: true });
+    }
   };
 
   // rising ember (buff auras, combo fire)

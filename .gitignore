@@ -34,3 +34,6 @@ desktop.ini
 *.key
 *.pem
 *.p12
+.chrome-world-verify/
+_icons_check.png
+_world_art_run_stage2.png

@@ -683,18 +683,22 @@ G.main = (() => {
   }
 
   function drawGround(ctx, left, top) {
-    const tile = G.S.get('tile');
-    const ts = 256;
+    const stageId = G.run && G.run.stage ? G.run.stage.id : '';
+    const tile = G.S.get(stageId ? `tile_${stageId}` : '') || G.S.get('tile');
+    const ts = stageId ? 384 : 256;
     const zoom = Math.max(0.01, G.cam.zoom || 1);
     const viewW = G.VIEW_W / zoom;
     const viewH = G.VIEW_H / zoom;
     const x0 = Math.floor(left / ts) * ts;
     const y0 = Math.floor(top / ts) * ts;
+    ctx.save();
+    ctx.imageSmoothingEnabled = false;
     for (let y = y0; y < top + viewH + ts; y += ts) {
       for (let x = x0; x < left + viewW + ts; x += ts) {
         ctx.drawImage(tile.c, x, y, ts, ts);
       }
     }
+    ctx.restore();
     drawGroundDetails(ctx, left, top);
   }
 

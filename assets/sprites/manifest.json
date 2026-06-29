@@ -2646,6 +2646,139 @@
       "h": 26,
       "ax": 13,
       "ay": 13
+    },
+    "tile_mori": {
+      "file": "world/tile_mori.png",
+      "w": 256,
+      "h": 256,
+      "ax": 128,
+      "ay": 128
+    },
+    "tile_miyako": {
+      "file": "world/tile_miyako.png",
+      "w": 256,
+      "h": 256,
+      "ax": 128,
+      "ay": 128
+    },
+    "tile_yomi": {
+      "file": "world/tile_yomi.png",
+      "w": 256,
+      "h": 256,
+      "ax": 128,
+      "ay": 128
+    },
+    "torii": {
+      "file": "world/torii.png",
+      "w": 92,
+      "h": 78,
+      "ax": 46,
+      "ay": 76
+    },
+    "jizo": {
+      "file": "world/jizo.png",
+      "w": 28,
+      "h": 34,
+      "ax": 14,
+      "ay": 32
+    },
+    "grave": {
+      "file": "world/grave.png",
+      "w": 38,
+      "h": 44,
+      "ax": 19,
+      "ay": 42
+    },
+    "sotoba": {
+      "file": "world/sotoba.png",
+      "w": 18,
+      "h": 46,
+      "ax": 9,
+      "ay": 44
+    },
+    "bamboo_0": {
+      "file": "world/bamboo_0.png",
+      "w": 25,
+      "h": 58,
+      "ax": 12,
+      "ay": 56
+    },
+    "bamboo_1": {
+      "file": "world/bamboo_1.png",
+      "w": 29,
+      "h": 66,
+      "ax": 14,
+      "ay": 64
+    },
+    "higan": {
+      "file": "world/higan.png",
+      "w": 27,
+      "h": 30,
+      "ax": 13,
+      "ay": 28
+    },
+    "log": {
+      "file": "world/log.png",
+      "w": 66,
+      "h": 34,
+      "ax": 33,
+      "ay": 28
+    },
+    "puddle": {
+      "file": "world/puddle.png",
+      "w": 58,
+      "h": 28,
+      "ax": 29,
+      "ay": 16
+    },
+    "mush": {
+      "file": "world/mush.png",
+      "w": 23,
+      "h": 20,
+      "ax": 11,
+      "ay": 18
+    },
+    "grass_0": {
+      "file": "world/grass_0.png",
+      "w": 22,
+      "h": 17,
+      "ax": 11,
+      "ay": 16
+    },
+    "grass_1": {
+      "file": "world/grass_1.png",
+      "w": 25,
+      "h": 18,
+      "ax": 12,
+      "ay": 17
+    },
+    "grass_2": {
+      "file": "world/grass_2.png",
+      "w": 19,
+      "h": 16,
+      "ax": 9,
+      "ay": 15
+    },
+    "stone_0": {
+      "file": "world/stone_0.png",
+      "w": 24,
+      "h": 18,
+      "ax": 12,
+      "ay": 16
+    },
+    "stone_1": {
+      "file": "world/stone_1.png",
+      "w": 28,
+      "h": 20,
+      "ax": 14,
+      "ay": 18
+    },
+    "leaf": {
+      "file": "world/leaf.png",
+      "w": 23,
+      "h": 16,
+      "ax": 11,
+      "ay": 15
     }
   }
 }

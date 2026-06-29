@@ -264,7 +264,9 @@ G.ent = (() => {
     e.frenzyT = G.rand(8, 12);     // 高速疾駆(fero>=4)までの初回猶予
     e.frenzy = 0; e.frenzyFireT = 0;
     e.rbeams = [];                 // 反射レーザー(壁で跳ね返る折れ線ビーム)
+    e.bmines = [];                 // 時限設置弾(置いて数秒後にリング状へ再点火。run.mines=封印札 とは別物)
     e._apexAnn = false;            // 多重弾幕の初回アナウンス済みフラグ
+    e._bombAnn = false;            // 広域爆撃の初回アナウンス済みフラグ
     run.boss = e;
     G.audio.sfx('bossroar');
     const bossCol = BOSS_FX_COLOR[id] || '#d94d3c';
@@ -298,6 +300,10 @@ G.ent = (() => {
     o.home = !!(opts && opts.home);
     o.homeTurn = (opts && opts.homeTurn) || (o.boss ? 3.0 : 2.3);   // 旋回速度(rad/s)。横へ素早く逃げれば振り切れる程度
     o.homeMax = (opts && opts.homeMax != null) ? opts.homeMax : (o.boss ? 2.6 : 1.6);   // 追尾を続ける秒数(=「一定時間」)。過ぎたら直進
+    // 分裂弾(split): splitAt 秒で子弾 split 個に割れる(子は split=0 で再分裂しない)。プール共用ゆえ毎回リセット。
+    o.split = (opts && opts.split) || 0;
+    o.splitAt = (opts && opts.splitAt) || 0.7;
+    o.splitSp = (opts && opts.splitSp) || 160;
     return o;
   };
 
@@ -2065,12 +2071,13 @@ G.ent = (() => {
   function triggerGrand(e, p) {
     const base = Math.atan2(p.y - e.y, p.x - e.x);
     const pick = (Math.random() * 3) | 0;
+    const lm = e.fero >= 4 ? 3 : 1;   // ★終盤ボスはレーザー3倍(理不尽な手数)
     if (pick === 0) {                 // 掃射レーザー: 予告線→扇状に薙ぐ照射
       const dir = G.chance(0.5) ? 1 : -1;
-      bossBeam(e, base - dir * 0.7, { warn: 1.0, fire: 1.5, sweep: dir * 0.95, half: 30, dmgMul: 1.0, col: '#ff5a3a' });
+      for (let s = 0; s < lm; s++) bossBeam(e, base - dir * 0.7 + s * (G.TAU / lm), { warn: 1.0, fire: 1.5, sweep: dir * 0.95, half: 30, dmgMul: 1.0, col: '#ff5a3a' });   // lm本を等間隔に=全周を薙ぐ
       e.bossCastT = Math.max(e.bossCastT, 1.0); G.audio.sfx('bossroar', { p: 0.85 });
     } else if (pick === 1) {          // 十字/星レーザー: 複数本を同時照射
-      const n = 6; for (let i = 0; i < n; i++) bossBeam(e, base + i / n * G.TAU, { warn: 1.0, fire: 0.5, sweep: 0, half: 24, dmgMul: 0.9, col: '#ff7a4a' });
+      const n = 6 * lm; for (let i = 0; i < n; i++) bossBeam(e, base + i / n * G.TAU, { warn: 1.0, fire: 0.5, sweep: 0, half: 24, dmgMul: 0.9, col: '#ff7a4a' });   // 6→18本の密な星
       e.bossCastT = Math.max(e.bossCastT, 1.0); G.audio.sfx('bossroar', { p: 0.85 });
     } else {                          // 多重同時範囲: プレイヤー周囲に同時着弾AoEを多数(予告円つき)
       const cnt = 9, AOE = G.data.BOSS_AOE_MUL || 1, wt = G.data.BOSS_TELE_T || (1.0 * (G.data.BOSS_WIND_MUL || 1));
@@ -2117,14 +2124,58 @@ G.ent = (() => {
     return pts;
   }
   // 超反射レーザー: 壁で何度も跳ね返る折れ線レーザー。全経路を予告→照射。経路上に居なければ躱せる(覚えゲー)。
+  // 終盤ボスは lm 本(=レーザー3倍)を別角度から同時に走らせ、アリーナを網目状に塗り潰す。
   function bossReflectBeam(e, p) {
-    const ang = Math.atan2(p.y - e.y, p.x - e.x) + G.rand(-0.25, 0.25);
-    const path = reflectPath(e.x, e.y, ang, e.fero >= 6 ? 5 : 4);
     const warn = (G.data.BOSS_TELE_T || 0.85) * 1.3;   // 経路が複雑なので予告を少し長く=覚える余地
-    e.rbeams.push({ path, t: 0, warn, fire: 0.6, half: 22, dmgMul: 1.0, col: '#ff5a3a', hitCd: 0 });
+    const lm = e.fero >= 4 ? 3 : 1, base = Math.atan2(p.y - e.y, p.x - e.x);
+    for (let s = 0; s < lm; s++) {
+      const ang = base + G.rand(-0.2, 0.2) + s * (G.TAU / lm);
+      const path = reflectPath(e.x, e.y, ang, e.fero >= 6 ? 5 : 4);
+      e.rbeams.push({ path, t: 0, warn, fire: 0.6, half: 22, dmgMul: 1.0, col: '#ff5a3a', hitCd: 0 });
+    }
     e.plantT = Math.max(e.plantT || 0, warn + 0.6);
     e.bossCastT = Math.max(e.bossCastT, warn);
     G.audio.sfx('bossroar', { p: 0.8 });
+  }
+  // 分裂弾: プレイヤーへ放った弾が空中で子弾に割れる(分裂後の散らばりを覚えて避ける)。
+  function bossSplitShot(e, p) {
+    const fa = Math.atan2(p.y - e.y, p.x - e.x), n = e.fero >= 6 ? 5 : 3, tele = (G.data.BOSS_TELE_T || 0.85);
+    e.plantT = Math.max(e.plantT || 0, tele + 0.2); e.bossCastT = Math.max(e.bossCastT, tele);
+    e.acts.push({ t: tele, warn: 0, fn: () => {
+      e.bossAttackT = Math.max(e.bossAttackT, 0.3);
+      for (let k = 0; k < n; k++) {
+        const a = fa + (k - (n - 1) / 2) * 0.3;
+        ENT.spawnOrb(e.x, e.y, Math.cos(a) * 150, Math.sin(a) * 150, e.dmg * 0.4, e.bossId, { split: 5, splitAt: 0.72, splitSp: 170 });
+      }
+      G.fx.ring(e.x, e.y, { r0: 12, r1: 120, life: 0.4, color: 'rgba(255,160,90,0.6)', width: 3 });
+      G.audio.sfx('shoot', { p: 0.8 });
+    } });
+  }
+  // 時限設置弾: 盤面に弾を置き、数秒後にリング状へ再点火する。設置点の傍から離れて待つ(置き避け)。
+  function bossBmines(e, p) {
+    const n = e.fero >= 6 ? 7 : 5, hw = G.MAP_W / 2 - G.WALL - 20, hh = G.MAP_H / 2 - G.WALL - 20;
+    e.bossCastT = Math.max(e.bossCastT, 0.4);
+    for (let k = 0; k < n; k++) {
+      const a = G.rand(G.TAU), rr = G.rand(80, 330);
+      const mx = G.clamp(p.x + Math.cos(a) * rr, -hw, hw), my = G.clamp(p.y + Math.sin(a) * rr, -hh, hh);
+      e.bmines.push({ x: mx, y: my, t: 1.7 + G.rand(0, 0.7), warn: 1.7, spin: G.rand(G.TAU) });   // 時限はバラけさせ波状に再点火
+      G.fx.spark(mx, my, '#ffae6a', 6, 90, 0.3);
+    }
+    G.audio.sfx('reveal');
+  }
+  // 画面外からの予告爆撃: 広域(画面外含む)へ doom 着弾を波状にばら撒く。火球が上空から降る予告つき=隙間へ走る。
+  function bossBombard(e, p) {
+    const waves = 3, perWave = e.fero >= 6 ? 7 : 5, wt = (G.data.BOSS_TELE_T || 0.85);
+    const hw = G.MAP_W / 2 - G.WALL - 20, hh = G.MAP_H / 2 - G.WALL - 20;
+    e.bossCastT = Math.max(e.bossCastT, 0.5);
+    if (!e._bombAnn) { e._bombAnn = true; G.ui.announce('天よりの業火', '広域爆撃、隙間を抜けろ'); }
+    for (let w = 0; w < waves; w++) {
+      for (let k = 0; k < perWave; k++) {
+        const x = G.clamp(p.x + G.rand(-560, 560), -hw, hw), y = G.clamp(p.y + G.rand(-560, 560), -hh, hh);
+        e.strikes.push({ x, y, t: wt + w * 0.5, warn: wt, kind: 'doom', r: 70, col: '#ff7a4a', dmgMul: 0.7 });
+      }
+    }
+    G.audio.sfx('bossroar', { p: 0.9 });
   }
   // 螺旋弾幕: 回転する腕状に弾を撒き続ける。腕と腕の隙間を縫って避ける(エリア全体・覚えゲー)。
   function bossSpiral(e, p) {
@@ -2715,6 +2766,23 @@ G.ent = (() => {
       }
     }
 
+    // 時限設置弾: 置いて数秒後、リング状の弾へ再点火する(置き避け)。
+    if (e.bmines && e.bmines.length) {
+      for (let i = e.bmines.length - 1; i >= 0; i--) {
+        const m = e.bmines[i]; m.t -= h;
+        if (m.t <= 0) {
+          const nn = 12;
+          for (let k = 0; k < nn; k++) { const a = k / nn * G.TAU + m.spin; ENT.spawnOrb(m.x, m.y, Math.cos(a) * 150, Math.sin(a) * 150, e.dmg * 0.34, e.bossId); }
+          G.fx.ring(m.x, m.y, { r0: 10, r1: 95, life: 0.42, color: 'rgba(255,150,80,0.9)', width: 5 });
+          G.fx.spark(m.x, m.y, '#ffae6a', 14, 220, 0.34);
+          if (G.fx.anim) G.fx.anim(m.x, m.y, 'explode', { scale: 1.7, dur: 0.36, add: true });
+          if (p.alive && G.dist2(m.x, m.y, p.x, p.y) < 78 * 78) ENT.damagePlayer(e.dmg * 0.5, e.bossId);
+          G.audio.sfx('bang', { p: 0.9 });
+          e.bmines.splice(i, 1);
+        }
+      }
+    }
+
     // レーザー: 予告線→照射→消滅。照射中は線上のプレイヤーに判定
     if (e.beams.length) {
       for (let i = e.beams.length - 1; i >= 0; i--) {
@@ -2782,17 +2850,23 @@ G.ent = (() => {
     if (e.fero >= 3) {
       e.apexT -= bossTick;
       if (bossCanStart(e) && e.apexT <= 0) {
-        e.apexT = G.rand(7.5, 11) * (e.bossGrandMul || 1);
-        const nPat = G.clamp(1 + Math.floor((e.fero - 3) / 2), 1, 3);   // 同時発動数: fero3-4→1 / 5-6→2 / 7+→3
-        const pool = e.fero >= 4 ? ['spiral', 'ringwall', 'reflect'] : ['spiral', 'ringwall'];
+        e.apexT = G.rand(7, 10.5) * (e.bossGrandMul || 1);
+        const nPat = G.clamp(1 + Math.floor((e.fero - 3) / 1.5), 1, 4);   // 同時発動数(理不尽化): fero3→1 / 4.5→2 / 6→3 / 8→4
+        // 解禁: fero3=螺旋/壁弾、fero4=反射/分裂、fero5=設置弾/爆撃 を追加
+        const pool = ['spiral', 'ringwall'];
+        if (e.fero >= 4) pool.push('reflect', 'split');
+        if (e.fero >= 5) pool.push('bmines', 'bombard');
         const used = {};
         for (let k = 0; k < nPat; k++) {
           let pick = pool[(Math.random() * pool.length) | 0], tries = 0;
-          while (used[pick] && tries++ < 6) pick = pool[(Math.random() * pool.length) | 0];
+          while (used[pick] && tries++ < 8) pick = pool[(Math.random() * pool.length) | 0];
           used[pick] = 1;
           if (pick === 'spiral') bossSpiral(e, p);
           else if (pick === 'ringwall') bossRingwall(e, p);
-          else bossReflectBeam(e, p);
+          else if (pick === 'reflect') bossReflectBeam(e, p);
+          else if (pick === 'split') bossSplitShot(e, p);
+          else if (pick === 'bmines') bossBmines(e, p);
+          else bossBombard(e, p);
         }
         if (nPat >= 2 && !e._apexAnn) { e._apexAnn = true; G.ui.announce('百鬼繚乱', '多重弾幕、見切って抜けろ'); }
       }
@@ -3463,6 +3537,16 @@ G.ent = (() => {
       }
       o.x += o.vx * h;
       o.y += o.vy * h;
+      // 分裂弾: splitAt 秒で子弾に分裂(子は split=0 で再分裂しない)。下方向ループなので子は今フレーム走査されない=無限増殖しない。
+      if (o.split && o.t >= o.splitAt) {
+        const cn = o.split, ba = Math.atan2(o.vy, o.vx), csp = o.splitSp || 160;
+        for (let s = 0; s < cn; s++) {
+          const a = ba + (s - (cn - 1) / 2) * 0.46;
+          ENT.spawnOrb(o.x, o.y, Math.cos(a) * csp, Math.sin(a) * csp, o.dmg * 0.7, o.src);
+        }
+        if (G.cam.onScreen(o.x, o.y, 40)) { G.fx.spark(o.x, o.y, '#ff9a5a', 8, 150, 0.3); G.fx.ring(o.x, o.y, { r0: 4, r1: 30, life: 0.22, color: 'rgba(255,150,90,0.8)', width: 2 }); }
+        pool.releaseAt(i); continue;
+      }
       if (o.life <= 0) { pool.releaseAt(i); continue; }
       if (p.alive) {
         const rr = o.r + p.r;
@@ -4048,6 +4132,25 @@ G.ent = (() => {
           }
         }
       }
+    }
+
+    // 時限設置弾の予兆: 設置点に脈動する警告環。再点火が近いほど明滅が速く強くなる(置き避けの猶予を示す)。
+    if (run.boss && run.boss.bmines && run.boss.bmines.length) {
+      for (const m of run.boss.bmines) {
+        if (!G.cam.onScreen(m.x, m.y, 110)) continue;
+        const k = G.clamp(1 - m.t / (m.warn || 1.7), 0, 1);   // 0→1 再点火へ収束
+        const blink = 0.4 + 0.4 * Math.sin(run.t * (8 + 16 * k));
+        ctx.save();
+        ctx.globalAlpha = (0.18 + 0.3 * k) * blink; ctx.fillStyle = 'rgba(255,140,70,1)';
+        ctx.beginPath(); ctx.arc(m.x, m.y, 90, 0, G.TAU); ctx.fill();
+        ctx.globalAlpha = 0.5 + 0.4 * blink; ctx.strokeStyle = 'rgba(255,170,90,1)'; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.arc(m.x, m.y, 90, 0, G.TAU); ctx.stroke();
+        ctx.beginPath(); ctx.arc(m.x, m.y, 90 * (1 - 0.7 * k), 0, G.TAU); ctx.stroke();   // 収束する内環=残り時間
+        ctx.globalAlpha = 0.85; ctx.fillStyle = '#ffd9a8';
+        ctx.beginPath(); ctx.arc(m.x, m.y, 5, 0, G.TAU); ctx.fill();
+        ctx.restore();
+      }
+      ctx.globalAlpha = 1;
     }
 
     // ボス固有大技の持続予告。実際の危険半径/進路と同じ形を、発動まで収束させて示す。
