@@ -291,6 +291,13 @@ G.fx = (() => {
     F.streaks.push({ x, y, ang, len, width, color, life: 0.13, maxLife: 0.13 });
     if (F.streaks.length > 30) F.streaks.shift();
     F.light(x, y, { radius: Math.max(32, len * 1.8), life: 0.12, color, intensity: 0.7 });
+    if (G.data && G.data.EXPFX && len >= 24) {
+      F.burst(x, y, 'premium_slash', {
+        sz: Math.min(220, Math.max(70, len * 2.1)),
+        dur: 0.2, from: 0.54, to: 0.98,
+        rot: ang, alpha: 0.62, add: true,
+      });
+    }
   };
   F.puffRing = (x, y, color, n = 12, spd = 160) => {
     for (let i = 0; i < n; i++) {
@@ -431,6 +438,15 @@ G.fx = (() => {
     pts.push([x2, y2]);
     F.bolts.push({ pts, life: 0.16, maxLife: 0.16 });
     F.light(x2, y2, { radius: 82, life: 0.18, color: '#b9e7ff', intensity: 0.5, core: 0.3 });
+    if (G.data && G.data.EXPFX) {
+      const len = Math.hypot(x2 - x1, y2 - y1);
+      F.burst(x2, y2, 'premium_lightning', {
+        sz: G.clamp(len * 0.36, 92, 260),
+        dur: 0.22, from: 0.52, to: 1.02,
+        rot: Math.atan2(y2 - y1, x2 - x1) + Math.PI / 2,
+        alpha: 0.82, add: true,
+      });
+    }
     // 雷の白フラッシュは廃止(2026-06-23): bolt は閃光線+局所ライトのみ。全画面フラッシュは一切加えない。
   };
 
@@ -455,13 +471,50 @@ G.fx = (() => {
       }
       F.animSheets[name] = frames;
     }
-    F.loadExpFx(['meteor', 'dark_vortex', 'holy_nova', 'ice_shard', 'shockwave', 'thunder_orb', 'blood_curse']);   // 実験FX(ComfyUI生成)
+    F.loadExpFx([
+      'meteor', 'dark_vortex', 'holy_nova', 'ice_shard', 'shockwave', 'thunder_orb', 'blood_curse',
+      'premium_holy_nova', 'premium_lightning', 'premium_slash', 'premium_explosion',
+      'premium_dark_vortex', 'premium_water_geyser', 'premium_tornado', 'premium_shockwave',
+      'premium_foxfire', 'premium_lampburst', 'premium_heal', 'premium_curse',
+    ]);   // 実験FX/生成プレミアムFX(画像生成素材)
   };
   F.anim = (x, y, name, o = {}) => {
     const sheet = F.animSheets[name];
     if (!sheet || !sheet.length) return;
     F.anims.push({ name, x, y, scale: o.scale || 1, dur: o.dur || 0.42, t: 0, rot: o.rot || 0, alpha: o.alpha == null ? 1 : o.alpha, add: o.add !== false });
     if (F.anims.length > 70) F.anims.shift();
+    if (G.data && G.data.EXPFX) {
+      const premium = {
+        lightning: ['premium_lightning', 1.25, 0.72, 1.06],
+        slash: ['premium_slash', 1.34, 0.58, 0.98],
+        holy: ['premium_holy_nova', 1.26, 0.62, 1.05],
+        explode: ['premium_explosion', 1.3, 0.62, 1.1],
+        portal: ['premium_dark_vortex', 1.18, 0.55, 1.08],
+        water: ['premium_water_geyser', 1.04, 0.58, 0.98],
+        water_geyser: ['premium_water_geyser', 1.22, 0.62, 1.08],
+        tornado: ['premium_tornado', 1.18, 0.64, 1.08],
+        wind: ['premium_tornado', 0.82, 0.52, 0.92],
+        foxfire: ['premium_foxfire', 1.1, 0.6, 1.02],
+        lampburst: ['premium_lampburst', 1.18, 0.6, 1.04],
+        heal: ['premium_heal', 1.1, 0.58, 1.0],
+        curse: ['premium_curse', 1.15, 0.58, 1.04],
+        levelup: ['premium_holy_nova', 1.25, 0.64, 1.08],
+        awaken: ['premium_holy_nova', 1.42, 0.68, 1.16],
+        ward: ['premium_shockwave', 1.05, 0.55, 1.02],
+      }[name];
+      if (premium) {
+        const fxName = premium[0], sizeMul = premium[1], from = premium[2], to = premium[3];
+        F.burst(x, y, fxName, {
+          sz: 64 * (o.scale || 1) * sizeMul,
+          dur: Math.max(o.dur || 0.42, 0.32),
+          from, to,
+          rot: o.rot || 0,
+          spin: name === 'portal' || name === 'curse' ? 1.2 : name === 'tornado' || name === 'wind' ? 0.8 : 0,
+          alpha: (o.alpha == null ? 1 : o.alpha) * 0.92,
+          add: true,
+        });
+      }
+    }
   };
 
   // --- 実験FX (ComfyUI生成の1枚絵を拡大+回転+フェードで再生)。D.EXPFX で全体ON/OFF、assets/fx_exp/ に隔離 ---

@@ -257,6 +257,7 @@ G.ent = (() => {
     e.beams = [];     // レーザー (予告線→照射)
     e.acts = [];      // 予告付き遅延発火 (弾幕volley等)
     e.grandT = G.rand(3, 5) * e.bossGrandMul;
+    e.homingT = G.rand(2.5, 4.5);   // 追尾弾の斉射(距離不問の固定間隔)までの初回猶予
     run.boss = e;
     G.audio.sfx('bossroar');
     const bossCol = BOSS_FX_COLOR[id] || '#d94d3c';
@@ -276,7 +277,7 @@ G.ent = (() => {
     return e;
   };
 
-  ENT.spawnOrb = (x, y, vx, vy, dmg, src) => {
+  ENT.spawnOrb = (x, y, vx, vy, dmg, src, opts) => {
     const run = G.run;
     const o = run.ep.obtain();
     o.x = x; o.y = y;
@@ -285,6 +286,11 @@ G.ent = (() => {
     o.vx = vx * bm; o.vy = vy * bm;
     o.dmg = dmg; o.r = o.boss ? 12 : 6; o.life = o.boss ? 6.8 : 6; o.t = 0;
     o.src = src || null;   // 死亡文用: 撃ち手の正体
+    // 追尾弾(homing): ヒットするか homeMax 秒経過まで、旋回しながらプレイヤーを追う。
+    // プール共用なので home/homeTurn/homeMax は毎回必ず設定し直す(stale な追尾が残らないように)。
+    o.home = !!(opts && opts.home);
+    o.homeTurn = (opts && opts.homeTurn) || (o.boss ? 3.0 : 2.3);   // 旋回速度(rad/s)。横へ素早く逃げれば振り切れる程度
+    o.homeMax = (opts && opts.homeMax != null) ? opts.homeMax : (o.boss ? 2.6 : 1.6);   // 追尾を続ける秒数(=「一定時間」)。過ぎたら直進
     return o;
   };
 
@@ -1671,7 +1677,7 @@ G.ent = (() => {
           e.fireT -= h;
           if (e.fireT <= 0 && dist < shot.range * 1.5 && G.cam.onScreen(e.x, e.y, 80)) {
             e.fireT = shot.cd * G.rand(0.9, 1.15);
-            ENT.spawnOrb(e.x, e.y, nx * shot.speed, ny * shot.speed, shot.dmg * D.dmgScale(run.clock * D.TIME_COMP), e.type);
+            ENT.spawnOrb(e.x, e.y, nx * shot.speed, ny * shot.speed, shot.dmg * D.dmgScale(run.clock * D.TIME_COMP), e.type, { home: true });   // 雑魚の追尾弾(横へ逃げれば振り切れる)
           }
         } else if (mv === 'swoop') {
           // 直進飛行。壁に当たったら下のクランプ処理で player へ再照準
@@ -1805,7 +1811,7 @@ G.ent = (() => {
               const dmg = c.dmg * D.dmgScale(run.clock * D.TIME_COMP);
               for (let s = 0; s < c.count; s++) {
                 const a = baseA + (s - (c.count - 1) / 2) * (c.spread / div);
-                ENT.spawnOrb(e.x, e.y, Math.cos(a) * c.speed, Math.sin(a) * c.speed, dmg, e.type);
+                ENT.spawnOrb(e.x, e.y, Math.cos(a) * c.speed, Math.sin(a) * c.speed, dmg, e.type, { home: true, homeTurn: 1.5, homeMax: 0.8 });   // 扇弾を緩く追尾(少し曲がってから直進)
               }
               if (G.cam.onScreen(e.x, e.y, 80)) { G.audio.sfx('shoot', { p: 0.8 }); G.fx.spark(e.x, e.y, '#caa6ff', 8, 200, 0.3); }
             }
@@ -2064,6 +2070,24 @@ G.ent = (() => {
       e.strikes.push({ x: p.x, y: p.y, t: wt, warn: wt, kind: 'doom', r: 78 * AOE, col: '#ff6a4a', dmgMul: 0.85 });
       e.plantT = Math.max(e.plantT || 0, wt); e.bossCastT = Math.max(e.bossCastT, 0.6); G.audio.sfx('bossroar', { p: 1.0 });
     }
+  }
+
+  // 追尾弾の斉射(全ボス共通): プレイヤー方向へ扇状に複数の追尾弾を一斉発射→各弾が旋回しながら追う。
+  // 距離に依存しない(遠くても追尾で届く)ので、間合いが開いても一定間隔で必ず脅威を出せる。
+  function bossHomingVolley(e, p) {
+    const fa = Math.atan2(p.y - e.y, p.x - e.x);
+    const n = (e.bossRank || 0) >= 2 ? 6 : 5;   // 同時発射数(複数弾)
+    bossCast(e, 0.42, () => {
+      e.bossAttackT = 0.42;
+      const sp = 150;
+      for (let k = 0; k < n; k++) {
+        const a = fa + (k - (n - 1) / 2) * 0.42;   // 扇状にばらけて放つ→各々がプレイヤーへ食らいつく
+        ENT.spawnOrb(e.x, e.y, Math.cos(a) * sp, Math.sin(a) * sp, e.dmg * 0.4, e.bossId, { home: true, homeTurn: 2.5, homeMax: 2.8 });
+      }
+      G.fx.ring(e.x, e.y, { r0: 14, r1: 150, life: 0.4, color: 'rgba(200,140,255,0.7)', width: 4 });
+      G.fx.spark(e.x, e.y, '#ce8cff', 12, 200, 0.34);
+      G.audio.sfx('shoot', { p: 0.7 });
+    }, { kind: 'radial', r: 160 });
   }
 
   // ボス機動: 距離を保たず、接近(rush)/旋回(orbit)/横断(cross)/牽制(juke)を巡回してマップを縦横無尽に動く
@@ -2650,6 +2674,12 @@ G.ent = (() => {
     if (bossCanStart(e) && e.grandT <= 0) {
       e.grandT = G.rand(4.5, 7) * (e.bossGrandMul || 1);
       triggerGrand(e, p);
+    }
+    // 追尾弾の斉射(全ボス共通・距離不問の固定間隔): 間合いが開いていても一定間隔で複数の追尾弾を放つ
+    e.homingT -= bossTick;
+    if (bossCanStart(e) && e.homingT <= 0) {
+      e.homingT = G.rand(4.5, 6.5);
+      bossHomingVolley(e, p);
     }
 
     // --- ボス共通の機動: 距離を保たず、接近/旋回/横断/牽制でマップを縦横無尽に動く。近接は踏み込み一閃 ---
@@ -3281,6 +3311,16 @@ G.ent = (() => {
       const o = pool.act[i];
       o.t += h;
       o.life -= h;
+      // 追尾: homeMax 秒の間だけ、速度ベクトルを旋回(turn rate 制限)でプレイヤーへ寄せる。
+      // 速さは保ったまま向きだけ曲げる=完全には食いつかず、横移動で振り切れる(回避可能な追尾)。
+      if (o.home && p.alive && o.t < o.homeMax) {
+        const sp = Math.hypot(o.vx, o.vy) || 1;
+        let cur = Math.atan2(o.vy, o.vx);
+        let diff = Math.atan2(p.y - o.y, p.x - o.x) - cur;
+        while (diff > Math.PI) diff -= G.TAU; while (diff < -Math.PI) diff += G.TAU;
+        cur += G.clamp(diff, -o.homeTurn * h, o.homeTurn * h);
+        o.vx = Math.cos(cur) * sp; o.vy = Math.sin(cur) * sp;
+      }
       o.x += o.vx * h;
       o.y += o.vy * h;
       if (o.life <= 0) { pool.releaseAt(i); continue; }
@@ -4388,6 +4428,19 @@ G.ent = (() => {
     // enemy orbs — 危険弾は群の中で見失わないよう「暗い縁取り+赤い危険リング+拡大した加算の芯」で際立たせる
     if (run.ep.act.length) {
       const eps = run.ep.act;
+      ctx.globalCompositeOperation = 'lighter';          // 0) 追尾弾の尾: 速度の逆向きへ伸びる紫光で「追ってくる弾」を識別
+      ctx.lineCap = 'round';
+      for (let i = 0; i < eps.length; i++) {
+        const o = eps[i];
+        if (!o.home || !G.cam.onScreen(o.x, o.y, 60)) continue;
+        const sp = Math.hypot(o.vx, o.vy) || 1, ux = o.vx / sp, uy = o.vy / sp, L = o.r * 5.2;
+        const g = ctx.createLinearGradient(o.x, o.y, o.x - ux * L, o.y - uy * L);
+        g.addColorStop(0, 'rgba(206,140,255,0.72)');
+        g.addColorStop(1, 'rgba(206,140,255,0)');
+        ctx.strokeStyle = g; ctx.lineWidth = o.r * 1.25;
+        ctx.beginPath(); ctx.moveTo(o.x, o.y); ctx.lineTo(o.x - ux * L, o.y - uy * L); ctx.stroke();
+      }
+      ctx.globalCompositeOperation = 'source-over';
       ctx.fillStyle = 'rgba(18,3,8,0.72)';              // 1) 暗縁取り: 明るい自機エフェクトに埋もれないコントラスト
       for (let i = 0; i < eps.length; i++) {
         const o = eps[i];
