@@ -998,7 +998,7 @@ G.main = (() => {
         // faint aura on every yokai: presences stay readable in the dark
         punch(e.x, e.y - 6, e.r + 30, 0.24);
         if (e.cfg.light) punch(e.x, e.y - 8, 62, 0.8);
-        else if (e.boss) punch(e.x, e.y - 20, 140, 0.72);
+        else if (e.boss) punch(e.x, e.y - (e.hitOff || 80) * 0.7, (e.hitOff || 80) * 2.0, 0.82);   // ボス全身を照らす(旧140は小さすぎ→上半身が闇に沈み「切れ」て見えた)
         else if (e.elite) punch(e.x, e.y - 8, 70, 0.45);
       }
       const prs = run.pr.act;
