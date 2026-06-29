@@ -178,7 +178,7 @@ G.main = (() => {
         const e = run.en.act[i];
         if (e.dead || !G.cam.onScreen(e.x, e.y, 60)) continue;
         const a = G.angleTo(p.x, p.y, e.x, e.y);
-        const base = e.boss ? 120 : 240;
+        const base = (e.boss ? 120 : 240) * G.sys.effMight();   // 霊力に追従=終盤も群れを薙げる(固定値だと劣化していた)
         G.ent.damageEnemy(e, base * (e.hmark > 0 ? 1.2 : 1), { kb: 480, kx: Math.cos(a), ky: Math.sin(a) });   // 祓印付きは祓い波が強く効く(+20%)
         if (!e.dead && e.hmark >= 3) G.ent.haraiPurge(e, base * (e.boss ? 0.5 : 1), { kx: Math.cos(a), ky: Math.sin(a) });   // 印3=祓い(ボス半減)
       }
@@ -264,6 +264,8 @@ G.main = (() => {
       p.castT = 0.42;
       p.animT = 0;
       s.shield = true;
+      s.shieldT = s.eff.guard || 3;   // 珠を纏う時間。受けずにこの間が尽きれば不発で消える(使い時の駆け引き)
+      s.shieldMax = s.shieldT;
       G.audio.sfx('reveal');
       G.fx.powerBurst(p.x, p.y, {
         radius: 72, life: 0.5, color: '#ffd166', accent: '#fff4c9',

@@ -1376,6 +1376,17 @@ G.ent = (() => {
         G.audio.sfx('tick');
       }
     }
+    // 護法の珠: 纏いの時間。受けずに尽きれば不発で霧散(使い時の駆け引き)
+    if (run.skill.shield && run.skill.shieldT > 0) {
+      run.skill.shieldT -= h;
+      if (run.skill.shieldT <= 0) {
+        run.skill.shield = false;
+        run.skill.shieldT = 0;
+        G.fx.ring(p.x, p.y - 6, { r0: 30, r1: 8, life: 0.32, color: 'rgba(180,170,120,0.55)', width: 2 });
+        G.fx.spark(p.x, p.y - 6, '#bcae82', 5, 70, 0.3);
+        G.audio.sfx('tick');
+      }
+    }
     // 技の合間 (CD) 消化 + 翔(共通ダッシュ斬り抜け)の突進
     if (run.skill.cdT > 0) run.skill.cdT -= h;
     if (run.dashCdT > 0) run.dashCdT -= h;   // 翔(共通ダッシュ)のCD
@@ -4678,6 +4689,29 @@ G.ent = (() => {
       ctx.fillStyle = g;
       ctx.beginPath(); ctx.arc(p.x, cy, R, 0, G.TAU); ctx.fill();
       ctx.restore();
+    }
+    // 護法の珠: 纏っている間、術者を金の珠が囲む。残り時間ぶんだけ環が満ち、尽きる間際は明滅で警告(使い時の駆け引きを可視化)
+    const _sk = run.skill;
+    if (_sk && _sk.shield) {
+      const frac = _sk.shieldMax ? G.clamp(_sk.shieldT / _sk.shieldMax, 0, 1) : 1;
+      const cy = p.y + (p.hitOff || 16) * 0.5;
+      const R = 30 + (p.hitOff || 16) * 0.4;
+      const low = frac < 0.34;
+      const blink = low ? (0.55 + 0.45 * Math.sin(run.t * 22)) : 1;
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.globalAlpha = 0.18 * blink;
+      const gg = ctx.createRadialGradient(p.x, cy, R * 0.4, p.x, cy, R);
+      gg.addColorStop(0, 'rgba(255,224,138,0.9)');
+      gg.addColorStop(1, 'rgba(255,209,102,0)');
+      ctx.fillStyle = gg;
+      ctx.beginPath(); ctx.arc(p.x, cy, R, 0, G.TAU); ctx.fill();
+      ctx.globalAlpha = (low ? 0.95 : 0.8) * blink;
+      ctx.strokeStyle = low ? 'rgba(255,180,90,0.95)' : 'rgba(255,231,160,0.95)';
+      ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.arc(p.x, cy, R, -Math.PI / 2, -Math.PI / 2 + G.TAU * frac); ctx.stroke();
+      ctx.restore();
+      ctx.globalAlpha = 1;
     }
     if (p.hurtT > 0 && Math.floor(run.t * 18) % 2 === 0) ctx.globalAlpha = 0.45;
     // コマ送りを廃止: モーションごとに「代表ポーズ1枚」を出し、状態が変わった瞬間だけ弾ませてメリハリを付ける。

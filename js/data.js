@@ -1322,11 +1322,11 @@ G.data = (() => {
   // ---------------- 奥義 (必殺技 ・ 出陣支度で 1 つ編成) ----------------
   // need = 討伐数。効果は特化させ、万能にしない (旧・百鬼祓いの全部入りが OP だった反省)
   D.ULTS = {
-    harai:     { name: '百鬼祓い', kanji: '祓', need: 360, color: '#ffd166',
-                 desc: '画面の妖を薙ぎ、敵弾を消す。鬼神には薄い。' },
+    harai:     { name: '百鬼祓い', kanji: '祓', need: 320, color: '#ffd166',
+                 desc: '画面の妖を薙ぎ、敵弾を消す。威力は霊力に乗る。鬼神には薄い。' },
     kagome:    { name: '籠目',     kanji: '籠', need: 230, color: '#9ad8ff',
                  desc: '押し返して金剛 3 秒、小さく回復。' },
-    arakagura: { name: '荒神楽',   kanji: '荒', need: 300, color: '#ff7a5c',
+    arakagura: { name: '荒神楽',   kanji: '荒', need: 330, color: '#ff7a5c',
                  desc: '5 秒のあいだ、威力 2 倍と神速。' },
     tamayose:  { name: '魂寄せ',   kanji: '魂', need: 140, color: '#b18cff',
                  desc: '散らばる魂をすべて引き寄せる。' },
@@ -1340,12 +1340,13 @@ G.data = (() => {
   // rank(lv) は鍛錬レベル lv (0..50) での実効値。毎Lv小さく伸び、節目(forgeMilestones)で能力追加。
   D.SKILLS = {
     goho:    { name: '護法の珠',   kanji: '護', color: '#ffd166',
-               desc: '次の痛手を一度だけ防ぎ、その刹那に珠が弾けて周囲を打ち払う(返しの間、一瞬無敵)。',
-               per: '返し威力 +1.8% / 発動 -0.08s (毎Lv)',
-               rank: lv => ({ cd: Math.max(8, 16 - 0.08 * lv), dmg: 72 * (1 + 0.018 * lv), counter: 165 }),
+               desc: '唱えてから数秒だけ珠を纏う。その間に受ける痛手を一度だけ防ぎ、珠が弾けて周囲を打ち払う。受けなければ珠は虚しく消える(使い時の駆け引き)。',
+               per: '返し威力 +1.8% / 構え +0.02s / 発動 -0.08s (毎Lv)',
+               rank: lv => ({ cd: Math.max(8, 16 - 0.08 * lv), dmg: 72 * (1 + 0.018 * lv), counter: 165, guard: 3 + 0.02 * lv }),
                forgeMilestones: [
                  { lv: 10, name: '堅守', desc: '合間 -10%', apply: e => { e.cd *= 0.9; } },
                  { lv: 25, name: '反撃の珠', desc: '返し範囲 +40', apply: e => { e.counter += 40; } },
+                 { lv: 40, name: '長気', desc: '構えの間 +1.0s', apply: e => { e.guard += 1.0; } },
                  { lv: 50, name: '金剛', desc: '返し威力 +35%', apply: e => { e.dmg *= 1.35; } },
                ] },
     hoeru:   { name: '吼える符',   kanji: '吼', color: '#ff7a5c',
