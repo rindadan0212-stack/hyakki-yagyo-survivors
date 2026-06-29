@@ -2683,6 +2683,16 @@ G.ent = (() => {
       e.attackLock = Math.max(e.attackLock || 0, 0.9);
     }
     e._actionActivePrev = bossActionActive(e);
+    // 間合い維持: 自由機動中(近接ランジ/特殊dash/詠唱以外)はプレイヤーに食い込ませない。
+    // 内向きの速度成分だけ消す(横移動=旋回/牽制は残す)。踏み込み一閃のランジは別途closeできる。
+    if (e.bstate === 'chase' && (e.meleeWind || 0) <= 0 && (e.meleeLungeT || 0) <= 0 && (e.plantT || 0) <= 0) {
+      const standoff = (p.r || 16) + (e.r || 40) * 2.0 + 30;
+      if (dist < standoff) {
+        const inward = e.vx * nx + e.vy * ny;
+        if (inward > 0) { e.vx -= inward * nx; e.vy -= inward * ny; }              // 内向き成分を除去
+        if (dist < standoff - 24) { e.vx -= nx * e.spd * 0.9; e.vy -= ny * e.spd * 0.9; }   // 食い込んでいたら押し戻す
+      }
+    }
     e.x += e.vx * h;
     e.y += e.vy * h;
     // 有限マップ: ボスも壁の内側に

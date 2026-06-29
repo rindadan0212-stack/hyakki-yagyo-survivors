@@ -1293,7 +1293,7 @@ G.main = (() => {
       ctx.fillRect(0, 0, G.VIEW_W, G.VIEW_H);
     }
     G.fx.renderScreen(ctx);
-    drawBloom(ctx);
+    if (!G.debug.noBloom) drawBloom(ctx);   // 切れ原因切り分け用トグル(コンソールで G.debug.noBloom=true)
 
     // dawn glow during win cinematic
     if (M.state === 'win') {
