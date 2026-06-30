@@ -460,21 +460,22 @@ registerProcessor('ks-proc', KSProc);
   const SFX = {
     shoot(o) {
       const t = now(), d = chan(busSfx, G.rand(-0.28, 0.28));
-      const g = env(t, 0.05, 0.003, 0.07);
-      osc('triangle', 1180 * (o.p || 1), t, 0.1, g, d).frequency.exponentialRampToValueAtTime(520, t + 0.08);
-      const g2 = env(t, 0.03, 0.001, 0.02);
-      noise(t, 0.03, g2, d, 'highpass', 3600);                 // 抜ける擦過
-      const g3 = env(t, 0.025, 0.001, 0.03);
-      osc('sine', 320, t, 0.04, g3, d).frequency.exponentialRampToValueAtTime(120, t + 0.03);  // 撃ち出しの芯
+      const gc = env(t, 0.07, 0.0005, 0.014); noise(t, 0.018, gc, d, 'bandpass', 4400, 1.0);  // 鋭い当たり(snap)
+      const g = env(t, 0.085, 0.0015, 0.08);
+      osc('triangle', 1240 * (o.p || 1), t, 0.1, g, d).frequency.exponentialRampToValueAtTime(470, t + 0.075);
+      const g3 = env(t, 0.05, 0.0008, 0.035);
+      osc('sine', 340, t, 0.05, g3, d).frequency.exponentialRampToValueAtTime(118, t + 0.04);  // 撃ち出しの低い芯
     },
     slash() {
       const t = now(), d = chan(busSfx, G.rand(-0.3, 0.3));
-      const g = env(t, 0.12, 0.005, 0.13);
-      const n = noise(t, 0.18, g, d, 'bandpass', 2600, 1.2);
-      n.filter.frequency.exponentialRampToValueAtTime(420, t + 0.14);
-      const g2 = env(t, 0.032, 0.002, 0.06); osc('sine', 3400, t, 0.07, g2, d);   // 刃鳴り
-      const g3 = env(t, 0.02, 0.002, 0.05); osc('sine', 5100, t, 0.06, g3, d);
-      const g4 = env(t, 0.05, 0.001, 0.02); noise(t, 0.03, g4, d, 'highpass', 6500);  // エッジの冴え
+      const g = env(t, 0.17, 0.004, 0.14);                    // 抜ける刃の風切り(本体)
+      const n = noise(t, 0.18, g, d, 'bandpass', 3000, 1.0);
+      n.filter.frequency.exponentialRampToValueAtTime(360, t + 0.13);
+      const gw = env(t, 0.085, 0.005, 0.1);                   // 低い空気の唸り(重み)
+      const nw = noise(t, 0.12, gw, d, 'lowpass', 520, 0.8); nw.filter.frequency.exponentialRampToValueAtTime(150, t + 0.1);
+      const g2 = env(t, 0.04, 0.002, 0.07); osc('sine', 3400, t, 0.08, g2, d);   // 刃鳴り
+      const g3 = env(t, 0.026, 0.002, 0.05); osc('sine', 5100, t, 0.06, g3, d);
+      const g4 = env(t, 0.08, 0.0006, 0.02); noise(t, 0.025, g4, d, 'highpass', 6800);  // エッジの冴え(鋭い当たり)
     },
     wind() {
       const t = now(), g = env(t, 0.06, 0.012, 0.15);
@@ -483,18 +484,20 @@ registerProcessor('ks-proc', KSProc);
     },
     hit(o) {
       const t = now(), d = chan(busSfx, G.rand(-0.18, 0.18));
-      const g = env(t, 0.085, 0.001, 0.05);                   // 中域の芯 (ピッチ落ちで打撃感)
-      osc('square', G.rand(150, 200) * (o.p || 1), t, 0.06, g, d).frequency.exponentialRampToValueAtTime(92 * (o.p || 1), t + 0.05);
-      thud(t, d, 150, 58, 0.07, 0.07, false);                 // 低い当たり (重み)
-      const g2 = env(t, 0.05, 0.001, 0.035); noise(t, 0.045, g2, d, 'lowpass', 900);  // 鈍い肉の音
+      const gc = env(t, 0.12, 0.0006, 0.02); noise(t, 0.025, gc, d, 'bandpass', 3200, 0.9);   // 鋭い当たりの皮(存在感)
+      const g = env(t, 0.14, 0.001, 0.06);                    // 中域の芯 (ピッチ落ちで打撃感)
+      osc('square', G.rand(160, 205) * (o.p || 1), t, 0.07, g, d).frequency.exponentialRampToValueAtTime(86 * (o.p || 1), t + 0.055);
+      thud(t, d, 175, 52, 0.14, 0.09, true);                  // 低い当たり (飽和で太い重み)
+      const g2 = env(t, 0.075, 0.001, 0.045); noise(t, 0.05, g2, d, 'lowpass', 950);  // 鈍い肉の音
     },
     kill() {
       const t = now(), d = chan(busSfx, G.rand(-0.12, 0.12));
-      thud(t, d, 280, 46, 0.16, 0.16, true);                  // 飽和した重い崩れ (芯)
-      const g1 = env(t, 0.08, 0.001, 0.05);
-      osc('triangle', 170, t, 0.06, g1, d).frequency.exponentialRampToValueAtTime(62, t + 0.05);  // 潰れる胴
-      const g2 = env(t, 0.07, 0.002, 0.08); noise(t, 0.1, g2, d, 'lowpass', 900);
-      const g3 = env(t, 0.04, 0.001, 0.04); noise(t, 0.05, g3, d, 'bandpass', 1800, 1.2);  // 砕けのざらつき (中域)
+      const gc = env(t, 0.1, 0.0006, 0.02); noise(t, 0.025, gc, d, 'bandpass', 3600, 1.0);   // 砕けの鋭い皮
+      thud(t, d, 300, 42, 0.21, 0.18, true);                  // 飽和した重い崩れ (芯・強化)
+      const g1 = env(t, 0.1, 0.001, 0.06);
+      osc('triangle', 175, t, 0.07, g1, d).frequency.exponentialRampToValueAtTime(58, t + 0.055);  // 潰れる胴
+      const g2 = env(t, 0.09, 0.002, 0.1); noise(t, 0.12, g2, d, 'lowpass', 950);
+      const g3 = env(t, 0.05, 0.001, 0.05); noise(t, 0.06, g3, d, 'bandpass', 1800, 1.2);  // 砕けのざらつき (中域)
     },
     gem(o) {
       // 連取で少しずつ上がる中立的なブリップ (音階に縛らない = BGM の和声と衝突しない)
@@ -642,11 +645,11 @@ registerProcessor('ks-proc', KSProc);
     },
     dash() {
       const t = now(), d = chan(busSfx, G.rand(-0.2, 0.2));
-      const g = env(t, 0.1, 0.008, 0.16);
-      const n = noise(t, 0.22, g, d, 'bandpass', 760, 1.1);
-      n.filter.frequency.exponentialRampToValueAtTime(190, t + 0.2);
-      const g2 = env(t, 0.05, 0.004, 0.1);                    // 踏み込みの低い芯
-      osc('sine', 150, t, 0.14, g2, d).frequency.exponentialRampToValueAtTime(60, t + 0.12);
+      const g = env(t, 0.14, 0.006, 0.16);                    // 風切り(本体)
+      const n = noise(t, 0.22, g, d, 'bandpass', 820, 1.0);
+      n.filter.frequency.exponentialRampToValueAtTime(200, t + 0.2);
+      thud(t, d, 185, 60, 0.1, 0.12, true);                   // 踏み込みの低い芯(飽和で太い)
+      const g3 = env(t, 0.06, 0.0008, 0.04); noise(t, 0.05, g3, d, 'highpass', 5000);  // 抜けの皮
     },
     powerup() {
       const t = now(), g = env(t, 0.09, 0.02, 0.4);
