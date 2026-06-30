@@ -399,6 +399,7 @@ G.main = (() => {
     G.fx.ring(chest.x, chest.y, { r0: 16, r1: 170, life: 0.55, color: 'rgba(255,220,140,0.95)', width: 4 });
     G.fx.flash = Math.min(0.4, G.fx.flash + 0.25);
     G.fx.soul(chest.x, chest.y - 6, 10);
+    if (G.fx.burst) G.fx.burst(chest.x, chest.y - 6, 'gold_sparkle', { sz: 210, dur: 0.7, from: 0.4, to: 1.2, alpha: 0.95, add: true });   // 宝匣の金きらめき
     G.cam.punch(1.04);
 
     if (G.debug.autoLevel) {
@@ -823,12 +824,18 @@ G.main = (() => {
   const ZSPECIAL = { forest: 'log', bamboo: 'puddle', grave: 'higan', shrine: 'higan' };
   // AI生成ランドマーク(ComfyUI): ゾーンごとに置く大きめの装飾。底面アンカーで立つ。
   const LANDMARKS = {
-    forest: ['prop_sakura', 'prop_kareki', 'prop_toro', 'prop_kuzu', 'prop_kumo'],
-    bamboo: ['prop_kareki', 'prop_toro', 'prop_torii2', 'prop_kuzu', 'prop_ido'],
-    grave:  ['prop_haka', 'prop_toro', 'prop_hone', 'prop_dokuro', 'prop_jizo2', 'prop_torii_oimg', 'prop_kareki'],
-    shrine: ['prop_torii2', 'prop_chochin', 'prop_toro', 'prop_reimon', 'prop_kitsune', 'prop_butsu', 'prop_jizo2', 'prop_kumotsu', 'prop_ido'],
+    forest: ['prop_sakura', 'prop_kareki', 'prop_toro', 'prop_kuzu', 'prop_kumo', 'prop_higanbana', 'prop_susuki', 'prop_kinoko', 'prop_hasu'],
+    bamboo: ['prop_kareki', 'prop_toro', 'prop_torii2', 'prop_kuzu', 'prop_ido', 'prop_take', 'prop_susuki', 'prop_kinoko'],
+    grave:  ['prop_haka', 'prop_toro', 'prop_hone', 'prop_dokuro', 'prop_jizo2', 'prop_torii_oimg', 'prop_higanbana', 'prop_dokurobi', 'prop_tou', 'prop_kitsunemen'],
+    shrine: ['prop_torii2', 'prop_chochin', 'prop_toro', 'prop_reimon', 'prop_kitsune', 'prop_butsu', 'prop_jizo2', 'prop_kumotsu', 'prop_kitsunemen', 'prop_ema', 'prop_kagaribi', 'prop_tou'],
   };
-  const PROP_GLOW = { prop_toro: 'warm', prop_chochin: 'warm', prop_kumotsu: 'warm', prop_dokuro: 'cool', prop_reimon: 'cool' };
+  const PROP_GLOW = { prop_toro: 'warm', prop_chochin: 'warm', prop_kumotsu: 'warm', prop_kagaribi: 'warm', prop_dokuro: 'cool', prop_reimon: 'cool', prop_kinoko: 'cool', prop_dokurobi: 'cool', prop_hasu: 'cool' };
+  // 遠景シルエット用(薄暗く大きく描いて奥行きを出す)。ステージ別の妖景。
+  const FAR_SIL = {
+    mori: ['prop_kareki', 'prop_sakura', 'prop_torii2'],
+    miyako: ['prop_torii2', 'prop_kitsune', 'prop_butsu', 'prop_reimon'],
+    _: ['prop_torii_oimg', 'prop_haka', 'prop_kareki', 'prop_hone'],
+  };
 
   function zoneOf(cx, cy, stageId) {
     const zh = G.hash2(Math.floor(cx / 4) * 131 + 7, Math.floor(cy / 4) * 173 + 11);
@@ -869,6 +876,13 @@ G.main = (() => {
             G.S.draw(ctx, 'sotoba', px + 45, py + 30, { scale: 1.4, alpha: 0.5 });
             G.S.draw(ctx, 'higan', px + 85, py + 52, { scale: 1.25, alpha: 0.62 });
           }
+        }
+        // 遠景にAI装飾のシルエット(薄暗く大きく=奥行き)。百鬼夜行らしい遠景の妖景。
+        const h8 = G.hash2(lx * 53 + 17, ly * 59 + 23);
+        if (h8 > 0.6) {
+          const far = FAR_SIL[stageId] || FAR_SIL._;
+          const nm = far[((h8 * 331) | 0) % far.length];
+          G.S.draw(ctx, nm, px + 110, py + 64, { scale: 1.5 + h8 * 0.9, alpha: 0.24 });
         }
       }
     }
@@ -932,14 +946,14 @@ G.main = (() => {
 
         // AI生成のランドマーク装飾 (低頻度・ゾーン別)。世界に厚みを足す。底面アンカーで地面に立つ。
         const h7 = G.hash2(cx * 37 + 13, cy * 41 + 7);
-        if (h7 > 0.94) {
+        if (h7 > 0.982) {
           const lm = LANDMARKS[zone];
           const name = lm[((h7 * 911) | 0) % lm.length];
           const px = cx * cs + G.hash2(cx * 43 + 1, cy * 47 + 9) * cs;
           const py = cy * cs + G.hash2(cx * 53 + 3, cy * 59 + 5) * cs;
-          G.S.draw(ctx, name, px, py, { scale: 0.92 + h7 * 0.5 });
+          G.S.draw(ctx, name, px, py, { scale: 0.36 + h7 * 0.12, alpha: 0.92 });
           const gl = PROP_GLOW[name];
-          if (gl) G.S.draw(ctx, gl === 'cool' ? 'glow_cool' : 'glow_warm', px, py - 30, { scale: 0.6, alpha: 0.45 });
+          if (gl) G.S.draw(ctx, gl === 'cool' ? 'glow_cool' : 'glow_warm', px, py - 18, { scale: 0.36, alpha: 0.35 });
         }
       }
     }

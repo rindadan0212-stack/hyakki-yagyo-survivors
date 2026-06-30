@@ -2905,6 +2905,76 @@
       "h": 144,
       "ax": 74.0,
       "ay": 144
+    },
+    "prop_higanbana": {
+      "file": "world/prop_higanbana.png",
+      "w": 145,
+      "h": 148,
+      "ax": 72.5,
+      "ay": 148
+    },
+    "prop_susuki": {
+      "file": "world/prop_susuki.png",
+      "w": 148,
+      "h": 147,
+      "ax": 74.0,
+      "ay": 147
+    },
+    "prop_kitsunemen": {
+      "file": "world/prop_kitsunemen.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
+    },
+    "prop_ema": {
+      "file": "world/prop_ema.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
+    },
+    "prop_kagaribi": {
+      "file": "world/prop_kagaribi.png",
+      "w": 126,
+      "h": 148,
+      "ax": 63.0,
+      "ay": 148
+    },
+    "prop_kinoko": {
+      "file": "world/prop_kinoko.png",
+      "w": 148,
+      "h": 144,
+      "ax": 74.0,
+      "ay": 144
+    },
+    "prop_take": {
+      "file": "world/prop_take.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
+    },
+    "prop_tou": {
+      "file": "world/prop_tou.png",
+      "w": 148,
+      "h": 136,
+      "ax": 74.0,
+      "ay": 136
+    },
+    "prop_hasu": {
+      "file": "world/prop_hasu.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
+    },
+    "prop_dokurobi": {
+      "file": "world/prop_dokurobi.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
     }
   }
 }

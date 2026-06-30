@@ -1013,6 +1013,7 @@ G.sys = (() => {
     else if (w.id === 'sanshu_harae') {
       // 三種祓具(伝): 発動ごとに 剣/鏡/玉 のいずれか。狙えないが万能。
       const mode = G.randInt(3);
+      G.fx.burst(p.x, p.y - 4, 'holy_seal', { sz: 150 * area, dur: 0.62, from: 0.35, to: 1.05, spin: 0.5, alpha: 0.8, add: true });   // 神器発動の呪印
       if (mode === 0) {                       // 剣: 貫通の刃を扇状に
         const tgt = G.ent.nearestEnemy(p.x, p.y, 600);
         const ba = tgt ? G.angleTo(p.x, p.y, tgt.x, tgt.y) : aimAngle(p);
