@@ -745,43 +745,43 @@ G.data = (() => {
   // ---------------- bosses ----------------
   D.B = {
     tanuki: {
-      name: '化け狸「八畳坊」', spr: 'b_tanuki', hp: 1200, spd: 58, dmg: 20, r: 45, anim: 0.4, scale: 2.25,
+      name: '化け狸「八畳坊」', spr: 'b_tanuki', hp: 1200, spd: 58, dmg: 20, r: 45, anim: 0.4, scale: 2.4,
       xp: 60, at: 180, rank: 1,
       warn: '何かが化けて出る……',
     },
     nure: {
-      name: '濡女', spr: 'b_nure', hp: 2600, spd: 105, dmg: 24, r: 39, anim: 0.3, fly: true, scale: 2.85,
+      name: '濡女', spr: 'b_nure', hp: 2600, spd: 105, dmg: 24, r: 39, anim: 0.3, fly: true, scale: 2.4,
       xp: 100, at: 420, rank: 2,
       warn: '濡れた髪の音が近づく……',
     },
     ushi: {
-      name: '牛鬼', spr: 'b_ushi', hp: 6800, spd: 52, dmg: 28, r: 60, anim: 0.45, scale: 2.25,
+      name: '牛鬼', spr: 'b_ushi', hp: 6800, spd: 52, dmg: 28, r: 60, anim: 0.45, scale: 2.4,
       xp: 150, at: 660, rank: 4,
       warn: '大地が軋む――巨影が来る',
     },
     shuten: {
-      name: '酒呑童子', spr: 'b_shuten', hp: 13500, spd: 62, dmg: 32, r: 57, anim: 0.5, scale: 2.1,
+      name: '酒呑童子', spr: 'b_shuten', hp: 13500, spd: 62, dmg: 32, r: 57, anim: 0.5, scale: 2.4,
       xp: 300, at: 810, rank: 6,
       warn: '鬼神の王が、宴に飽いた',
     },
     nue: {
-      name: '鵺', spr: 'b_nue', hp: 4200, spd: 112, dmg: 26, r: 45, anim: 0.22, fly: true, scale: 2.55,
+      name: '鵺', spr: 'b_nue', hp: 4200, spd: 112, dmg: 26, r: 45, anim: 0.22, fly: true, scale: 2.4,
       xp: 130, rank: 3,
     },
     gasha: {
-      name: 'がしゃどくろ', spr: 'b_gasha', hp: 9500, spd: 38, dmg: 30, r: 58, anim: 0.55, scale: 2.5,
+      name: 'がしゃどくろ', spr: 'b_gasha', hp: 9500, spd: 38, dmg: 30, r: 58, anim: 0.55, scale: 2.4,
       xp: 220, rank: 5,
     },
     tsuchigumo: {
-      name: '土蜘蛛', spr: 'b_tsuchigumo', hp: 3400, spd: 50, dmg: 25, r: 50, anim: 0.34, scale: 2.55,
+      name: '土蜘蛛', spr: 'b_tsuchigumo', hp: 3400, spd: 50, dmg: 25, r: 50, anim: 0.34, scale: 2.4,
       xp: 110, rank: 2, warn: '足元の土が、ざわめいている',
     },
     daitengu: {
-      name: '大天狗', spr: 'b_daitengu', hp: 5600, spd: 96, dmg: 27, r: 46, anim: 0.3, scale: 2.55,
+      name: '大天狗', spr: 'b_daitengu', hp: 5600, spd: 96, dmg: 27, r: 46, anim: 0.3, scale: 2.4,
       xp: 140, rank: 3, warn: '木々がどよめく――翼の影',
     },
     ogama: {
-      name: '大蝦蟇', spr: 'b_ogama', hp: 7800, spd: 46, dmg: 29, r: 56, anim: 0.42, scale: 2.7,
+      name: '大蝦蟇', spr: 'b_ogama', hp: 7800, spd: 46, dmg: 29, r: 56, anim: 0.42, scale: 2.4,
       xp: 170, rank: 4, warn: '沼の底から、低い唸りが',
     },
   };

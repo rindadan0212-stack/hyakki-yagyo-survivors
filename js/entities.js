@@ -4843,14 +4843,14 @@ G.ent = (() => {
   }
 
   // ボス専用オフスクリーン: 本体+リム(影)+フラッシュをここに一旦合成し、1枚で本canvasへ転送する。
-  // ⚠️リム(影)は本体より ×1.12 大きい。768²では shuten 等の幅広ポーズで影が左右へはみ出し矩形に切れた
-  //   (本体は収まるが影だけ切れる症状)。影の最大到達まで余裕を持たせるため 1024² + アンカー(512,640)へ拡大。
+  // ⚠️リム(影)は本体より ×1.12 大きい。さらに本体検出リスライス後はエフェクト込みで縦長(上方向に最大~783px)。
+  //   影/エフェクトの最大到達まで余裕を持たせ、非正方形 1200×1120・アンカー(600,890)に拡大(scale 2.4 で全ボス収容)。
   let _bossBuf = null, _bossBctx = null;
-  const _BBUF = 1024, _BBX = 512, _BBY = 640;
+  const _BBW = 1200, _BBH = 1120, _BBX = 600, _BBY = 890;
   function bossBuffer() {
     if (!_bossBuf) {
       _bossBuf = document.createElement('canvas');
-      _bossBuf.width = _BBUF; _bossBuf.height = _BBUF;
+      _bossBuf.width = _BBW; _bossBuf.height = _BBH;
       _bossBctx = _bossBuf.getContext('2d');
       _bossBctx.imageSmoothingEnabled = false;
     }
@@ -4949,12 +4949,12 @@ G.ent = (() => {
       // ボスは専用バッファに 本体+リム+フラッシュ を合成してから1枚で転送する(再設計)。
       // 多重 S.draw や外部レイヤー由来の見切れを構造的に排除し、巨大ポーズも欠けずに描く。
       const buf = bossBuffer(), bc = _bossBctx;
-      bc.clearRect(0, 0, _BBUF, _BBUF);
+      bc.clearRect(0, 0, _BBW, _BBH);
       if (S.get(rimSpr)) S.draw(bc, rimSpr, _BBX, _BBY, { scale: e.scale * 1.12 * pop, flipX: flip, sx, sy, alpha: 0.22 });
       S.draw(bc, spr, _BBX, _BBY, { scale: e.scale * pop, flipX: flip, sx, sy });
       if (e.flash > 0 && S.get(rimSpr)) S.draw(bc, rimSpr, _BBX, _BBY, { scale: e.scale * pop, flipX: flip, sx, sy, alpha: Math.min(0.55, e.flash * 3) });
       // バッファのアンカー(_BBX,_BBY)を本体の (e.x, bodyY) に合わせて転送。本canvasのワールド変換(ズーム)がそのまま掛かる。
-      ctx.drawImage(buf, e.x - _BBX, bodyY - _BBY, _BBUF, _BBUF);
+      ctx.drawImage(buf, e.x - _BBX, bodyY - _BBY, _BBW, _BBH);
     } else {
       if (S.get(rimSpr)) S.draw(ctx, rimSpr, e.x, bodyY, { scale: e.scale * 1.12 * pop, flipX: flip, sx, sy, alpha: 0.3 });
       S.draw(ctx, spr, e.x, bodyY, { scale: e.scale * pop, flipX: flip, sx, sy });
