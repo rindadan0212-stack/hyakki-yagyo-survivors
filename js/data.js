@@ -642,7 +642,7 @@ G.data = (() => {
     crit:   { name: '朱の御印',     icon: 'ic_crit',   cat: 'offense', desc: '霊撃が妖の急所を穿ちやすくなる。', per: 'Lv毎 会心 +4%',   apply: (s, lv) => { s.crit += 0.04 * lv; } },
     haste:  { name: '神楽鈴',       icon: 'ic_haste',  cat: 'offense', desc: '霊撃の発動が速くなる。',           per: 'Lv毎 発動 -7%',   apply: (s, lv) => { s.haste *= Math.pow(0.93, lv); } },
     hp:     { name: '達磨の御守',   icon: 'ic_hp',     cat: 'guard',   desc: '最大体力を高める。取得時に少し回復。', per: 'Lv毎 体力 +25',   apply: (s, lv) => { s.maxHp += 25 * lv; } },
-    regen:  { name: '霊泉の雫',     icon: 'ic_regen',  cat: 'guard',   desc: '時とともに体力が静かに癒えていく。', per: 'Lv毎 回復 +0.5/s', apply: (s, lv) => { s.regen += 0.5 * lv; } },
+    regen:  { name: '霊泉の雫',     icon: 'ic_regen',  cat: 'guard',   desc: '時とともに体力が静かに癒えていく。', per: 'Lv毎 回復 +1.0/s', apply: (s, lv) => { s.regen += 1.0 * lv; } },
     lifesteal: { name: '吸命の蠱',  icon: 'ic_still',  cat: 'guard',   desc: '妖を討つたび、その精を吸って体力をわずかに癒す (撃破が回復に変わる)。', per: 'Lv毎 撃破回復 +0.15', apply: (s, lv) => { s.lifesteal += 0.15 * lv; } },
     speed:  { name: '韋駄天の足袋', icon: 'ic_speed',  cat: 'tempo',   desc: '駆ける速さを高める。',             per: 'Lv毎 移動 +8%',   apply: (s, lv) => { s.speed += 0.08 * lv; } },
     // reqPierceWeapon: pierceable な飛び道具の得物を持つ時だけ抽選 (近接等では無効=死にスキルなので隠す)
