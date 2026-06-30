@@ -823,11 +823,12 @@ G.main = (() => {
   const ZSPECIAL = { forest: 'log', bamboo: 'puddle', grave: 'higan', shrine: 'higan' };
   // AI生成ランドマーク(ComfyUI): ゾーンごとに置く大きめの装飾。底面アンカーで立つ。
   const LANDMARKS = {
-    forest: ['prop_sakura', 'prop_kareki', 'prop_toro'],
-    bamboo: ['prop_kareki', 'prop_toro', 'prop_torii2'],
-    grave:  ['prop_haka', 'prop_toro', 'prop_kareki'],
-    shrine: ['prop_torii2', 'prop_chochin', 'prop_toro', 'prop_reimon'],
+    forest: ['prop_sakura', 'prop_kareki', 'prop_toro', 'prop_kuzu', 'prop_kumo'],
+    bamboo: ['prop_kareki', 'prop_toro', 'prop_torii2', 'prop_kuzu', 'prop_ido'],
+    grave:  ['prop_haka', 'prop_toro', 'prop_hone', 'prop_dokuro', 'prop_jizo2', 'prop_torii_oimg', 'prop_kareki'],
+    shrine: ['prop_torii2', 'prop_chochin', 'prop_toro', 'prop_reimon', 'prop_kitsune', 'prop_butsu', 'prop_jizo2', 'prop_kumotsu', 'prop_ido'],
   };
+  const PROP_GLOW = { prop_toro: 'warm', prop_chochin: 'warm', prop_kumotsu: 'warm', prop_dokuro: 'cool', prop_reimon: 'cool' };
 
   function zoneOf(cx, cy, stageId) {
     const zh = G.hash2(Math.floor(cx / 4) * 131 + 7, Math.floor(cy / 4) * 173 + 11);
@@ -937,7 +938,8 @@ G.main = (() => {
           const px = cx * cs + G.hash2(cx * 43 + 1, cy * 47 + 9) * cs;
           const py = cy * cs + G.hash2(cx * 53 + 3, cy * 59 + 5) * cs;
           G.S.draw(ctx, name, px, py, { scale: 0.92 + h7 * 0.5 });
-          if (name === 'prop_toro' || name === 'prop_chochin') G.S.draw(ctx, 'glow_warm', px, py - 30, { scale: 0.6, alpha: 0.45 });
+          const gl = PROP_GLOW[name];
+          if (gl) G.S.draw(ctx, gl === 'cool' ? 'glow_cool' : 'glow_warm', px, py - 30, { scale: 0.6, alpha: 0.45 });
         }
       }
     }

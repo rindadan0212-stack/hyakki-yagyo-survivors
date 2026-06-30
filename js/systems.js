@@ -642,7 +642,7 @@ G.sys = (() => {
           crit: critC(0.05),
         });
       }
-      if (G.fx.anim && run.t - (run._foxFxT || -9) > 0.22) { run._foxFxT = run.t; G.fx.anim(p.x, p.y - 6, 'foxfire', { scale: 1.3, dur: 0.4, add: true }); }   // 狐火(GPT FX/0.22s間引き)
+      if (G.fx.anim && run.t - (run._foxFxT || -9) > 0.22) { run._foxFxT = run.t; G.fx.anim(p.x, p.y - 6, 'foxfire', { scale: 1.3, dur: 0.4, add: true }); G.fx.burst(p.x, p.y - 6, 'spirit_wisps', { sz: 96, dur: 0.5, from: 0.5, to: 1.1, alpha: 0.7, add: true }); }   // 狐火: 人魂の靄を重ねる(0.22s間引き)
       G.audio.sfx('shoot', { p: 0.7 });
     }
 
@@ -667,6 +667,7 @@ G.sys = (() => {
         r: st.radius * area, dmg: st.dmg * might,
         stun: !!st.stun, crit: critC(0.05), src: run._fireSrc,
       });
+      G.fx.burst(p.x, p.y - 4, 'bell_ring', { sz: st.radius * area * 2.0, dur: 0.62, from: 0.3, to: 1.0, alpha: 0.8, add: true });   // 梵鐘の音響リング(AoE半径に一致)
       G.audio.sfx('shoot', { p: 0.4 });
     }
 
@@ -787,6 +788,7 @@ G.sys = (() => {
         run.mines.push({ x: mx, y: my, t: 0, armed: false, aoe: st.aoe * area, dmg: st.dmg * might, crit: critC(0.05), src: run._fireSrc });
         G.fx.ring(mx, my, { r0: 2, r1: 20, life: 0.3, color: 'rgba(255,180,120,0.9)', width: 2 });   // 設置スタンプ(札ごと)
         G.fx.spark(mx, my, '#ffb86b', 4, 90, 0.26);
+        G.fx.burst(mx, my, 'talisman_burst', { sz: 72 + st.aoe * area * 0.7, dur: 0.5, from: 0.4, to: 1.0, alpha: 0.72, add: true });   // 封印札の発光
       }
       const cap = st.mines * 3 + 2;
       while (run.mines.length > cap) run.mines.shift();
@@ -817,6 +819,7 @@ G.sys = (() => {
       run.flames.push({ x: p.x, y: p.y, t: 0, life: st.life, r: st.r * area, dmg: st.dmg, tick: st.tick, tickT: 0, src: run._fireSrc });
       if (run.flames.length > 60) run.flames.shift();
       // foozle火球は廃止。Unity同様の手続き炎トレイル(updateFlames側の描画)に統一
+      if (run.t - (run._honooFxT || -9) > 0.3) { run._honooFxT = run.t; G.fx.burst(p.x, p.y - 4, 'ember_rise', { sz: 78, dur: 0.5, from: 0.5, to: 1.0, alpha: 0.65, add: true }); }   // 火の粉(0.3s間引き)
     }
 
     else if (w.id === 'zangetsu') {
@@ -914,6 +917,7 @@ G.sys = (() => {
       // 霞斬り: 一閃した軌跡に「霞」が滞留する。瞬間で刈る太刀/破陣と違い、面でじわじわ削り鈍足にする唯一の斬(=斬ビルドの制圧/足止め役に差別化)
       const base = aimAngle(p), R = (st.radius || 450) * area, amt = st.amount || 2;
       run.slashes.push({ x: p.x, y: p.y, a: base, range: R * 0.6, arc: 2.0, life: 0.14, maxLife: 0.14, tint: '170,225,255' });   // 薄い一閃→霞を残す
+      G.fx.burst(p.x + Math.cos(base) * R * 0.4, p.y + Math.sin(base) * R * 0.4, 'frost_burst', { sz: R * 0.85, dur: 0.5, from: 0.5, to: 1.0, alpha: 0.55, add: true });   // 淡青の氷霧
       for (let i = 0; i < amt; i++) {
         const a = base + (i - (amt - 1) / 2) * 0.5;
         const mx = p.x + Math.cos(a) * R * 0.5, my = p.y + Math.sin(a) * R * 0.5;
@@ -942,6 +946,7 @@ G.sys = (() => {
         }
         run.slashes.push({ x: px, y: py, a: base, range: R, arc: 2.0, life: 0.18, maxLife: 0.18, tint: '255,150,80' });   // 紅蓮の細い一閃
         bigImpact(px + Math.cos(base) * R * 0.7, py + Math.sin(base) * R * 0.7, R * 0.7, '255,150,80', 'slash');
+        G.fx.burst(px + Math.cos(base) * R * 0.55, py + Math.sin(base) * R * 0.55, 'petal_blade', { sz: R * 1.25, dur: 0.55, from: 0.5, to: 1.05, rot: base, spin: 0.6, alpha: 0.7, add: true });   // 紅葉の刃
       });
     }
 

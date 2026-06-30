@@ -2835,6 +2835,76 @@
       "h": 148,
       "ax": 74.0,
       "ay": 148
+    },
+    "prop_jizo2": {
+      "file": "world/prop_jizo2.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
+    },
+    "prop_kitsune": {
+      "file": "world/prop_kitsune.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
+    },
+    "prop_hone": {
+      "file": "world/prop_hone.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
+    },
+    "prop_kumo": {
+      "file": "world/prop_kumo.png",
+      "w": 148,
+      "h": 145,
+      "ax": 74.0,
+      "ay": 145
+    },
+    "prop_ido": {
+      "file": "world/prop_ido.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
+    },
+    "prop_dokuro": {
+      "file": "world/prop_dokuro.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
+    },
+    "prop_butsu": {
+      "file": "world/prop_butsu.png",
+      "w": 148,
+      "h": 145,
+      "ax": 74.0,
+      "ay": 145
+    },
+    "prop_kuzu": {
+      "file": "world/prop_kuzu.png",
+      "w": 148,
+      "h": 146,
+      "ax": 74.0,
+      "ay": 146
+    },
+    "prop_torii_oimg": {
+      "file": "world/prop_torii_oimg.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
+    },
+    "prop_kumotsu": {
+      "file": "world/prop_kumotsu.png",
+      "w": 148,
+      "h": 144,
+      "ax": 74.0,
+      "ay": 144
     }
   }
 }
