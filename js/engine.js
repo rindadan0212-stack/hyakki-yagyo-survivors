@@ -503,46 +503,47 @@ G.fx = (() => {
     ]);   // 実験FX/生成プレミアムFX(画像生成素材)
   };
   F.anim = (x, y, name, o = {}) => {
+    // 上位(premium)FXがある anim は premium に「置換」する(手続きアニメシートは描かない)。
+    // ⚠️以前は両方描いていたため slash/wind 等が二重に見えた。EXPFX OFF 時のみ下の手続きシート版を使う。
+    const premium = (G.data && G.data.EXPFX) ? ({
+      lightning: ['premium_lightning', 1.25, 0.72, 1.06],
+      slash: ['premium_slash', 1.34, 0.58, 0.98],
+      holy: ['premium_holy_nova', 1.26, 0.62, 1.05],
+      explode: ['premium_explosion', 1.3, 0.62, 1.1],
+      portal: ['premium_dark_vortex', 1.18, 0.55, 1.08],
+      water: ['premium_water_geyser', 1.04, 0.58, 0.98],
+      water_geyser: ['premium_water_geyser', 1.22, 0.62, 1.08],
+      tornado: ['premium_tornado', 1.18, 0.64, 1.08],
+      wind: ['premium_tornado', 0.82, 0.52, 0.92],
+      foxfire: ['premium_foxfire', 1.1, 0.6, 1.02],
+      lampburst: ['premium_lampburst', 1.18, 0.6, 1.04],
+      heal: ['premium_heal', 1.1, 0.58, 1.0],
+      curse: ['premium_curse', 1.15, 0.58, 1.04],
+      levelup: ['premium_holy_nova', 1.25, 0.64, 1.08],
+      awaken: ['premium_holy_nova', 1.42, 0.68, 1.16],
+      ward: ['premium_shockwave', 1.05, 0.55, 1.02],
+      // ComfyUI生成FX(2026-06-30): 未対応だった anim に追加カバレッジ(主題が合うもののみ)
+      molten_spear: ['ember_rise', 1.22, 0.5, 1.06],
+      earth_spike: ['earth_shatter', 1.1, 0.5, 1.04],
+      rocks: ['earth_shatter', 0.95, 0.5, 0.98],
+    })[name] : null;
+    if (premium) {
+      const fxName = premium[0], sizeMul = premium[1], from = premium[2], to = premium[3];
+      F.burst(x, y, fxName, {
+        sz: 64 * (o.scale || 1) * sizeMul,
+        dur: Math.max(o.dur || 0.42, 0.32),
+        from, to,
+        rot: o.rot || 0,
+        spin: name === 'portal' || name === 'curse' ? 1.2 : name === 'tornado' || name === 'wind' ? 0.8 : 0,
+        alpha: (o.alpha == null ? 1 : o.alpha) * 0.92,
+        add: true,
+      });
+      return;
+    }
     const sheet = F.animSheets[name];
     if (!sheet || !sheet.length) return;
     F.anims.push({ name, x, y, scale: o.scale || 1, dur: o.dur || 0.42, t: 0, rot: o.rot || 0, alpha: o.alpha == null ? 1 : o.alpha, add: o.add !== false });
     if (F.anims.length > 70) F.anims.shift();
-    if (G.data && G.data.EXPFX) {
-      const premium = {
-        lightning: ['premium_lightning', 1.25, 0.72, 1.06],
-        slash: ['premium_slash', 1.34, 0.58, 0.98],
-        holy: ['premium_holy_nova', 1.26, 0.62, 1.05],
-        explode: ['premium_explosion', 1.3, 0.62, 1.1],
-        portal: ['premium_dark_vortex', 1.18, 0.55, 1.08],
-        water: ['premium_water_geyser', 1.04, 0.58, 0.98],
-        water_geyser: ['premium_water_geyser', 1.22, 0.62, 1.08],
-        tornado: ['premium_tornado', 1.18, 0.64, 1.08],
-        wind: ['premium_tornado', 0.82, 0.52, 0.92],   // 風(方向性FXは斬撃と重複/逆に見えたため既定の渦に戻す)
-        foxfire: ['premium_foxfire', 1.1, 0.6, 1.02],
-        lampburst: ['premium_lampburst', 1.18, 0.6, 1.04],
-        heal: ['premium_heal', 1.1, 0.58, 1.0],
-        curse: ['premium_curse', 1.15, 0.58, 1.04],
-        levelup: ['premium_holy_nova', 1.25, 0.64, 1.08],
-        awaken: ['premium_holy_nova', 1.42, 0.68, 1.16],
-        ward: ['premium_shockwave', 1.05, 0.55, 1.02],
-        // ComfyUI生成FX(2026-06-30): 未対応だった anim に追加カバレッジ(主題が合うもののみ)
-        molten_spear: ['ember_rise', 1.22, 0.5, 1.06],
-        earth_spike: ['earth_shatter', 1.1, 0.5, 1.04],
-        rocks: ['earth_shatter', 0.95, 0.5, 0.98],
-      }[name];
-      if (premium) {
-        const fxName = premium[0], sizeMul = premium[1], from = premium[2], to = premium[3];
-        F.burst(x, y, fxName, {
-          sz: 64 * (o.scale || 1) * sizeMul,
-          dur: Math.max(o.dur || 0.42, 0.32),
-          from, to,
-          rot: o.rot || 0,
-          spin: name === 'portal' || name === 'curse' ? 1.2 : name === 'tornado' || name === 'wind' ? 0.8 : 0,
-          alpha: (o.alpha == null ? 1 : o.alpha) * 0.92,
-          add: true,
-        });
-      }
-    }
   };
 
   // --- 実験FX (ComfyUI生成の1枚絵を拡大+回転+フェードで再生)。D.EXPFX で全体ON/OFF、assets/fx_exp/ に隔離 ---
