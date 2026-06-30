@@ -2779,6 +2779,62 @@
       "h": 16,
       "ax": 11,
       "ay": 15
+    },
+    "prop_toro": {
+      "file": "world/prop_toro.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
+    },
+    "prop_chochin": {
+      "file": "world/prop_chochin.png",
+      "w": 148,
+      "h": 145,
+      "ax": 74.0,
+      "ay": 145
+    },
+    "prop_kareki": {
+      "file": "world/prop_kareki.png",
+      "w": 148,
+      "h": 143,
+      "ax": 74.0,
+      "ay": 143
+    },
+    "prop_sakura": {
+      "file": "world/prop_sakura.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
+    },
+    "prop_haka": {
+      "file": "world/prop_haka.png",
+      "w": 148,
+      "h": 144,
+      "ax": 74.0,
+      "ay": 144
+    },
+    "prop_reimon": {
+      "file": "world/prop_reimon.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
+    },
+    "prop_torii2": {
+      "file": "world/prop_torii2.png",
+      "w": 148,
+      "h": 129,
+      "ax": 74.0,
+      "ay": 129
+    },
+    "prop_nami": {
+      "file": "world/prop_nami.png",
+      "w": 148,
+      "h": 148,
+      "ax": 74.0,
+      "ay": 148
     }
   }
 }

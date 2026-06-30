@@ -497,6 +497,8 @@ G.fx = (() => {
       'premium_holy_nova', 'premium_lightning', 'premium_slash', 'premium_explosion',
       'premium_dark_vortex', 'premium_water_geyser', 'premium_tornado', 'premium_shockwave',
       'premium_foxfire', 'premium_lampburst', 'premium_heal', 'premium_curse',
+      // ComfyUI生成の追加FX(2026-06-30)。主題別に配線して多様化。
+      'bell_ring', 'ember_rise', 'frost_burst', 'petal_blade', 'spirit_wisps', 'talisman_burst', 'wind_slash',
     ]);   // 実験FX/生成プレミアムFX(画像生成素材)
   };
   F.anim = (x, y, name, o = {}) => {
@@ -522,6 +524,8 @@ G.fx = (() => {
         levelup: ['premium_holy_nova', 1.25, 0.64, 1.08],
         awaken: ['premium_holy_nova', 1.42, 0.68, 1.16],
         ward: ['premium_shockwave', 1.05, 0.55, 1.02],
+        // ComfyUI生成FX(2026-06-30): 未対応だった anim に追加カバレッジ(主題が合うもののみ)
+        molten_spear: ['ember_rise', 1.22, 0.5, 1.06],
       }[name];
       if (premium) {
         const fxName = premium[0], sizeMul = premium[1], from = premium[2], to = premium[3];

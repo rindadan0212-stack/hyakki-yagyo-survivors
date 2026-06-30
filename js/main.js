@@ -821,6 +821,13 @@ G.main = (() => {
     shrine: ['stone_0', 'stone_1', 'grass_2', 'jizo', 'higan', 'leaf', 'stone_1', 'grass_0'],
   };
   const ZSPECIAL = { forest: 'log', bamboo: 'puddle', grave: 'higan', shrine: 'higan' };
+  // AI生成ランドマーク(ComfyUI): ゾーンごとに置く大きめの装飾。底面アンカーで立つ。
+  const LANDMARKS = {
+    forest: ['prop_sakura', 'prop_kareki', 'prop_toro'],
+    bamboo: ['prop_kareki', 'prop_toro', 'prop_torii2'],
+    grave:  ['prop_haka', 'prop_toro', 'prop_kareki'],
+    shrine: ['prop_torii2', 'prop_chochin', 'prop_toro', 'prop_reimon'],
+  };
 
   function zoneOf(cx, cy, stageId) {
     const zh = G.hash2(Math.floor(cx / 4) * 131 + 7, Math.floor(cy / 4) * 173 + 11);
@@ -920,6 +927,17 @@ G.main = (() => {
         // torii gates stand in shrine zones
         if (zone === 'shrine' && G.hash2(cx * 3 + 7, cy * 3 + 11) > 0.955) {
           G.S.draw(ctx, 'torii', cx * cs + 80, cy * cs + 100);
+        }
+
+        // AI生成のランドマーク装飾 (低頻度・ゾーン別)。世界に厚みを足す。底面アンカーで地面に立つ。
+        const h7 = G.hash2(cx * 37 + 13, cy * 41 + 7);
+        if (h7 > 0.94) {
+          const lm = LANDMARKS[zone];
+          const name = lm[((h7 * 911) | 0) % lm.length];
+          const px = cx * cs + G.hash2(cx * 43 + 1, cy * 47 + 9) * cs;
+          const py = cy * cs + G.hash2(cx * 53 + 3, cy * 59 + 5) * cs;
+          G.S.draw(ctx, name, px, py, { scale: 0.92 + h7 * 0.5 });
+          if (name === 'prop_toro' || name === 'prop_chochin') G.S.draw(ctx, 'glow_warm', px, py - 30, { scale: 0.6, alpha: 0.45 });
         }
       }
     }
