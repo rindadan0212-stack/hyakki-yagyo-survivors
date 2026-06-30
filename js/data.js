@@ -803,6 +803,9 @@ G.data = (() => {
   ];
   // 高DPSビルドでも格上ほど十分な戦闘時間を持つ。壱は抑え、極は大きく伸ばす。
   D.BOSS_RANK_HP = [0, 1, 1.15, 1.35, 1.6, 1.9, 2.25];
+  // ボスの見た目サイズも強さ(rank 1-6)で段階化。本体は130正規化済なので、これが実サイズ倍率。
+  // index=rank。e.scale = base(b.scale) × UNIT_SCALE × この倍率。max(rank6)=1.18 はボスバッファに収まる範囲。
+  D.BOSS_RANK_SIZE = [1, 0.88, 0.94, 1.0, 1.06, 1.12, 1.18];
   D.bossRankText = id => {
     const b = D.B[id], r = b && D.BOSS_RANKS[b.rank || 1];
     return r ? `${r.mark}ノ格・${r.name}` : '大妖';

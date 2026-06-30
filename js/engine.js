@@ -517,7 +517,7 @@ G.fx = (() => {
         water: ['premium_water_geyser', 1.04, 0.58, 0.98],
         water_geyser: ['premium_water_geyser', 1.22, 0.62, 1.08],
         tornado: ['premium_tornado', 1.18, 0.64, 1.08],
-        wind: ['wind_slash', 0.95, 0.5, 0.95],   // 風=専用の風刃FX(ComfyUI生成)に差し替え
+        wind: ['premium_tornado', 0.82, 0.52, 0.92],   // 風(方向性FXは斬撃と重複/逆に見えたため既定の渦に戻す)
         foxfire: ['premium_foxfire', 1.1, 0.6, 1.02],
         lampburst: ['premium_lampburst', 1.18, 0.6, 1.04],
         heal: ['premium_heal', 1.1, 0.58, 1.0],

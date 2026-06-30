@@ -40,11 +40,18 @@ def square_pad(im: Image.Image):
     return out
 
 
-def glow_alpha(im: Image.Image, floor=12, boost=1.18):
-    """加算FX用: アルファ=輝度。純黒を切り、光は不透明に。色は維持。"""
+def glow_alpha(im: Image.Image, floor=12, boost=1.18, vin0=0.58, vin1=0.95):
+    """加算FX用: アルファ=輝度 × 放射状フォールオフ。純黒を切り、光は中央で不透明・縁で完全透明。
+    vin(ビネット)で矩形境界を消す: 中心(r=0)〜vin0 は素通し、vin0→vin1 で減衰、vin1 以遠は0。
+    これにより「キャンバス全面の絵がそのまま矩形で出る=コラ感」を排除し、FXとして自然に溶け込ませる。"""
     arr = np.asarray(im.convert("RGB")).astype(np.float32)
+    H, W = arr.shape[:2]
     lum = luminance(arr)
     a = np.clip((lum - floor) / (255 - floor) * 255 * boost, 0, 255)
+    yy, xx = np.mgrid[0:H, 0:W]
+    r = np.sqrt(((xx - W / 2.0) / (W / 2.0)) ** 2 + ((yy - H / 2.0) / (H / 2.0)) ** 2)  # 0=中心, 1=辺中央, ~1.41=隅
+    vig = np.clip((vin1 - r) / (vin1 - vin0), 0.0, 1.0)  # vin0までは1, vin1で0
+    a = a * vig
     out = np.dstack([arr, a]).astype(np.uint8)
     return Image.fromarray(out, "RGBA")
 

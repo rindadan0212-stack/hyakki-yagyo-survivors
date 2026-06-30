@@ -917,7 +917,6 @@ G.sys = (() => {
       // 霞斬り: 一閃した軌跡に「霞」が滞留する。瞬間で刈る太刀/破陣と違い、面でじわじわ削り鈍足にする唯一の斬(=斬ビルドの制圧/足止め役に差別化)
       const base = aimAngle(p), R = (st.radius || 450) * area, amt = st.amount || 2;
       run.slashes.push({ x: p.x, y: p.y, a: base, range: R * 0.6, arc: 2.0, life: 0.14, maxLife: 0.14, tint: '170,225,255' });   // 薄い一閃→霞を残す
-      G.fx.burst(p.x + Math.cos(base) * R * 0.4, p.y + Math.sin(base) * R * 0.4, 'frost_burst', { sz: R * 0.85, dur: 0.5, from: 0.5, to: 1.0, alpha: 0.55, add: true });   // 淡青の氷霧
       for (let i = 0; i < amt; i++) {
         const a = base + (i - (amt - 1) / 2) * 0.5;
         const mx = p.x + Math.cos(a) * R * 0.5, my = p.y + Math.sin(a) * R * 0.5;
@@ -946,7 +945,6 @@ G.sys = (() => {
         }
         run.slashes.push({ x: px, y: py, a: base, range: R, arc: 2.0, life: 0.18, maxLife: 0.18, tint: '255,150,80' });   // 紅蓮の細い一閃
         bigImpact(px + Math.cos(base) * R * 0.7, py + Math.sin(base) * R * 0.7, R * 0.7, '255,150,80', 'slash');
-        G.fx.burst(px + Math.cos(base) * R * 0.55, py + Math.sin(base) * R * 0.55, 'petal_blade', { sz: R * 1.25, dur: 0.55, from: 0.5, to: 1.05, rot: base, spin: 0.6, alpha: 0.7, add: true });   // 紅葉の刃
       });
     }
 

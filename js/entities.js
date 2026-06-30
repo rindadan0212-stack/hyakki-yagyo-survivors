@@ -213,7 +213,7 @@ G.ent = (() => {
     [e.x, e.y] = G.clampMap(p.x + Math.cos(a) * 720, p.y + Math.sin(a) * 720, b.r);
     e.r = b.r * G.UNIT_SCALE;
     e.hitRX = e.r * (D.BOSS_HIT_RX_MUL || 1.7);   // 撃ち/接触の横判定を胴体幅に合わせて拡張(e.r=移動/AI/近接 は不変)
-    e.scale = (b.scale || 1) * G.UNIT_SCALE;
+    e.scale = (b.scale || 1) * G.UNIT_SCALE * ((D.BOSS_RANK_SIZE && D.BOSS_RANK_SIZE[b.rank || 1]) || 1);   // 強さ段階(rank)で見た目サイズを段階化
     const rankHp = D.BOSS_RANK_HP[b.rank || 1] || 1;
     const rawBossHp = b.hp * rankHp * run.stage.hpMul * ascend.hp * (entry && entry.hpMul || 1)
       * (run.moon ? run.moon.enemyHpMul || 1 : 1) * (D.BOSS_HP_MUL || 1);
@@ -4846,7 +4846,8 @@ G.ent = (() => {
   // ⚠️リム(影)は本体より ×1.12 大きい。さらに本体検出リスライス後はエフェクト込みで縦長(上方向に最大~783px)。
   //   影/エフェクトの最大到達まで余裕を持たせ、非正方形 1200×1120・アンカー(600,890)に拡大(scale 2.4 で全ボス収容)。
   let _bossBuf = null, _bossBctx = null;
-  const _BBW = 1200, _BBH = 1120, _BBX = 600, _BBY = 890;
+  // rank連動サイズ(最大rank6=base×1.18)+エフェクト込み縦長フレームを収容。1280²・アンカー(640,1020)。
+  const _BBW = 1280, _BBH = 1280, _BBX = 640, _BBY = 1020;
   function bossBuffer() {
     if (!_bossBuf) {
       _bossBuf = document.createElement('canvas');
