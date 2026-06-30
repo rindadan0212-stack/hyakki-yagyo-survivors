@@ -135,14 +135,17 @@ G.cam = {
     const k = 1 - Math.exp(-8 * dt);
     this.x += (px - this.x) * k;
     this.y += (py - this.y) * k;
-    // 常時ズーム G.ZOOM を基準に落ち着く (パンチ演出はその上に乗る)
-    this.zoom += (G.ZOOM - this.zoom) * (1 - Math.exp(-3.4 * dt));
-    if (Math.abs(this.zoom - G.ZOOM) < 0.001) this.zoom = G.ZOOM;
+    // 常時ズーム G.ZOOM を基準に落ち着く (パンチ演出はその上に乗る)。
+    // ただしボス戦中だけ引く(巨大なボスが画面の55〜79%を占め、追従カメラで上端が見切れるため全身を収める)。
+    const bossActive = G.run && G.run.boss && !G.run.boss.dead;
+    const targetZoom = G.ZOOM * (bossActive ? ((G.data && G.data.BOSS_CAM_ZOOM) || 1) : 1);
+    this.zoom += (targetZoom - this.zoom) * (1 - Math.exp(-3.4 * dt));
+    if (Math.abs(this.zoom - targetZoom) < 0.001) this.zoom = targetZoom;
     // 有限マップの境界クランプ。壁を画面端に張り付けず、塀の外を少しだけ見せて
     // プレイヤーをなるべく中央に保つ (壁際でキャラが画面端に寄って見づらい問題の対策)。
     // 露出する塀の外は地面タイル + 闇で埋まるので破綻しない (render の drawGround / drawLight)。
     if (G.run) {
-      const vhw = (G.VIEW_W / 2) / G.ZOOM, vhh = (G.VIEW_H / 2) / G.ZOOM;
+      const vhw = (G.VIEW_W / 2) / this.zoom, vhh = (G.VIEW_H / 2) / this.zoom;   // 実ズームで算出(ボス戦の引きでも正しくクランプ)
       const hw = G.MAP_W / 2, hh = G.MAP_H / 2;
       const padX = vhw * 0.34, padY = vhh * 0.42;   // 塀の外を見せる許容量 (中央寄せの強さ)
       this.x = hw > vhw ? G.clamp(this.x, -hw + vhw - padX, hw - vhw + padX) : 0;
