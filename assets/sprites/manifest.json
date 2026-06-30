@@ -16,11 +16,11 @@
       "ay": 38
     },
     "p_0": {
-      "file": "animation/p/p_0.png",
-      "w": 64.64,
-      "h": 89.6,
-      "ax": 32.32,
-      "ay": 83.2
+      "file": "p_haru.png",
+      "w": 27,
+      "h": 40,
+      "ax": 14,
+      "ay": 38
     },
     "p_1": {
       "file": "p_haru.png",
@@ -409,10 +409,10 @@
     },
     "p_idle_0": {
       "file": "animation/p/p_idle_0.png",
-      "w": 64.64,
-      "h": 89.6,
-      "ax": 32.32,
-      "ay": 83.2
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
     },
     "p_idle_1": {
       "file": "animation/p/p_idle_1.png",
@@ -437,10 +437,10 @@
     },
     "p_hurt_0": {
       "file": "animation/p/p_hurt_0.png",
-      "w": 65.92,
-      "h": 89.6,
-      "ax": 32.96,
-      "ay": 83.2
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
     },
     "p_hurt_1": {
       "file": "animation/p/p_hurt_1.png",
@@ -472,10 +472,10 @@
     },
     "p_walk_3": {
       "file": "animation/p/p_walk_3.png",
-      "w": 52.48,
-      "h": 89.6,
-      "ax": 26.24,
-      "ay": 83.2
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
     },
     "p_walk_4": {
       "file": "animation/p/p_walk_4.png",
@@ -500,10 +500,10 @@
     },
     "p_dash_1": {
       "file": "animation/p/p_dash_1.png",
-      "w": 71.68,
-      "h": 89.6,
-      "ax": 35.84,
-      "ay": 83.2
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
     },
     "p_dash_2": {
       "file": "animation/p/p_dash_2.png",
@@ -528,10 +528,10 @@
     },
     "p_cast_2": {
       "file": "animation/p/p_cast_2.png",
-      "w": 62.72,
-      "h": 89.6,
-      "ax": 31.36,
-      "ay": 83.2
+      "w": 72.953,
+      "h": 76.269,
+      "ax": 42.694,
+      "ay": 68.808
     },
     "p_cast_3": {
       "file": "animation/p/p_cast_3.png",
