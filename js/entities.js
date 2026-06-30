@@ -4842,6 +4842,20 @@ G.ent = (() => {
     return (_bodyBotCache[name] = (y1 + 1) / cv.height);
   }
 
+  // ボス専用オフスクリーン: 本体+リム+フラッシュをここに一旦合成し、1枚で本canvasへ転送する。
+  // 巨大なボス(上へ最大~550px拡大)も収まる十分なサイズ。アンカー(_BBX,_BBY)に各スプライトの ay を合わせる。
+  let _bossBuf = null, _bossBctx = null;
+  const _BBUF = 768, _BBX = 384, _BBY = 600;
+  function bossBuffer() {
+    if (!_bossBuf) {
+      _bossBuf = document.createElement('canvas');
+      _bossBuf.width = _BBUF; _bossBuf.height = _BBUF;
+      _bossBctx = _bossBuf.getContext('2d');
+      _bossBctx.imageSmoothingEnabled = false;
+    }
+    return _bossBuf;
+  }
+
   function drawEnemy(ctx, e, run) {
     const S = G.S;
     const spr = e.boss ? bossMotionSprite(e) : e.cfg.spr + '_' + e.frame;
@@ -4930,10 +4944,22 @@ G.ent = (() => {
     const bodyY = e.y + flyY + breath + (e.hitOff || 0) + footCorrect;   // 点(e.y)がイラストの中心に来るよう体半分ぶん下げ + ポーズ足元補正
     // 識別補助: 暗い背景に同化しないよう、白シルエットを一回り大きく背後へ薄く敷いて縁取る
     const rimSpr = spr + '_w';
-    if (S.get(rimSpr)) S.draw(ctx, rimSpr, e.x, bodyY, { scale: e.scale * 1.12 * pop, flipX: flip, sx, sy, alpha: e.boss ? 0.22 : 0.3 });
-    S.draw(ctx, spr, e.x, bodyY, { scale: e.scale * pop, flipX: flip, sx, sy });
-    if (e.flash > 0 && S.get(rimSpr)) {   // ヒット白フラッシュ: 通常絵の上に上限付き部分αで重ねる(連続ヒットでも真っ白にならず色・形が残る)
-      S.draw(ctx, rimSpr, e.x, bodyY, { scale: e.scale * pop, flipX: flip, sx, sy, alpha: Math.min(0.55, e.flash * 3) });
+    if (e.boss) {
+      // ボスは専用バッファに 本体+リム+フラッシュ を合成してから1枚で転送する(再設計)。
+      // 多重 S.draw や外部レイヤー由来の見切れを構造的に排除し、巨大ポーズも欠けずに描く。
+      const buf = bossBuffer(), bc = _bossBctx;
+      bc.clearRect(0, 0, _BBUF, _BBUF);
+      if (S.get(rimSpr)) S.draw(bc, rimSpr, _BBX, _BBY, { scale: e.scale * 1.12 * pop, flipX: flip, sx, sy, alpha: 0.22 });
+      S.draw(bc, spr, _BBX, _BBY, { scale: e.scale * pop, flipX: flip, sx, sy });
+      if (e.flash > 0 && S.get(rimSpr)) S.draw(bc, rimSpr, _BBX, _BBY, { scale: e.scale * pop, flipX: flip, sx, sy, alpha: Math.min(0.55, e.flash * 3) });
+      // バッファのアンカー(_BBX,_BBY)を本体の (e.x, bodyY) に合わせて転送。本canvasのワールド変換(ズーム)がそのまま掛かる。
+      ctx.drawImage(buf, e.x - _BBX, bodyY - _BBY, _BBUF, _BBUF);
+    } else {
+      if (S.get(rimSpr)) S.draw(ctx, rimSpr, e.x, bodyY, { scale: e.scale * 1.12 * pop, flipX: flip, sx, sy, alpha: 0.3 });
+      S.draw(ctx, spr, e.x, bodyY, { scale: e.scale * pop, flipX: flip, sx, sy });
+      if (e.flash > 0 && S.get(rimSpr)) {   // ヒット白フラッシュ: 通常絵の上に上限付き部分αで重ねる(連続ヒットでも真っ白にならず色・形が残る)
+        S.draw(ctx, rimSpr, e.x, bodyY, { scale: e.scale * pop, flipX: flip, sx, sy, alpha: Math.min(0.55, e.flash * 3) });
+      }
     }
     if (e.cfg.light) {
       S.draw(ctx, 'glow_warm', e.x, e.y - 6, { scale: 1.1, alpha: 0.7 });
