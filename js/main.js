@@ -822,43 +822,8 @@ G.main = (() => {
     shrine: ['stone_0', 'stone_1', 'grass_2', 'jizo', 'higan', 'leaf', 'stone_1', 'grass_0'],
   };
   const ZSPECIAL = { forest: 'log', bamboo: 'puddle', grave: 'higan', shrine: 'higan' };
-  // AI生成ランドマーク(ComfyUI): ゾーンごとに置く大きめの装飾。底面アンカーで立つ。
-  const LANDMARKS = {
-    forest: ['prop_sakura', 'prop_kareki', 'prop_toro', 'prop_kuzu', 'prop_kumo', 'prop_higanbana', 'prop_susuki', 'prop_kinoko', 'prop_hasu'],
-    bamboo: ['prop_kareki', 'prop_toro', 'prop_torii2', 'prop_kuzu', 'prop_ido', 'prop_take', 'prop_susuki', 'prop_kinoko'],
-    grave:  ['prop_haka', 'prop_toro', 'prop_hone', 'prop_dokuro', 'prop_jizo2', 'prop_torii_oimg', 'prop_higanbana', 'prop_dokurobi', 'prop_tou', 'prop_kitsunemen'],
-    shrine: ['prop_torii2', 'prop_chochin', 'prop_toro', 'prop_reimon', 'prop_kitsune', 'prop_butsu', 'prop_jizo2', 'prop_kumotsu', 'prop_kitsunemen', 'prop_ema', 'prop_kagaribi', 'prop_tou'],
-  };
-  const PROP_GLOW = { prop_toro: 'warm', prop_chochin: 'warm', prop_kumotsu: 'warm', prop_kagaribi: 'warm', prop_dokuro: 'cool', prop_reimon: 'cool', prop_kinoko: 'cool', prop_dokurobi: 'cool', prop_hasu: 'cool' };
-  // 遠景シルエット用(薄暗く大きく描いて奥行きを出す)。ステージ別の妖景。
-  const FAR_SIL = {
-    mori: ['prop_kareki', 'prop_sakura', 'prop_torii2'],
-    miyako: ['prop_torii2', 'prop_kitsune', 'prop_butsu', 'prop_reimon'],
-    _: ['prop_torii_oimg', 'prop_haka', 'prop_kareki', 'prop_hone'],
-  };
-  // 意味あるシーン群(クラスター): 単体をランダム配置でなく、ゾーンの物語が伝わる組合せで配置。
-  // 各要素 [スプライト, dx, dy, scale]。配列は奥→手前(描画はdyで整列)。世界観を強める。
-  const SCENES = {
-    forest: [
-      [['prop_kareki', -44, -6, 0.62], ['prop_susuki', 48, 16, 0.5], ['prop_kinoko', -70, 26, 0.4], ['prop_higanbana', 8, 34, 0.36]],
-      [['prop_sakura', 0, -4, 0.64], ['prop_toro', -56, 22, 0.42], ['prop_higanbana', 44, 30, 0.34]],
-      [['prop_kuzu', -26, 8, 0.5], ['prop_susuki', 36, 6, 0.5], ['prop_kinoko', 4, 30, 0.4]],
-    ],
-    bamboo: [
-      [['prop_take', -30, -2, 0.58], ['prop_take', 30, 3, 0.54], ['prop_toro', 2, 26, 0.42], ['prop_kinoko', -44, 32, 0.36]],
-      [['prop_take', 0, -4, 0.6], ['prop_ido', -48, 20, 0.46], ['prop_susuki', 46, 18, 0.48]],
-    ],
-    grave: [
-      [['prop_haka', 0, -4, 0.56], ['prop_haka', -46, 10, 0.48], ['prop_jizo2', 50, 6, 0.46], ['prop_higanbana', -18, 34, 0.36]],
-      [['prop_torii_oimg', 0, -2, 0.58], ['prop_hone', -40, 20, 0.44], ['prop_dokuro', 40, 16, 0.4], ['prop_higanbana', 6, 36, 0.34]],
-      [['prop_jizo2', -36, 2, 0.46], ['prop_jizo2', 36, 5, 0.44], ['prop_tou', 0, -6, 0.5], ['prop_higanbana', 0, 34, 0.34]],
-    ],
-    shrine: [
-      [['prop_torii2', 0, -6, 0.66], ['prop_toro', -64, 18, 0.44], ['prop_toro', 66, 20, 0.44], ['prop_kumotsu', 0, 30, 0.4]],
-      [['prop_reimon', 0, -4, 0.68], ['prop_chochin', -52, -10, 0.4], ['prop_kitsune', 46, 20, 0.46]],
-      [['prop_kitsune', -40, 4, 0.46], ['prop_kitsune', 42, 6, 0.44], ['prop_ema', 0, 24, 0.46], ['prop_torii2', 0, -10, 0.42]],
-    ],
-  };
+  // ※AI生成プロップの背景配置(LANDMARKS/SCENES/FAR_SIL)は「浮きすぎ・邪魔」との指摘で撤去(2026-06-30)。
+  //   既存の手続き装飾(ZDECO)のみ使用。prop_*.png 素材は残置(将来の再利用候補)。
 
   function zoneOf(cx, cy, stageId) {
     const zh = G.hash2(Math.floor(cx / 4) * 131 + 7, Math.floor(cy / 4) * 173 + 11);
@@ -899,13 +864,6 @@ G.main = (() => {
             G.S.draw(ctx, 'sotoba', px + 45, py + 30, { scale: 1.4, alpha: 0.5 });
             G.S.draw(ctx, 'higan', px + 85, py + 52, { scale: 1.25, alpha: 0.62 });
           }
-        }
-        // 遠景にAI装飾のシルエット(薄暗く大きく=奥行き)。百鬼夜行らしい遠景の妖景。
-        const h8 = G.hash2(lx * 53 + 17, ly * 59 + 23);
-        if (h8 > 0.6) {
-          const far = FAR_SIL[stageId] || FAR_SIL._;
-          const nm = far[((h8 * 331) | 0) % far.length];
-          G.S.draw(ctx, nm, px + 110, py + 64, { scale: 1.5 + h8 * 0.9, alpha: 0.24 });
         }
       }
     }
@@ -965,22 +923,6 @@ G.main = (() => {
         // torii gates stand in shrine zones
         if (zone === 'shrine' && G.hash2(cx * 3 + 7, cy * 3 + 11) > 0.955) {
           G.S.draw(ctx, 'torii', cx * cs + 80, cy * cs + 100);
-        }
-
-        // AI生成のシーン群(クラスター): 単体散在でなく、ゾーンの物語が伝わる組合せで配置。世界観を強める。
-        // 素材自体を夜にミュート済 + ここでは控えめなscaleで「背景の景物」として読ませる(アイテムと誤認させない)。
-        const h7 = G.hash2(cx * 37 + 13, cy * 41 + 7);
-        if (h7 > 0.965) {
-          const set = SCENES[zone];
-          const scene = set[((h7 * 733) | 0) % set.length].slice().sort((a, b) => a[2] - b[2]);   // 奥→手前
-          const bx = cx * cs + G.hash2(cx * 43 + 1, cy * 47 + 9) * cs;
-          const by = cy * cs + G.hash2(cx * 53 + 3, cy * 59 + 5) * cs;
-          for (let s = 0; s < scene.length; s++) {
-            const it = scene[s], ex = bx + it[1], ey = by + it[2];
-            G.S.draw(ctx, it[0], ex, ey, { scale: it[3] });
-            const gl = PROP_GLOW[it[0]];
-            if (gl) G.S.draw(ctx, gl === 'cool' ? 'glow_cool' : 'glow_warm', ex, ey - 12, { scale: 0.3, alpha: 0.28 });
-          }
         }
       }
     }
