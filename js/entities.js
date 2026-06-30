@@ -768,6 +768,9 @@ G.ent = (() => {
     const run = G.run;
     const p = run.player;
     if (!p.alive || p.hurtT > 0 || (G.debug && G.debug.god)) return;
+    // 夜別の被ダメ猶予: 序盤の夜ほど被ダメを軽減し完走可能に(後夜=apexの理不尽は据え置き)。ボス/敵の強さ自体は不変。
+    const _grace = D.STAGE_DMG_GRACE && D.STAGE_DMG_GRACE[run.stageIdx];
+    if (_grace != null && _grace !== 1) d *= _grace;
     if (run.buffs.kongo > 0) {
       // 金剛: untouchable
       G.audio.sfx('deny');
