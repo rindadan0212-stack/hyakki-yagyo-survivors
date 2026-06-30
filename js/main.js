@@ -815,11 +815,13 @@ G.main = (() => {
 
   /* world decoration: 640px zone cells pick a biome flavour, 160px deco
    * cells place props deterministically (hash-based, nothing stored) */
+  // ※「石のような」grass/stone の小塊は「あちこちに撒かれて邪魔」との指摘で撤去(2026-06-30)。
+  //   leaf/mush/bamboo/landmark のみ・密度も下げてエリアをクリーンに。
   const ZDECO = {
-    forest: ['grass_0', 'grass_1', 'grass_2', 'stone_0', 'leaf', 'mush', 'grass_1', 'leaf'],
-    bamboo: ['bamboo_0', 'bamboo_1', 'bamboo_0', 'bamboo_1', 'grass_1', 'leaf', 'bamboo_1', 'grass_2'],
-    grave:  ['grave', 'sotoba', 'grass_0', 'jizo', 'leaf', 'sotoba', 'grave', 'stone_1'],
-    shrine: ['stone_0', 'stone_1', 'grass_2', 'jizo', 'higan', 'leaf', 'stone_1', 'grass_0'],
+    forest: ['leaf', 'mush', 'leaf', 'leaf', 'mush', 'leaf', 'log', 'leaf'],
+    bamboo: ['bamboo_0', 'bamboo_1', 'leaf', 'bamboo_0', 'bamboo_1', 'leaf', 'bamboo_0', 'bamboo_1'],
+    grave:  ['sotoba', 'leaf', 'jizo', 'grave', 'leaf', 'sotoba', 'leaf', 'jizo'],
+    shrine: ['higan', 'leaf', 'jizo', 'leaf', 'higan', 'sotoba', 'leaf', 'jizo'],
   };
   const ZSPECIAL = { forest: 'log', bamboo: 'puddle', grave: 'higan', shrine: 'higan' };
   // ※AI生成プロップの背景配置(LANDMARKS/SCENES/FAR_SIL)は「浮きすぎ・邪魔」との指摘で撤去(2026-06-30)。
@@ -887,7 +889,7 @@ G.main = (() => {
         const list = ZDECO[zone];
         const h = G.hash2(cx, cy);
 
-        const propCut = stageId === 'mori' ? 0.72 : stageId === 'miyako' ? 0.78 : 0.84;
+        const propCut = stageId === 'mori' ? 0.34 : stageId === 'miyako' ? 0.38 : 0.42;   // 密度を約半減(クラッタ低減)
         if (h < propCut) {
           const h2 = G.hash2(cx * 5 + 1, cy * 7 + 3);
           const h3 = G.hash2(cx * 11 + 5, cy * 13 + 7);
@@ -900,7 +902,7 @@ G.main = (() => {
         }
 
         // second prop: bamboo groves & graveyards are denser
-        const denseBase = zone === 'bamboo' ? 0.42 : zone === 'grave' ? 0.3 : 0.2;
+        const denseBase = zone === 'bamboo' ? 0.22 : zone === 'grave' ? 0.14 : 0.1;
         const dense = denseBase + (stageId === 'yomi' ? 0.14 : stageId === 'miyako' ? 0.06 : 0);
         const h5 = G.hash2(cx * 17 + 9, cy * 23 + 5);
         if (h5 < dense) {
