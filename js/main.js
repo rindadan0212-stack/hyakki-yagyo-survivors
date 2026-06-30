@@ -836,6 +836,29 @@ G.main = (() => {
     miyako: ['prop_torii2', 'prop_kitsune', 'prop_butsu', 'prop_reimon'],
     _: ['prop_torii_oimg', 'prop_haka', 'prop_kareki', 'prop_hone'],
   };
+  // 意味あるシーン群(クラスター): 単体をランダム配置でなく、ゾーンの物語が伝わる組合せで配置。
+  // 各要素 [スプライト, dx, dy, scale]。配列は奥→手前(描画はdyで整列)。世界観を強める。
+  const SCENES = {
+    forest: [
+      [['prop_kareki', -44, -6, 0.62], ['prop_susuki', 48, 16, 0.5], ['prop_kinoko', -70, 26, 0.4], ['prop_higanbana', 8, 34, 0.36]],
+      [['prop_sakura', 0, -4, 0.64], ['prop_toro', -56, 22, 0.42], ['prop_higanbana', 44, 30, 0.34]],
+      [['prop_kuzu', -26, 8, 0.5], ['prop_susuki', 36, 6, 0.5], ['prop_kinoko', 4, 30, 0.4]],
+    ],
+    bamboo: [
+      [['prop_take', -30, -2, 0.58], ['prop_take', 30, 3, 0.54], ['prop_toro', 2, 26, 0.42], ['prop_kinoko', -44, 32, 0.36]],
+      [['prop_take', 0, -4, 0.6], ['prop_ido', -48, 20, 0.46], ['prop_susuki', 46, 18, 0.48]],
+    ],
+    grave: [
+      [['prop_haka', 0, -4, 0.56], ['prop_haka', -46, 10, 0.48], ['prop_jizo2', 50, 6, 0.46], ['prop_higanbana', -18, 34, 0.36]],
+      [['prop_torii_oimg', 0, -2, 0.58], ['prop_hone', -40, 20, 0.44], ['prop_dokuro', 40, 16, 0.4], ['prop_higanbana', 6, 36, 0.34]],
+      [['prop_jizo2', -36, 2, 0.46], ['prop_jizo2', 36, 5, 0.44], ['prop_tou', 0, -6, 0.5], ['prop_higanbana', 0, 34, 0.34]],
+    ],
+    shrine: [
+      [['prop_torii2', 0, -6, 0.66], ['prop_toro', -64, 18, 0.44], ['prop_toro', 66, 20, 0.44], ['prop_kumotsu', 0, 30, 0.4]],
+      [['prop_reimon', 0, -4, 0.68], ['prop_chochin', -52, -10, 0.4], ['prop_kitsune', 46, 20, 0.46]],
+      [['prop_kitsune', -40, 4, 0.46], ['prop_kitsune', 42, 6, 0.44], ['prop_ema', 0, 24, 0.46], ['prop_torii2', 0, -10, 0.42]],
+    ],
+  };
 
   function zoneOf(cx, cy, stageId) {
     const zh = G.hash2(Math.floor(cx / 4) * 131 + 7, Math.floor(cy / 4) * 173 + 11);
@@ -944,16 +967,20 @@ G.main = (() => {
           G.S.draw(ctx, 'torii', cx * cs + 80, cy * cs + 100);
         }
 
-        // AI生成のランドマーク装飾 (低頻度・ゾーン別)。世界に厚みを足す。底面アンカーで地面に立つ。
+        // AI生成のシーン群(クラスター): 単体散在でなく、ゾーンの物語が伝わる組合せで配置。世界観を強める。
+        // 素材自体を夜にミュート済 + ここでは控えめなscaleで「背景の景物」として読ませる(アイテムと誤認させない)。
         const h7 = G.hash2(cx * 37 + 13, cy * 41 + 7);
-        if (h7 > 0.982) {
-          const lm = LANDMARKS[zone];
-          const name = lm[((h7 * 911) | 0) % lm.length];
-          const px = cx * cs + G.hash2(cx * 43 + 1, cy * 47 + 9) * cs;
-          const py = cy * cs + G.hash2(cx * 53 + 3, cy * 59 + 5) * cs;
-          G.S.draw(ctx, name, px, py, { scale: 0.36 + h7 * 0.12, alpha: 0.92 });
-          const gl = PROP_GLOW[name];
-          if (gl) G.S.draw(ctx, gl === 'cool' ? 'glow_cool' : 'glow_warm', px, py - 18, { scale: 0.36, alpha: 0.35 });
+        if (h7 > 0.965) {
+          const set = SCENES[zone];
+          const scene = set[((h7 * 733) | 0) % set.length].slice().sort((a, b) => a[2] - b[2]);   // 奥→手前
+          const bx = cx * cs + G.hash2(cx * 43 + 1, cy * 47 + 9) * cs;
+          const by = cy * cs + G.hash2(cx * 53 + 3, cy * 59 + 5) * cs;
+          for (let s = 0; s < scene.length; s++) {
+            const it = scene[s], ex = bx + it[1], ey = by + it[2];
+            G.S.draw(ctx, it[0], ex, ey, { scale: it[3] });
+            const gl = PROP_GLOW[it[0]];
+            if (gl) G.S.draw(ctx, gl === 'cool' ? 'glow_cool' : 'glow_warm', ex, ey - 12, { scale: 0.3, alpha: 0.28 });
+          }
         }
       }
     }
