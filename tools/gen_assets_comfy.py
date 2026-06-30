@@ -35,6 +35,16 @@ PRESETS = {
         "multiple objects, scene, landscape, grid, tiling",
         1024, 1024, 26, 6.0,
     ),
+    # プレイヤーキャラの全身ポーズ。単体・純黒背景(後で輪郭抽出)。縦長で全身を収める。
+    "char": (
+        "pixel art game sprite, full body chibi character, single character centered on pure black background, "
+        "dynamic readable pose, soft rim light, crisp pixels, no scene, no ground, no shadow, no border",
+        "scene, landscape, background, multiple characters, two people, text, watermark, ui, frame, cropped, "
+        "realistic photo, blurry, extra limbs, extra arms, deformed hands, grid, sprite sheet, "
+        "wide brim hat, witch hat, straw hat, conical hat, pointed hat, purple kimono, dark kimono, "
+        "colorful patterned kimono, floral kimono, miko, witch",
+        896, 1152, 28, 6.5,
+    ),
     # スキル/バフのアイコン記号。円形メダル上の単一象徴。
     "icon": (
         "game skill icon, single ornate emblem symbol centered on dark circular medallion, "
