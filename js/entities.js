@@ -4842,10 +4842,11 @@ G.ent = (() => {
     return (_bodyBotCache[name] = (y1 + 1) / cv.height);
   }
 
-  // ボス専用オフスクリーン: 本体+リム+フラッシュをここに一旦合成し、1枚で本canvasへ転送する。
-  // 巨大なボス(上へ最大~550px拡大)も収まる十分なサイズ。アンカー(_BBX,_BBY)に各スプライトの ay を合わせる。
+  // ボス専用オフスクリーン: 本体+リム(影)+フラッシュをここに一旦合成し、1枚で本canvasへ転送する。
+  // ⚠️リム(影)は本体より ×1.12 大きい。768²では shuten 等の幅広ポーズで影が左右へはみ出し矩形に切れた
+  //   (本体は収まるが影だけ切れる症状)。影の最大到達まで余裕を持たせるため 1024² + アンカー(512,640)へ拡大。
   let _bossBuf = null, _bossBctx = null;
-  const _BBUF = 768, _BBX = 384, _BBY = 600;
+  const _BBUF = 1024, _BBX = 512, _BBY = 640;
   function bossBuffer() {
     if (!_bossBuf) {
       _bossBuf = document.createElement('canvas');
