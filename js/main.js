@@ -1172,7 +1172,10 @@ G.main = (() => {
       b.clearRect(0, 0, E.bloom.width, E.bloom.height);
       b.globalCompositeOperation = 'source-over';
       b.globalAlpha = 0.9;
-      b.filter = 'blur(4px) brightness(1.28) saturate(1.18)';
+      // ⚠️GPUによっては canvas の blur() フィルタが矩形タイル状の artifact を出す(Skia の既知挙動)。
+      //   ボス周辺に灰紫の矩形が「スパッと」出る不具合の正体と推定。blur を外し点処理(明度/彩度)のみ残す。
+      //   柔らかさは bloom の縮小(0.375x)→平滑拡大(下の imageSmoothing=true)で確保する。
+      b.filter = 'brightness(1.28) saturate(1.18)';
       b.drawImage(E.canvas, 0, 0, E.bloom.width, E.bloom.height);
       b.filter = 'none';
       b.globalAlpha = 1;
